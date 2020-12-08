@@ -1,0 +1,20 @@
+#headline_links{
+	float: left;
+	color: black;
+	background-color: lightblue;
+	padding: 15px;
+	width: 200px;
+	height: 55px;
+	border: 2px solid black;
+	
+}
+
+#headline_rechts{
+	color: black;
+	background-color: lightblue;
+	padding: 15px;
+	height: 55px;
+	text-align: right;
+	border: 2px solid black;
+}
+

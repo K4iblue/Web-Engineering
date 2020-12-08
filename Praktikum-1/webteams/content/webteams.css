@@ -1,0 +1,120 @@
+/* Alle Seiten */
+body {
+	background-color: beige;
+}
+
+/* list.tpl */
+#overview {
+	border-collapse: collapse;
+	width: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#overview td, #overview th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+#overview tr{
+	font-size: 16px;
+}
+
+#overview tr:nth-child(even) {
+	background-color: lightgray;
+	transition-duration: 0.4s;
+}
+
+#overview tr:nth-child(odd) {
+	background-color: white;
+	transition-duration: 0.4s;
+}
+
+#overview tr:hover {
+	background-color: grey;
+}
+
+#overview th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: mediumaquamarine;
+	color: black;
+}
+
+#overview #buttons{
+	border-collapse: collapse;
+	font-family: Arial, Helvetica, sans-serif;
+
+	background-color: #008CBA;
+	border: 2px solid black;
+	color: white;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	transition-duration: 0.4s;
+}
+
+#overview #buttons:hover{
+	background-color: #006f94;
+}
+
+#erfassen {
+	background-color: #008CBA;
+	color: black;
+	width: 100%;
+	border-collapse: collapse;
+	padding-bottom: 32px;
+	padding-top: 15px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	display: inline-block;
+	transition-duration: 0.4s;
+}
+
+#erfassen:hover {
+	background-color: #006f94;
+}
+
+
+/* form.tpl */
+#idWTForm {
+	font-size: 16px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#idWTForm label{
+	background-color: lightgray;
+	text-align: center;
+	width: 20%;
+	border: 2px solid black;
+	padding: 12px 20px;
+	display: inline-block;
+}
+
+#idWTForm input{
+	width: 50%;
+	border: 2px solid black;
+	padding: 12px 20px;
+	margin: 8px 0px;
+	font-size: 16px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#idWTForm #buttons{
+	background-color: #008CBA;
+	border: 2px solid black;
+	color: white;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	transition-duration: 0.4s;
+}
+
+#idWTForm #buttons:hover{
+	background-color: #006f94;
+}

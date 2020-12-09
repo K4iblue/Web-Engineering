@@ -1,4 +1,5 @@
 #coding: utf-8
+import sys
 import os
 import cherrypy
 from app import application
@@ -22,7 +23,7 @@ def main():
 		}
 	}
 	# Mount static content handler
-	root_o = cherrypy.tree.mount(application.Application_cl(), '/', static_config)
+	cherrypy.tree.mount(application.Application_cl(), '/', static_config)
 	# suppress traceback-info
 	cherrypy.config.update({'request.show_tracebacks': False})
 	# Start server

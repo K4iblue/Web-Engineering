@@ -1,7 +1,7 @@
 ## -*- coding: utf-8 -*-
 <% x = 0 %>
 %for key_s in data_o[0][0]:
-	%if data_o[0][0][key_s][0] is not "":
+	%if data_o[0][0][key_s][0] != "":
 		<% x = x + 1 %>
 	%endif
 %endfor
@@ -17,7 +17,7 @@
 	
 <% y = 0 %>
 %for key_s in data_o[0][1]:
-	%if data_o[0][1][key_s][0] is not "":
+	%if data_o[0][1][key_s][0] != "":
 		<% anfang = data_o[0][1][key_s][1] %>
 		%if heute < anfang:
 			<% y = y + 1 %>
@@ -29,7 +29,7 @@
 
 <% z = 0 %>
 %for key_s in data_o[0][1]:
-	%if data_o[0][1][key_s][0] is not "":
+	%if data_o[0][1][key_s][0] != "":
 		<% anfang = data_o[0][1][key_s][1] %>
 		<% ende = data_o[0][1][key_s][2] %>
 		%if heute >= anfang and ende >= heute:
@@ -42,7 +42,7 @@
 
 <% a = 0 %>
 %for key_s in data_o[0][1]:
-	%if data_o[0][1][key_s][0] is not "":
+	%if data_o[0][1][key_s][0] != "":
 		<% anfang = data_o[0][1][key_s][1] %>
 		<% ende = data_o[0][1][key_s][2] %>
 		%if ende < heute:
@@ -55,7 +55,7 @@
 
 <% b = 0 %>
 %for key_s in data_o[0][2]:
-	%if data_o[0][2][key_s][0] is not "":
+	%if data_o[0][2][key_s][0] != "":
 		<% b = b + 1 %>
 	%endif
 %endfor

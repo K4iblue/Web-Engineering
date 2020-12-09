@@ -13,7 +13,7 @@
 		</tr>
 		<% i = 0 %>
 %for key_s in data_o:
-	%if data_o[key_s][0] is not "":
+	%if data_o[key_s][0] != "":
 		<% i = i + 1 %>
 			<tr>
 				<th>${key_s}</td>

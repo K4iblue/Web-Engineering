@@ -17,12 +17,12 @@ class Application_cl(object):
 	def __init__(self):
 	#-------------------------------------------------------
 		# spezielle Initialisierung können hier eingetragen werden
-		self.db_o = DB_mitarbeiter_cl() #Mitarbeiter
+		self.db_mitarbeiter_o = DB_mitarbeiter_cl()
 		self.db_weiterbildung_o = DB_weiterbildung_cl()
 		self.db_teilnahme_o = DB_teilnahme_cl()
 		self.db_qualifikation_o = DB_qualifikation_cl()
 		self.db_zertifikat_o = DB_zertifikat_cl()
-		self.path_s = "C:\\Users\\kaikl\\Documents\\Google Drive\\Uni\\WS2020\\WEB\\Praktikum\\MiQu"
+		self.path_s = "C:\\mq"								# Hier Path zur Server.py eintragen
 		self.view_o = View_cl(self.path_s)
 	
 	@cherrypy.expose
@@ -46,7 +46,7 @@ class Application_cl(object):
 	#------------------------------------------------------
 	def hauptseite_p(self):
 	#------------------------------------------------------
-		data1_o = self.db_o.read_px()
+		data1_o = self.db_mitarbeiter_o.read_px()
 		data2_o = self.db_weiterbildung_o.read_px()
 		data3_o = self.db_teilnahme_o.read_px()
 		
@@ -61,7 +61,7 @@ class Application_cl(object):
 	#------------------------------------------------------
 	def pflegemitarbeiter_p(self): # Mitarbeiter Liste aufrufen
 	#------------------------------------------------------
-		data_o = self.db_o.read_px()
+		data_o = self.db_mitarbeiter_o.read_px()
 		return self.view_o.pflegemitarbeiter_px(data_o)
 	
 
@@ -70,9 +70,9 @@ class Application_cl(object):
 	def pflegemitarbeiter_bearbeiten_p(self, id_spl=None): # Mitarbeiter erfassen oder bearbeiten
 	#------------------------------------------------------
 		if id_spl != None:
-			data_o = self.db_o.read_px(id_spl)
+			data_o = self.db_mitarbeiter_o.read_px(id_spl)
 		else:
-			data_o = self.db_o.getDefault4_px()
+			data_o = self.db_mitarbeiter_o.getDefault4_px()
 			
 		return self.view_o.pflegemitarbeiter_formular_px(data_o, id_spl)
 	
@@ -85,9 +85,9 @@ class Application_cl(object):
 		data_a = [ data_opl["name_s"], data_opl["vorname_s"], data_opl["titel_s"], data_opl["taetigkeit_s"] ]
 
 		if id_s != "None":
-			self.db_o.update_px(id_s, data_a)
+			self.db_mitarbeiter_o.update_px(id_s, data_a)
 		else:
-			id_s = self.db_o.create_px(data_a)
+			id_s = self.db_mitarbeiter_o.create_px(data_a)
 			
 		return self.pflegemitarbeiter_bearbeiten_p(id_s)
 
@@ -96,7 +96,7 @@ class Application_cl(object):
 	#-------------------------------------------------------
 	def deletemitarbeiter_p(self, id): # Mitarbeiter löschen
 	#-------------------------------------------------------
-		self.db_o.deletemitarbeiter_px(id)
+		self.db_mitarbeiter_o.deletemitarbeiter_px(id)
 		return self.pflegemitarbeiter_p()
 	
 
@@ -104,7 +104,7 @@ class Application_cl(object):
 	#------------------------------------------------------
 	def pflegemitarbeiter_anzeigen_p(self, id_spl):	# Mitarbeiter Detailansicht aufrufen
 	#------------------------------------------------------
-		data0_o = self.db_o.read_px(id_spl)
+		data0_o = self.db_mitarbeiter_o.read_px(id_spl)
 		data1_o = self.db_weiterbildung_o.read_px()
 		data2_o = self.db_teilnahme_o.read_px()
 		data3_o = self.db_qualifikation_o.read_px()
@@ -212,7 +212,7 @@ class Application_cl(object):
 	#------------------------------------------------------
 	def pflegeweiterbildung_anzeigen_p(self, id_spl): # Weiterbildung Detailansicht aufrufen
 	#------------------------------------------------------
-		data0_o = self.db_o.read_px()
+		data0_o = self.db_mitarbeiter_o.read_px()
 		data1_o = self.db_weiterbildung_o.read_px()
 		data2_o = self.db_teilnahme_o.read_px()
 		data3_o = self.db_qualifikation_o.read_px(id_spl)
@@ -229,7 +229,7 @@ class Application_cl(object):
 	#------------------------------------------------------
 	def sichtweisemitarbeiter_p(self): # Sichtweise Mitarbeiter: Mitarbeiter Liste aufrufen
 	#------------------------------------------------------
-		data_o = self.db_o.read_px()
+		data_o = self.db_mitarbeiter_o.read_px()
 		return self.view_o.sichtweisemitarbeiter_px(data_o)
 
 
@@ -237,7 +237,7 @@ class Application_cl(object):
 	#------------------------------------------------------
 	def sichtweisemitarbeiter_information_p(self, id_spl): # Sichtweise Mitarbeiter: Mitarbeiter Detailansicht aufrufen
 	#------------------------------------------------------
-		data1_o = self.db_o.read_px()
+		data1_o = self.db_mitarbeiter_o.read_px()
 		data2_o = self.db_weiterbildung_o.read_px()
 		data3_o = self.db_teilnahme_o.read_px()
 		datas_o= [data1_o, data2_o, data3_o]
@@ -249,21 +249,11 @@ class Application_cl(object):
 	#------------------------------------------------------
 	def sichtweisemitarbeiter_eintragen_p(self, idW_spl, idM_spl): # Sichtweise Mitarbeiter: Mitarbeiter in eine Weiterbildung eintragen
 	#------------------------------------------------------
-		data_o = self.db_teilnahme_o.read_px()
-		id_s = None
+		#data_o = self.db_teilnahme_o.read_px()
+		#id_s = None
 		
-		data_a = [ idW_spl
-		, idM_spl
-		, "angemeldet"
-		]
-		"""
-		if id_s != None:
-			# Update-Operation
-			self.db_teilnahme_o.update_px(id_s, data_a)
-		else:
-		"""
-			# Create-Operation
-		id_s = self.db_teilnahme_o.create_px(data_a)
+		data_a = [idW_spl, idM_spl, "angemeldet"]
+		self.db_teilnahme_o.create_px(data_a)
 					
 		return self.sichtweisemitarbeiter_information_p(idM_spl)
 	
@@ -291,7 +281,7 @@ class Application_cl(object):
 	#------------------------------------------------------
 	def sichtweiseweiterbildungen_Zukuenftige_Weiterbildungen_p(self, id_spl): # Sichtweise Weiterbildung: Detailansicht für eine zukünftige Weiterbildung aufrufen
 	#------------------------------------------------------
-		data1_o = self.db_o.read_px()		
+		data1_o = self.db_mitarbeiter_o.read_px()		
 		data2_o = self.db_weiterbildung_o.read_px()
 		data3_o = self.db_teilnahme_o.read_px()
 
@@ -303,7 +293,7 @@ class Application_cl(object):
 	#------------------------------------------------------
 	def sichtweiseweiterbildungen_Aktuelle_Weiterbildungen_p(self, id_spl): # Sichtweise Weiterbildung: Detailansicht für eine aktuelle Weiterbildung aufrufen
 	#------------------------------------------------------
-		data1_o = self.db_o.read_px()		
+		data1_o = self.db_mitarbeiter_o.read_px()		
 		data2_o = self.db_weiterbildung_o.read_px()		
 		data3_o = self.db_teilnahme_o.read_px()
 
@@ -315,7 +305,7 @@ class Application_cl(object):
 	#------------------------------------------------------
 	def sichtweiseweiterbildungen_Status_p(self, idW_spl, id_s, Status=None): # Sichtweise Weiterbildung: Status der Teilnahme ändern (Erfolgreich / nicht Erfolgreich)
 	#------------------------------------------------------
-		data1_o = self.db_o.read_px()
+		data1_o = self.db_mitarbeiter_o.read_px()
 		data2_o = self.db_weiterbildung_o.read_px()
 		data3_o = self.db_teilnahme_o.read_px()
 		datas_o= [data1_o, data2_o, data3_o]
@@ -341,7 +331,7 @@ class Application_cl(object):
 	#-------------------------------------------------------
 	def auswertung_mitarbeiter_p(self):
 	#-------------------------------------------------------
-		data_o = self.db_o.read_px() #Mitarbeiter
+		data_o = self.db_mitarbeiter_o.read_px() #Mitarbeiter
 		sorted_list = sorted(data_o.items(), key=lambda x: x[1]) #Alphabetisch sortiert
 		myOrdDic = OrderedDict(sorted_list)
 		
@@ -352,7 +342,7 @@ class Application_cl(object):
 	#-------------------------------------------------------
 	def auswertung_mitarbeiter_Info_p(self, id_spl):
 	#-------------------------------------------------------
-		data0_o = self.db_o.read_px() #Mitarbeiter
+		data0_o = self.db_mitarbeiter_o.read_px() #Mitarbeiter
 		sorted_list = sorted(data0_o.items(), key=lambda x: x[1]) #Alphabetisch sortiert
 		myOrdDic = OrderedDict(sorted_list)
 		
@@ -382,7 +372,7 @@ class Application_cl(object):
 	#-------------------------------------------------------
 	def auswertung_weiterbildung_Info_p(self, id_spl):
 	#-------------------------------------------------------
-		data0_o = self.db_o.read_px() #Mitarbeiter
+		data0_o = self.db_mitarbeiter_o.read_px() #Mitarbeiter
 		sorted_list = sorted(data0_o.items(), key=lambda x: x[1]) #Alphabetisch sortiert
 		myOrdDic = OrderedDict(sorted_list)
 		

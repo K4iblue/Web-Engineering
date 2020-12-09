@@ -19,7 +19,7 @@
 <% x = 0 %>
 <% i = 0 %>
 %for key_s in data_o[0][1]:
-	%if data_o[0][1][key_s][0] is not "":
+	%if data_o[0][1][key_s][0] != "":
 		
 		<% x = 0 %>
 		%for key_B_s in data_o[0][2]:

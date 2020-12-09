@@ -17,7 +17,7 @@
 <% heute = str(datum.year) + "-" + str(datum.month) + "-" + str(datum.day) %>
 <% i = 0 %>
 %for key_s in data_o[0]:
-	%if data_o[0][key_s][0] is not "":
+	%if data_o[0][key_s][0] != "":
 		<% anfang = data_o[0][key_s][1] %>
 		%if anfang < heute:
 			<% i = i + 1%>
@@ -55,7 +55,7 @@
 <% heute = str(datum.year) + "-" + str(datum.month) + "-" + str(datum.day) %>
 
 %for key_s in data_o[0]:
-	%if data_o[0][key_s][0] is not "":
+	%if data_o[0][key_s][0] != "":
 		<% anfang = data_o[0][key_s][1] %>
 		%if anfang > heute:
 			<% i = i + 1 %>

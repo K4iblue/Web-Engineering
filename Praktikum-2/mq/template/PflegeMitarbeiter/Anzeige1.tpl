@@ -13,7 +13,7 @@
 		</tr>
 
 %for key_s in data_o[1]:
-	%if data_o[1][key_s][0] is not "":
+	%if data_o[1][key_s][0] != "":
 	
 		%for key_B_s in data_o[2]:
 			%if data_o[2][key_B_s][1] is id_str:
@@ -48,12 +48,12 @@
 			<th>Zustand</th>
 		</tr>
 %for key_s in data_o[1]:
-	%if data_o[1][key_s][0] is not "":
+	%if data_o[1][key_s][0] != "":
 	
 		%for key_B_s in data_o[2]:
 			%if data_o[2][key_B_s][1] is id_str:
 				%if data_o[2][key_B_s][0] is key_s:
-					%if data_o[3][key_s][0] is not "":
+					%if data_o[3][key_s][0] != "":
 						<tr>
 							<th>${key_s}</td>
 							<td>${data_o[3][key_s][0]}</td>
@@ -80,12 +80,12 @@
 			<th>Zustand</th>
 		</tr>
 %for key_s in data_o[1]:
-	%if data_o[1][key_s][0] is not "":
+	%if data_o[1][key_s][0] != "":
 	
 		%for key_B_s in data_o[2]:
 			%if data_o[2][key_B_s][1] is id_str:
 				%if data_o[2][key_B_s][0] is key_s:
-					%if data_o[3][key_s][0] is not "":
+					%if data_o[3][key_s][0] != "":
 						<tr>
 							<th>${key_s}</td>
 							<td>${data_o[4][key_s][0]}</td>

@@ -8,7 +8,7 @@
 		@import "/sidebar.css";
 		@import "/mq.css";
 	</style>
-	<title>MiQu</title>
+	<title>Mitarbeiter-Qualifizierung</title>
 	<script type="text/javascript" src="/mitarbeiterquali.js"></script>
 	<div>
 		<div id="headline_links">

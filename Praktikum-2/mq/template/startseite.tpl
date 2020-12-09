@@ -12,7 +12,7 @@
 <!-- Anzahl der Mitarbeiter berechnen -->
 <% x = 0 %>
 %for key_s in data_o[0][0]:
-	%if data_o[0][0][key_s][0] is not "":
+	%if data_o[0][0][key_s][0] != "":
 		<% x = x + 1 %>
 	%endif
 %endfor
@@ -62,7 +62,7 @@
 	<!-- Weiterbildungen (in Planung) berechnen -->
 	<% y = 0 %>
 	%for key_s in data_o[0][1]:
-		%if data_o[0][1][key_s][0] is not "":
+		%if data_o[0][1][key_s][0] != "":
 			<% anfang = data_o[0][1][key_s][1] %>
 			<% ende = data_o[0][1][key_s][2] %>
 			%if ( ( anfang.split('-')[0] > heute.split('-')[0] ) or ( anfang.split('-')[0] == heute.split('-')[0] and anfang.split('-')[1] > heute.split('-')[1]) or ( anfang.split('-')[0] 	== heute.split('-')[0] and anfang.split('-')[1] == heute.split('-')[1] and anfang.split('-')[2] > heute.split('-')[2]) ):
@@ -75,7 +75,7 @@
 	<!-- Weiterbildungen (laufend) berechnen -->	
 	<% z = 0 %>
 	%for key_s in data_o[0][1]:
-		%if data_o[0][1][key_s][0] is not "":
+		%if data_o[0][1][key_s][0] != "":
 			<% anfang = data_o[0][1][key_s][1] %>
 			<% ende = data_o[0][1][key_s][2] %>
 			%if ( ( ( anfang.split('-')[0] < heute.split('-')[0] ) or ( anfang.split('-')[0] == heute.split('-')[0] and anfang.split('-')[1] < heute.split('-')[1]) or ( anfang.split('-')[0] 	== heute.split('-')[0] and anfang.split('-')[1] == heute.split('-')[1] and anfang.split('-')[2] < heute.split('-')[2]) ) and ( ( ende.split('-')[0] > heute.split('-')[0] ) or ( 	ende.split('-')[0] == heute.split('-')[0] and ende.split('-')[1] > heute.split('-')[1]) or ( ende.split('-')[0] == heute.split('-')[0] and ende.split('-')[1] == heute.split('-')	[1] and ende.split('-')[2] > heute.split('-')[2] ) ) ):
@@ -88,7 +88,7 @@
 	<!-- Weiterbildungen (abgeschlossen) berechnen -->
 	<% a = 0 %>
 	%for key_s in data_o[0][1]:
-		%if data_o[0][1][key_s][0] is not "":
+		%if data_o[0][1][key_s][0] != "":
 			<% anfang = data_o[0][1][key_s][1] %>
 			<% ende = data_o[0][1][key_s][2] %>
 			%if ( ( ende.split('-')[0] < heute.split('-')[0] ) or ( ende.split('-')[0] == heute.split('-')[0] and ende.split('-')[1] < heute.split('-')[1]) or ( ende.split('-')[0] == heute.	split('-')[0] and ende.split('-')[1] == heute.split('-')[1] and ende.split('-')[2] < heute.split('-')[2]) ):
@@ -101,7 +101,7 @@
 	<!-- Anzahl der Teilnahmen berechnen -->
 	<% b = 0 %>
 	%for key_s in data_o[0][2]:
-		%if data_o[0][2][key_s][0] is not "":
+		%if data_o[0][2][key_s][0] != "":
 			<% b = b + 1 %>
 		%endif
 	%endfor

@@ -7,6 +7,7 @@
 		@import "/header.css";
 		@import "/sidebar.css";
 		@import "/mq.css";
+		@import "/style.css";
 	</style>
 	<title>Mitarbeiter-Qualifizierung</title>
 	<script type="text/javascript" src="/mitarbeiterquali.js"></script>

@@ -1,41 +1,39 @@
 ## -*- coding: utf-8 -*-
-	<div id="Headline">Teilnehmer</div>
-<table>
-	<tr>
-		<th>ID</th>
-		<th>Akademischer Grad</th>
-		<th>Vorname</th>
-		<th>Name</th>
-		<th>Tätigkeit</th>
-		<th>Status</th>
-		<th>Aktion</th>
-	</tr>
+			<h3>Teilnehmer</h3>
+			<table>
+				<tr>
+					<th>ID</th>					
+					<th>Name</th>
+					<th>Vorname</th>
+					<th>Akademischer Grad</th>
+					<th>Tätigkeit</th>
+					<th>Status</th>
+					<th>Aktion</th>
+				</tr>
 
-<% datum = data_o[1] %>
+				<% datum = data_o[1] %>
+				<% heute = str(datum.year) + "-" + str(datum.month) + "-" + str(datum.day) %>
+				<% i = 0 %>
 
-<% heute = str(datum.year) + "-" + str(datum.month) + "-" + str(datum.day) %>
+				%for key_s in data_o[0][2]:
+					%if data_o[0][2][key_s][0] is id_str:
+								<% MitarbeiterID = data_o[0][2][key_s][1] %>
 
-<% i = 0 %>
+								<% anfang = data_o[0][1][id_str][1] %>
+								<% ende = data_o[0][1][id_str][2] %>
+								%if heute >= anfang and ende <= heute:
+									<% button_name = 0 %> 
+								%else:
+									<% button_name = 1 %>
+								%endif
 
-%for key_s in data_o[0][2]:
-	%if data_o[0][2][key_s][0] is id_str:
-				<% MitarbeiterID = data_o[0][2][key_s][1] %>
-
-				<% anfang = data_o[0][1][id_str][1] %>
-				<% ende = data_o[0][1][id_str][2] %>
-				%if heute >= anfang and ende <= heute:
-					<% button_name = 0 %> 
-				%else:
-					<% button_name = 1 %>
-				%endif
-				
-				<% i = i + 1%>
+								<% i = i + 1%>
 				
 				<tr>
 					<td>${key_s}</td>
-					<td>${data_o[0][0][MitarbeiterID][2]}</td>
-					<td>${data_o[0][0][MitarbeiterID][1]}</td>
 					<td>${data_o[0][0][MitarbeiterID][0]}</td>
+					<td>${data_o[0][0][MitarbeiterID][1]}</td>
+					<td>${data_o[0][0][MitarbeiterID][2]}</td>
 					<td>${data_o[0][0][MitarbeiterID][3]}</td>
 					<td>${data_o[0][2][key_s][2]}</td>
 					<td>
@@ -47,13 +45,16 @@
 						%endif
 					</td>
 				</tr>
-	%endif
-%endfor
-</table>
-<p>
-	<a id="hauptseite" href="/sichtweiseweiterbildungen_p">
-		<input type="submit" value="zurueck" id="Button_input">
-	</a>
-	</p>
+					%endif
+				%endfor
+			</table>
+
+			<div>
+			<a id="hauptseite" href="/sichtweiseweiterbildungen_p">
+				<input type="submit" value="zurueck" id="buttons">
+			</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

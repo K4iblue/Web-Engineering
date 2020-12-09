@@ -25,7 +25,7 @@
 								<% x = 0 %>
 								%for key_B_s in data_o[0][2]:
 									%if data_o[0][2][key_B_s][0] is key_s and data_o[0][2][key_B_s][1] is id_str:
-										<!--## ID Weiterbildung = key_s(Weiterbildung), dann soll nichts angezeigt werden-->
+										## ID Weiterbildung = key_s(Weiterbildung), dann soll nichts angezeigt werden
 										<% x = 1 %>
 									%endif
 								%endfor

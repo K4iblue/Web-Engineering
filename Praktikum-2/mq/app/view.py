@@ -38,7 +38,7 @@ class View_cl(object):
 	#-------------------------------------------------------
 		datum = date.today()
 		markup_html = ""
-		markup_html += self.create_p('startseite.tpl', [data_opl, datum])
+		markup_html = self.create_p('startseite.tpl', [data_opl, datum])
 		return markup_html
 	
 
@@ -46,7 +46,7 @@ class View_cl(object):
 	def pflegemitarbeiter_px(self, data_opl):
 	#-------------------------------------------------------
 		markup_s = ''
-		markup_s += self.create_p('PflegeMitarbeiter//ListeMitarbeiter.tpl', data_opl)		
+		markup_s = self.create_p('PflegeMitarbeiter//ListeMitarbeiter.tpl', data_opl)		
 		return markup_s
 	
 
@@ -54,7 +54,7 @@ class View_cl(object):
 	def pflegemitarbeiter_formular_px(self, data_opl, id_spl):
 	#-------------------------------------------------------
 		markup_s = ''
-		markup_s += self.create_p('PflegeMitarbeiter//FormularMitarbeiter.tpl', data_opl, id_spl)
+		markup_s = self.create_p('PflegeMitarbeiter//FormularMitarbeiter.tpl', data_opl, id_spl)
 		return markup_s
 	
 
@@ -72,7 +72,7 @@ class View_cl(object):
 	def pflegeweiterbildung_px(self, data_opl):
 	#--------------------------------------------------------
 		markup_s = ''
-		markup_s += self.create_p('PflegeWeiterbildung//ListeWeiterbildung.tpl', data_opl)
+		markup_s = self.create_p('PflegeWeiterbildung//ListeWeiterbildung.tpl', data_opl)
 		return markup_s
 
 
@@ -90,7 +90,7 @@ class View_cl(object):
 	def pflegeweiterbildung_anzeigen_px(self, datas_opl, id_spl):
 	#-------------------------------------------------------
 		markup_s = ''
-		markup_s += self.create_p('PflegeWeiterbildung//AnzeigeWeiterbildung.tpl', datas_opl, id_spl)	
+		markup_s = self.create_p('PflegeWeiterbildung//AnzeigeWeiterbildung.tpl', datas_opl, id_spl)	
 		return markup_s
 
 
@@ -98,7 +98,7 @@ class View_cl(object):
 	def sichtweisemitarbeiter_px(self, data_opl):
 	#-------------------------------------------------------
 		markup_s = ''	
-		markup_s += self.create_p('SichtweiseMitarbeiter//SichtweiseMitarbeiter.tpl', data_opl)
+		markup_s = self.create_p('SichtweiseMitarbeiter//SichtweiseMitarbeiter.tpl', data_opl)
 		return markup_s
 
 
@@ -118,7 +118,7 @@ class View_cl(object):
 	#-------------------------------------------------------
 		datum = date.today()
 		markup_s = ''		
-		markup_s += self.create_p('SichtweiseWeiterbildungen//SichtweiseWeiterbildung.tpl', [data_opl, datum])
+		markup_s = self.create_p('SichtweiseWeiterbildungen//SichtweiseWeiterbildung.tpl', [data_opl, datum])
 		return markup_s
 
 
@@ -126,7 +126,7 @@ class View_cl(object):
 	def sichtweiseweiterbildungen_Zukuenftige_Weiterbildungen_px(self, datas_opl, id_spl):
 	#-------------------------------------------------------
 		markup_s = ''
-		markup_s += self.create_p('SichtweiseWeiterbildungen//SichtweiseWeiterbildung_Info.tpl', datas_opl, id_spl)
+		markup_s = self.create_p('SichtweiseWeiterbildungen//SichtweiseWeiterbildung_Info.tpl', datas_opl, id_spl)
 		return markup_s	
 
 
@@ -144,7 +144,7 @@ class View_cl(object):
 	def auswertungmitarbeiter_px(self, data_opl):
 	#--------------------------------------------------------
 		markup_s = ''
-		markup_s += self.create_p('Auswertung//AuswertungMitarbeiter.tpl', data_opl)
+		markup_s = self.create_p('Auswertung//AuswertungMitarbeiter.tpl', data_opl)
 		return markup_s
 	
 
@@ -161,7 +161,7 @@ class View_cl(object):
 	def auswertungweiterbildungen_px(self, data_opl):
 	#--------------------------------------------------------
 		markup_s = ''
-		markup_s += self.create_p('Auswertung//AuswertungWeiterbildung.tpl', data_opl)
+		markup_s = self.create_p('Auswertung//AuswertungWeiterbildung.tpl', data_opl)
 		return markup_s
 	
 
@@ -178,7 +178,7 @@ class View_cl(object):
 	def auswertungzertifikat_px(self, data_opl):
 	#--------------------------------------------------------
 		markup_s = ''
-		markup_s += self.create_p('Auswertung//AuswertungZertifikat.tpl', data_opl)
+		markup_s = self.create_p('Auswertung//AuswertungZertifikat.tpl', data_opl)
 		return markup_s
 
 

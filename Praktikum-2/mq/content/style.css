@@ -1,3 +1,7 @@
+body {
+	background-color: lightgray;
+}
+
 a {
 	color: black;
 	text-decoration: none;
@@ -66,7 +70,7 @@ h3 {
 
 .item-main {
 	grid-area: main;
-	background-color: lightsalmon;
+	background-color: grey;
 	text-align: center;
 }
 
@@ -87,7 +91,7 @@ h3 {
 }
 
 #overview td, #overview th {
-	border: 1px solid #ddd;
+	border: 1px solid black;
 	padding: 8px;
 }
 
@@ -107,7 +111,7 @@ h3 {
 	padding-top: 12px;
 	padding-bottom: 12px;
 	text-align: left;
-	background-color: mediumaquamarine;
+	background-color: darkcyan;
 	color: black;
 }
 

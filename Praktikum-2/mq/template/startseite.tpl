@@ -9,6 +9,7 @@
 	<script type="text/javascript" src="/mitarbeiterquali.js"></script>
 </head>
 
+<!-- Anzahl der Mitarbeiter berechnen -->
 <% x = 0 %>
 %for key_s in data_o[0][0]:
 	%if data_o[0][0][key_s][0] is not "":
@@ -57,8 +58,8 @@
 		<!-- Oben nichts verändern-->
 		<!-- Hier wird immer der Inhaltsbereich verändert-->
 		<div class="item-main">
-			<p>Anzahl der Mitarbeiter: ${x}</p>
-			
+	
+	<!-- Weiterbildungen (in Planung) berechnen -->
 	<% y = 0 %>
 	%for key_s in data_o[0][1]:
 		%if data_o[0][1][key_s][0] is not "":
@@ -70,9 +71,8 @@
 		%endif
 	%endfor
 			
-		<p>Anzahl der Weiterbildungen (in Planung): ${y}</p>
-			
-			
+
+	<!-- Weiterbildungen (laufend) berechnen -->	
 	<% z = 0 %>
 	%for key_s in data_o[0][1]:
 		%if data_o[0][1][key_s][0] is not "":
@@ -83,9 +83,9 @@
 			%endif
 		%endif
 	%endfor
-		<p>Anzahl der Weiterbildungen (laufend): ${z}</p>
 			
-			
+
+	<!-- Weiterbildungen (abgeschlossen) berechnen -->
 	<% a = 0 %>
 	%for key_s in data_o[0][1]:
 		%if data_o[0][1][key_s][0] is not "":
@@ -96,16 +96,42 @@
 			%endif
 		%endif
 	%endfor
-		<p>Anzahl der Weiterbildungen (abgeschlossen): ${a}</p>
+
 			
-			
+	<!-- Anzahl der Teilnahmen berechnen -->
 	<% b = 0 %>
 	%for key_s in data_o[0][2]:
 		%if data_o[0][2][key_s][0] is not "":
 			<% b = b + 1 %>
 		%endif
 	%endfor
-		<p>Anzahl der Teilnahmen: ${b}</p>
+
+
+	<!-- Darstellung der oben berechneten Daten -->
+	<h3>Startseite</h3>	
+
+	<table>
+			<tr>
+				<td>Anzahl der Mitarbeiter</td> <td>${x}</td>
+			</tr>
+
+			<tr>
+				<td>Anzahl der Weiterbildungen (in Planung)</td> <td>${y}</td>
+			</tr>
+
+			<tr>
+				<td>Anzahl der Weiterbildungen (laufend)</td> <td>${z}</td>
+			</tr>
+
+			<tr>
+				<td>Anzahl der Weiterbildungen (abgeschlossen)</td> <td>${a}</td>
+			</tr>
+
+			<tr>
+				<td>Anzahl der Teilnahmen</td> <td>${b}</td>
+			</tr>
+	</table>
+
 	</div>
 </body>
 </html> 

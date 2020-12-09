@@ -65,7 +65,7 @@
 						%if data_o[key_s][0] != "":
 							<% i = i + 1 %>
 					<tr>
-						<th>${key_s}</td>
+						<td>${key_s}</td>
 						<td>${data_o[key_s][0]}</td>
 						<td>${data_o[key_s][1]}</td>
 						<td>${data_o[key_s][2]}</td>

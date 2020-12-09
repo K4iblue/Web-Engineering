@@ -20,7 +20,7 @@
 										%if data_o[2][key_B_s][0] is key_s:
 
 						<tr>
-							<th>${key_s}</td>
+							<td>${key_s}</td>
 							<td>${data_o[1][key_s][0]}</td>
 							<td>${data_o[1][key_s][1]}</td>
 							<td>${data_o[1][key_s][2]}</td>
@@ -55,7 +55,7 @@
 										%if data_o[2][key_B_s][0] is key_s:
 											%if data_o[3][key_s][0] != "":
 						<tr>
-							<th>${key_s}</td>
+							<td>${key_s}</td>
 							<td>${data_o[3][key_s][0]}</td>
 							<td>${data_o[3][key_s][1]}</td>
 							<td>${data_o[2][key_B_s][2]}</td>
@@ -88,7 +88,7 @@
 											%if data_o[3][key_s][0] != "":
 
 						<tr>
-							<th>${key_s}</td>
+							<td>${key_s}</td>
 							<td>${data_o[4][key_s][0]}</td>
 							<td>${data_o[4][key_s][1]}</td>
 							<td>${data_o[4][key_s][2]}</td>

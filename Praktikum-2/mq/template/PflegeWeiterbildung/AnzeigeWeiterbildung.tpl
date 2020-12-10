@@ -26,8 +26,8 @@
 
 		<div class="item-pflege">
 			<div> Datenpflege: </div>
-				<div> <a href="/pflegemitarbeiter_p"> Pflege: Mitarbeiterdaten </a> </div>
-				<div> <a href="/pflegeweiterbildung_p"> Pflege: Weiterbildung </a> </div>
+				<div> <a href="/pflegemitarbeiter_p"> - Pflege: Mitarbeiter </a> </div>
+				<div> <a href="/pflegeweiterbildung_p"> - Pflege: Weiterbildung </a> </div>
 		</div>
 
 		<div class="item-teilnahme">
@@ -72,11 +72,9 @@
 						<table>
 							<tr>
 								<th>ID</th>
-								<th>Akademischer Grad</th>
 								<th>Vorname</th>
 								<th>Name</th>
-								<th>Qualifikation</th>
-								<th>Zertifikate</th>
+								<th>Akademischer Grad</th>
 							</tr>
 						
 							%for key_s in data_o[2]:
@@ -85,30 +83,9 @@
 						
 							<tr>
 								<td>${key_s}</td>
-								<td>${data_o[0][MitarbeiterID][2]}</td>
-								<td>${data_o[0][MitarbeiterID][1]}</td>
 								<td>${data_o[0][MitarbeiterID][0]}</td>
-
-								%if data_o[2][key_s][2] is ["erfolgreich beendet"]:
-									<td>JA</td>
-
-								%elif data_o[2][key_s][2] is "nicht erfolgreich beendet":
-									<td>NEIN</td>
-
-								%else:
-									<td>"${data_o[2][key_s][2]}"</td>
-								%endif
-
-								%if data_o[2][key_s][2] is "erfolgreich beendet":
-									<td>JA</td>
-
-								%elif data_o[2][key_s][2] is "nicht erfolgreich beendet":
-									<td>NEIN</td>
-
-								%else:
-									<td>"${data_o[2][key_s][2]}"</td>
-								%endif
-
+								<td>${data_o[0][MitarbeiterID][1]}</td>
+								<td>${data_o[0][MitarbeiterID][2]}</td>
 							</tr>
 								%endif
 							%endfor

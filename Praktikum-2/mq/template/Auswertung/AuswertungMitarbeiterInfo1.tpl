@@ -26,8 +26,8 @@
 
 			<div class="item-pflege">
 				<div> Datenpflege: </div>
-					<div> <a href="/pflegemitarbeiter_p"> Pflege: Mitarbeiterdaten </a> </div>
-					<div> <a href="/pflegeweiterbildung_p"> Pflege: Weiterbildung </a> </div>
+					<div> <a href="/pflegemitarbeiter_p"> - Pflege: Mitarbeiter </a> </div>
+					<div> <a href="/pflegeweiterbildung_p"> - Pflege: Weiterbildung </a> </div>
 			</div>
 
 			<div class="item-teilnahme">

@@ -26,8 +26,8 @@
 
 		<div class="item-pflege">
 			<div> Datenpflege: </div>
-				<div> <a href="/pflegemitarbeiter_p"> Pflege: Mitarbeiterdaten </a> </div>
-				<div> <a href="/pflegeweiterbildung_p"> Pflege: Weiterbildung </a> </div>
+				<div> <a href="/pflegemitarbeiter_p"> - Pflege: Mitarbeiter </a> </div>
+				<div> <a href="/pflegeweiterbildung_p"> - Pflege: Weiterbildung </a> </div>
 		</div>
 
 		<div class="item-teilnahme">
@@ -50,9 +50,9 @@
 			<table>
 				<tr>
 					<th>ID</th>
-					<th>Akademischer Grad</th>
 					<th>Name</th>
 					<th>Vorname</th>
+					<th>Akademischer Grad</th>
 					<th>Tätigkeit</th>
 					<th>Aktion</th>
 				</tr>
@@ -65,9 +65,9 @@
 						<% i = i + 1 %>
 						<tr>
 							<td>${key_s}</td>
-							<td>${data_o[key_s][2]}</td>
 							<td>${data_o[key_s][0]}</td>
 							<td>${data_o[key_s][1]}</td>
+							<td>${data_o[key_s][2]}</td>
 							<td>${data_o[key_s][3]}</td>
 							<td>
 								<a href="/auswertung_mitarbeiter_Info_p/${key_s}" id="buttons">Information</a>

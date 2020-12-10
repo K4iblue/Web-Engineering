@@ -3,9 +3,9 @@
 			<table>
 				<tr>
 					<th>ID</th>
-					<th>Akademischer Grad</th>
-					<th>Vorname</th>
 					<th>Name</th>
+					<th>Vorname</th>
+					<th>Akademischer Grad</th>
 					<th>Tätigkeit</th>
 				</tr>
 			
@@ -15,9 +15,9 @@
 						%if data_o[2][key_s][2] == "erfolgreich beendet":
 				<tr>
 					<td>${key_s}</td>
-					<td>${data_o[0][MitarbeiterID][2]}</td>
-					<td>${data_o[0][MitarbeiterID][1]}</td>
 					<td>${data_o[0][MitarbeiterID][0]}</td>
+					<td>${data_o[0][MitarbeiterID][1]}</td>
+					<td>${data_o[0][MitarbeiterID][2]}</td>
 					<td>${data_o[0][MitarbeiterID][3]}</td> 
 				</tr>
 						%endif

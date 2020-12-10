@@ -1,6 +1,6 @@
 ## -*- coding: utf-8 -*-
 <hr>
-<h4>Weiterbildungen zum anmelden<h4>
+<h4>Weiterbildungen zum anmelden</h4>
 					<table>
 						<tr>
 							<th>ID</th>

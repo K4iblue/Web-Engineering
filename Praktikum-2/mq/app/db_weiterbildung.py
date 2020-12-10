@@ -44,6 +44,7 @@ class DB_weiterbildung_cl(object):
 	#-------------------------------------------------------
 		with codecs.open(os.path.join('data', 'Weiterbildung.json'), 'w', 'utf-8') as fp_o:
 			json.dump(self.data_o, fp_o)
+			
 	#-------------------------------------------------------
 	def getDefault6_px(self):
 	#-------------------------------------------------------

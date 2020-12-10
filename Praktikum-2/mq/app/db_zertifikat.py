@@ -44,6 +44,7 @@ class DB_zertifikat_cl(object):
 	#-------------------------------------------------------
 		with codecs.open(os.path.join('data', 'Zertifikat.json'), 'w', 'utf-8') as fp_o:
 			json.dump(self.data_o, fp_o)
+			
 	#-------------------------------------------------------
 	def getDefault4_px(self):
 	#-------------------------------------------------------

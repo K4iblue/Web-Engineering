@@ -15,8 +15,6 @@ class DB_mitarbeiter_cl(object):
 	#-------------------------------------------------------
 	def read_px(self, id_spl = None):
 	#-------------------------------------------------------
-		# hier zur Vereinfachung:
-		# Aufruf ohne id: alle Einträge liefern
 		data_o = None
 		if id_spl == None:
 			data_o = self.data_o
@@ -47,6 +45,7 @@ class DB_mitarbeiter_cl(object):
 	#-------------------------------------------------------
 		with codecs.open(os.path.join('data', 'Mitarbeiter.json'), 'w', 'utf-8') as fp_o:
 			json.dump(self.data_o, fp_o)
+
 	#-------------------------------------------------------
 	def getDefault4_px(self):
 	#-------------------------------------------------------
@@ -55,7 +54,6 @@ class DB_mitarbeiter_cl(object):
 	#-------------------------------------------------------
 	def update_px(self, id_spl, data_opl):
 	#-------------------------------------------------------
-		# Überprüfung der Daten müsste ergänzt werden!
 		status_b = False
 		if id_spl in self.data_o:
 			self.data_o[id_spl] = data_opl
@@ -67,9 +65,8 @@ class DB_mitarbeiter_cl(object):
 	#-------------------------------------------------------
 	def create_px(self, data_opl):
 	#-------------------------------------------------------
-		# Überprüfung der Daten müsste ergänzt werden!
-		# 'freien' Platz suchen,
-		# falls vorhanden: belegen und Nummer des Platzes als Id zurückgeben
+		# 'Freien' Platz suchen,
+		# Falls vorhanden: belegen und Nummer des Platzes als Id zurückgeben
 		id_s = None
 		for loop_i in range(0,15):
 			if self.data_o[str(loop_i)][0] == '':
@@ -85,12 +82,9 @@ class DB_mitarbeiter_cl(object):
 	#-------------------------------------------------------
 		status_b = False
 		if id_spl in self.data_o:
-			# hier müssen Sie den Code ergänzen
-			# Löschen als Zurücksetzen auf die Default-Werte implementieren
-			# Ihre Ergänzung
 			default = self.getDefault4_px()
 			self.data_o[id_spl] = default
-			self.saveData_p() #saveData() nur für Mitarbeiter
+			self.saveData_p()
 			status_b = True
 			
 		return status_b

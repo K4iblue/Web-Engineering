@@ -44,6 +44,7 @@ class DB_qualifikation_cl(object):
 	#-------------------------------------------------------
 		with codecs.open(os.path.join('data', 'Qualifikation.json'), 'w', 'utf-8') as fp_o:
 			json.dump(self.data_o, fp_o)
+			
 	#-------------------------------------------------------
 	def getDefault3_px(self):
 	#-------------------------------------------------------

@@ -30,9 +30,7 @@ class View_cl(object):
 	#-------------------------------------------------------
 		return self.create_p('startseite.tpl', datas_opl)
 
-	# HTML Dateien werden aus mehreren Templates zusammengefügt
-	# Wir benutzten mehrere templates, damit wir unterschiedliche Daten
-	# An unterschiedliche "teile" der HTML Datei übergeben können
+
 	#-------------------------------------------------------
 	def hauptseite_px(self, data_opl):
 	#-------------------------------------------------------
@@ -58,6 +56,9 @@ class View_cl(object):
 		return markup_s
 	
 
+	# HTML Dateien werden aus mehreren Templates zusammengefügt
+	# Wir benutzten mehrere templates, damit wir unterschiedliche Daten
+	# An unterschiedliche "teile" der HTML Datei übergeben können
 	#-------------------------------------------------------
 	def pflegemitarbeiter_anzeigen_px(self, datas_opl, id_spl):
 	#-------------------------------------------------------
@@ -76,6 +77,9 @@ class View_cl(object):
 		return markup_s
 
 
+	# HTML Dateien werden aus mehreren Templates zusammengefügt
+	# Wir benutzten mehrere templates, damit wir unterschiedliche Daten
+	# An unterschiedliche "teile" der HTML Datei übergeben können
 	#-------------------------------------------------------
 	def pflegeweiterbildung_formular_px(self, data_opl, id_spl):
 	#-------------------------------------------------------
@@ -102,6 +106,9 @@ class View_cl(object):
 		return markup_s
 
 
+	# HTML Dateien werden aus mehreren Templates zusammengefügt
+	# Wir benutzten mehrere templates, damit wir unterschiedliche Daten
+	# An unterschiedliche "teile" der HTML Datei übergeben können
 	#-------------------------------------------------------
 	def sichtweisemitarbeiter_information_px(self, datas_opl, id_spl):
 	#-------------------------------------------------------
@@ -130,6 +137,9 @@ class View_cl(object):
 		return markup_s	
 
 
+	# HTML Dateien werden aus mehreren Templates zusammengefügt
+	# Wir benutzten mehrere templates, damit wir unterschiedliche Daten
+	# An unterschiedliche "teile" der HTML Datei übergeben können
 	#-------------------------------------------------------	
 	def sichtweiseweiterbildungen_Aktuelle_Weiterbildungen_px(self, datas_opl, id_spl):
 	#-------------------------------------------------------
@@ -148,6 +158,9 @@ class View_cl(object):
 		return markup_s
 	
 
+	# HTML Dateien werden aus mehreren Templates zusammengefügt
+	# Wir benutzten mehrere templates, damit wir unterschiedliche Daten
+	# An unterschiedliche "teile" der HTML Datei übergeben können
 	#--------------------------------------------------------
 	def auswertungmitarbeiterInfo_px(self, data_opl, id_str):
 	#--------------------------------------------------------
@@ -165,6 +178,9 @@ class View_cl(object):
 		return markup_s
 	
 
+	# HTML Dateien werden aus mehreren Templates zusammengefügt
+	# Wir benutzten mehrere templates, damit wir unterschiedliche Daten
+	# An unterschiedliche "teile" der HTML Datei übergeben können
 	#--------------------------------------------------------
 	def auswertungweiterbildungInfo_px(self, datas_opl, id_spl):
 	#--------------------------------------------------------

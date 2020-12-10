@@ -22,7 +22,7 @@ class Application_cl(object):
 		self.db_teilnahme_o = DB_teilnahme_cl()
 		self.db_qualifikation_o = DB_qualifikation_cl()
 		self.db_zertifikat_o = DB_zertifikat_cl()
-		self.path_s = "C:\\Git\\Web-Engineering\\Praktikum-2\\mq"								# Hier Path zur Server.py eintragen
+		self.path_s = "E:\\Git\\Web-Engineering\\Praktikum-2\\mq"								# Hier Path zur Server.py eintragen
 		self.view_o = View_cl(self.path_s)
 	
 	@cherrypy.expose

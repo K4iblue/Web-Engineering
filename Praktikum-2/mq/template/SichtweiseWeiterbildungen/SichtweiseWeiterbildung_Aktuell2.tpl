@@ -37,7 +37,7 @@
 					<td>${data_o[0][0][MitarbeiterID][3]}</td>
 					<td>${data_o[0][2][key_s][2]}</td>
 					<td>
-						%if heute >= anfang and ende <= heute:
+						%if heute < ende:
 							<a href="/sichtweiseweiterbildungen_Status_p/${id_str}?id_s=${key_s}&Status=erfolgreich beendet" id="buttons">Erfolgreich</a>
 							<a href="/sichtweiseweiterbildungen_Status_p/${id_str}?id_s=${key_s}&Status=nicht erfolgreich beendet" id="buttons">Nicht Erfolgreich</a>
 						%else:

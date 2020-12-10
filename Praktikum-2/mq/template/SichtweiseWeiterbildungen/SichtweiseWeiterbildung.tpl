@@ -47,7 +47,7 @@
 		<!-- Hier wird immer der Inhaltsbereich verändert-->
 
 		<div class="item-main">
-		<h3>Aktuelle Weiterbildungen</h3>
+		<h3>Aktuelle & Abgeschlossene Weiterbildungen</h3>
 			<table>
 				<tr>
 					<th>ID</th>
@@ -56,6 +56,7 @@
 					<th>Bis</th>
 					<th>Max. Teilnehmer</th>
 					<th>Min. Teilnehmer</th>
+					<th>Status</th>
 					<th>Aktion</th>
 				</tr>
 
@@ -65,8 +66,15 @@
 				%for key_s in data_o[0]:
 					%if data_o[0][key_s][0] != "":
 						<% anfang = data_o[0][key_s][1] %>
-						%if anfang < heute:
-							<% i = i + 1%>
+						<% ende = data_o[0][key_s][2] %>
+							%if anfang < heute:
+								<% i = i + 1%>
+				
+								%if ende < heute:
+									<% status = "abgeschlossen"%>
+								%else:
+									<% status = "läuft"%>
+								%endif
 
 				<tr>
 					<td>${key_s}</td>
@@ -75,10 +83,12 @@
 					<td>${data_o[0][key_s][2]}</td>
 					<td>${data_o[0][key_s][4]}</td>
 					<td>${data_o[0][key_s][5]}</td>
+					<td>${status}</td>
 					<td>
 						<a href="/sichtweiseweiterbildungen_Aktuelle_Weiterbildungen_p/${key_s}" id="buttons">Information</a> 
 				 </td>
 				</tr>
+							
 						%endif
 					%endif
 				%endfor

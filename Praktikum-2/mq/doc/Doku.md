@@ -136,6 +136,4 @@ static_config = {
 
 
 - CSS Validierung:
-	* header.css -> Fehlerfrei
-	* sidebar.css -> Fehlerfrei
-	* webteams.css -> Fehlerfrei
+	* style.css -> Fehlerfrei

@@ -57,7 +57,7 @@
 
 			<% i = 0 %>
 			<% j = -1 %>
-			%for key_s in data_o:
+			%for key_s in data_o:							<!-- Schleife über alle Zertifikate -->>
 				<% j = j + 1 %>
 				%if data_o[key_s][0] != "":
 					<% i = i + 1 %>

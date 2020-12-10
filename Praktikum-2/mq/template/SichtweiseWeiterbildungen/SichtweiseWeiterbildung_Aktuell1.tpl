@@ -43,10 +43,10 @@
 			<div> <a href="/auswertung_zertifikat_p"> - Zertifikate </a> </div>
 		</div>
 		
-		<!-- Oben nichts verändern-->
-		<!-- Hier wird immer der Inhaltsbereich verändert-->
+		<!-- Oben nichts verändern -->
+		<!-- Hier wird immer der Inhaltsbereich verändert -->
 		<div class="item-main">
-			<h3> Weiterbildung: ${data_o[1][id_str][0]}</h3>
+			<h3> Weiterbildung: ${data_o[1][id_str][0]}</h3>			<!-- Weiterbildung Namen und Daten aus data_o[1] darstellen -->
 				<div>
 					<p>vom ${data_o[1][id_str][1]} bis zum ${data_o[1][id_str][2]}</p>
 					<p>min. Anzahl: ${data_o[1][id_str][5]} </p>

@@ -43,10 +43,10 @@
 			<div> <a href="/auswertung_zertifikat_p"> - Zertifikate </a> </div>
 		</div>
 		
-		<!-- Oben nichts verändern-->
-		<!-- Hier wird immer der Inhaltsbereich verändert-->
+		<!-- Oben nichts verändern -->
+		<!-- Hier wird immer der Inhaltsbereich verändert -->
 		<div class="item-main">
-			<h3> Weiterbildung: ${data_o[1][id_str][0]}</h3>
+			<h3> Weiterbildung: ${data_o[1][id_str][0]}</h3>								<!-- Alle infos über die Weiterbildung eintragen -->
 				<div>
 					<p>vom ${data_o[1][id_str][1]} bis zum ${data_o[1][id_str][2]}</p>
 					<p>min. Teilnehmer: ${data_o[1][id_str][5]} </p>
@@ -76,7 +76,8 @@
 								<th>Name</th>
 								<th>Akademischer Grad</th>
 							</tr>
-						
+
+							<!-- Schleife über alle Teilnehmer -->
 							%for key_s in data_o[2]:
 								%if data_o[2][key_s][0] is id_str:
 									<% MitarbeiterID = data_o[2][key_s][1] %>

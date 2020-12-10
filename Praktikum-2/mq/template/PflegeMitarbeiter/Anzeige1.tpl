@@ -13,6 +13,10 @@
 							<th>min. Teilnehmeranzahl</th>
 						</tr>
 					
+						<!-- Schleife über alle Weiterbildungen (data_o[1]) -->
+							<!-- Schleife über alle Teilnehmer (data_o[2]) -->
+								<!-- Diese werden dann miteinander verglichen -->
+								<!-- Wenn wir übereinstimmungen haben >> fülle Tabelle mit werten von  Weiterbildung -->
 						%for key_s in data_o[1]:
 							%if data_o[1][key_s][0] != "":
 								%for key_B_s in data_o[2]:
@@ -47,6 +51,10 @@
 							<th>Zustand</th>
 						</tr>
 
+						<!-- Schleife über alle Weiterbildungen (data_o[1]) -->
+							<!-- Schleife über alle Teilnehmer (data_o[2]) -->
+								<!-- Diese werden dann miteinander verglichen -->
+								<!-- Wenn wir übereinstimmungen haben >> fülle Tabelle mit werten von der zugehörigen Qualifikation (data_o[3] -->
 						%for key_s in data_o[1]:
 							%if data_o[1][key_s][0] != "":
 
@@ -80,6 +88,10 @@
 							<th>Zustand</th>
 						</tr>
 
+						<!-- Schleife über alle Weiterbildungen (data_o[1]) -->
+							<!-- Schleife über alle Teilnehmer (data_o[2]) -->
+								<!-- Diese werden dann miteinander verglichen -->
+									<!-- Wenn wir übereinstimmungen haben >> fülle Tabelle mit werten von dem zugehörigen Zertifikat (data_o[4] -->
 						%for key_s in data_o[1]:
 							%if data_o[1][key_s][0] != "":
 								%for key_B_s in data_o[2]:

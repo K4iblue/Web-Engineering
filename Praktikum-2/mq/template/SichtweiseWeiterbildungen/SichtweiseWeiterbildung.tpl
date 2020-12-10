@@ -43,8 +43,8 @@
 			<div> <a href="/auswertung_zertifikat_p"> - Zertifikate </a> </div>
 		</div>
 		
-		<!-- Oben nichts verändern-->
-		<!-- Hier wird immer der Inhaltsbereich verändert-->
+		<!-- Oben nichts verändern -->
+		<!-- Hier wird immer der Inhaltsbereich verändert -->
 
 		<div class="item-main">
 		<h3>Aktuelle & Abgeschlossene Weiterbildungen</h3>
@@ -60,6 +60,11 @@
 					<th>Aktion</th>
 				</tr>
 
+				<!-- Schleife über alle Weiterbildungen (data_o[0]) -->
+				<!-- Datum (data_o[1]) -->
+				<!-- Hier werden nur "Abgeschlossene" oder "Laufende" Weiterbildungen in die Tabelle eingetragen -->
+				<!-- Wenn eine Weiterbildungen abgeschlossen ist wird dementsprechend der Status "abgeschlossen angezeigt" -->
+				<!-- Ansonsten wird der Status "läuft" angezeigt -->
 				<% datum = data_o[1] %>
 				<% heute = str(datum.year) + "-" + str(datum.month) + "-" + str(datum.day) %>
 				<% i = 0 %>
@@ -108,6 +113,10 @@
 					<th>Aktion</th>
 				</tr>
 
+				<!-- Schleife über alle Weiterbildungen (data_o[0]) -->
+				<!-- Datum (data_o[1]) -->
+				<!-- Hier werden nur die geplanten Weiterbildungen in die Tabelle eingetragen -->
+				<!-- also liegt das Start Datum in der Zukunft -->
 				<% i = 0 %>
 				<% datum = data_o[1] %>
 				<% heute = str(datum.year) + "-" + str(datum.month) + "-" + str(datum.day) %>

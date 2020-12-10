@@ -11,6 +11,8 @@
 					<th>Aktion</th>
 				</tr>
 
+				<!-- Schleife über alle Mitarbeiter -->
+				<!-- Todo -->
 				<% datum = data_o[1] %>
 				<% heute = str(datum.year) + "-" + str(datum.month) + "-" + str(datum.day) %>
 				<% i = 0 %>
@@ -18,15 +20,8 @@
 				%for key_s in data_o[0][2]:
 					%if data_o[0][2][key_s][0] is id_str:
 								<% MitarbeiterID = data_o[0][2][key_s][1] %>
-
 								<% anfang = data_o[0][1][id_str][1] %>
 								<% ende = data_o[0][1][id_str][2] %>
-								%if heute >= anfang and ende <= heute:
-									<% button_name = 0 %> 
-								%else:
-									<% button_name = 1 %>
-								%endif
-
 								<% i = i + 1%>
 				
 				<tr>

@@ -43,8 +43,8 @@
 			<div> <a href="/auswertung_zertifikat_p"> - Zertifikate </a> </div>
 		</div>
 		
-		<!-- Oben nichts verändern-->
-		<!-- Hier wird immer der Inhaltsbereich verändert-->
+		<!-- Oben nichts verändern -->
+		<!-- Hier wird immer der Inhaltsbereich verändert -->
 		<div class="item-main">
 			<h3>Mitarbeiter Formular</h3>
 				<form id="mitarbeiterform" action="/pflegemitarbeiter_speichern_p" method="POST">

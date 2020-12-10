@@ -10,7 +10,9 @@
 								<th>Bis</th>
 								<th>Zustand</th>
 							</tr>
-						
+
+								<!-- Schleife über alle Weiterbildungen (data_o[1]) -->
+								<!-- Schleife über alle Teilnahmen (data_o[2]) -->
 								%for key_s in data_o[1]:
 									%if data_o[1][key_s][0] != "":
 						

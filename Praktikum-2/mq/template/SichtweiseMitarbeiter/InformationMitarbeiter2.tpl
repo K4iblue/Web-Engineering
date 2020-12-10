@@ -13,8 +13,11 @@
 							<th>Aktion</th>
 						</tr>
 		
+						<!-- Schleife über alle Weiterbildungen -->
+						<!-- Wenn eine Weiterbildung noch nicht gestartet hat kann man sich anmelden -->
+						<!-- Wenn der Mitarbeiter aber schon angemeldet ist, wird die Weiterbildung hier nicht mehr angezeigt -->
+						<!-- Dann wird die Seite neu geladen -->
 						<% datum = data_o[1] %>
-
 						<% heute = str(datum.year) + "-" + str(datum.month) + "-" + str(datum.day) %>
 
 						<% x = 0 %>

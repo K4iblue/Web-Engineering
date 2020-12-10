@@ -13,6 +13,9 @@
 						<th>Aktion</th>
 					</tr>
 
+					<!-- Schleife über alle Weiterbildungen -->
+					<!-- Wenn man bei einer Weiterbildung eingetragen ist kann man diese hier stonieren -->
+					<!-- Dann wird die Seite neu geladen -->
 					<% i = 0 %>
 					%for key_s in data_o[1]:
 						%if data_o[1][key_s][0] != "":

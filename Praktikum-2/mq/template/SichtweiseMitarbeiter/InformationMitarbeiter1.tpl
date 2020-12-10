@@ -43,8 +43,8 @@
 			<div> <a href="/auswertung_zertifikat_p"> - Zertifikate </a> </div>
 		</div>
 		
-		<!-- Oben nichts verändern-->
-		<!-- Hier wird immer der Inhaltsbereich verändert-->
+		<!-- Oben nichts verändern -->
+		<!-- Hier wird immer der Inhaltsbereich verändert -->
 
 		<div class="item-main">
-			<h3> Mitarbeiter: ${data_o[1]} ${data_o[0]}</h3>
+			<h3> Mitarbeiter: ${data_o[1]} ${data_o[0]}</h3>	<!-- Mitarbeiter Namen und Daten aus data_o darstellen -->

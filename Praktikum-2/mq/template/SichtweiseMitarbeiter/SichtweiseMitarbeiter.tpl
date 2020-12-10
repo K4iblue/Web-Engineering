@@ -43,8 +43,8 @@
 			<div> <a href="/auswertung_zertifikat_p"> - Zertifikate </a> </div>
 		</div>
 		
-		<!-- Oben nichts verändern-->
-		<!-- Hier wird immer der Inhaltsbereich verändert-->
+		<!-- Oben nichts verändern -->
+		<!-- Hier wird immer der Inhaltsbereich verändert -->
 
 		<div class="item-main">
 			<h3>Sichtweise der Mitarbeiterdaten</h3>
@@ -58,6 +58,7 @@
 						<th>Aktion</th>
 					</tr>
 
+					<!-- Schleife über alle Mitarbeiter (data_o) -->
 					<% i = 0 %>
 					%for key_s in data_o:
 						%if data_o[key_s][0] != "":

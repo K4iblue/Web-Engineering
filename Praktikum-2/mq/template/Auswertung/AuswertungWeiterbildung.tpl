@@ -43,8 +43,8 @@
 			<div> <a href="/auswertung_zertifikat_p"> - Zertifikate </a> </div>
 		</div>
 		
-		<!-- Oben nichts verändern-->
-		<!-- Hier wird immer der Inhaltsbereich verändert-->
+		<!-- Oben nichts verändern -->
+		<!-- Hier wird immer der Inhaltsbereich verändert -->
 		<div class="item-main">
 			<h3>Auswertung der Weiterbildungen</h3>
 			<table>
@@ -57,6 +57,8 @@
 					<th>Min. Teilnehmer</th>
 					<th>Aktion</th>
 				</tr>
+
+				<!-- Schleife über alle Weiterbildungen (data_o) -->
 				<% i = 0 %>
 				<% j = -1 %>
 				<% id = 0 %>

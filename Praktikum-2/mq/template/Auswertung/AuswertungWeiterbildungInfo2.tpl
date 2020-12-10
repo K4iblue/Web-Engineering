@@ -9,6 +9,8 @@
 					<th>Tätigkeit</th>
 				</tr>
 			
+				<!-- Schleife über Teilnahmen (data_o[2]) -->
+				<!-- Nur Mitarbeiter mit "erfolgreich beendet"  werden angezeigt-->
 				%for key_s in data_o[2]:
 					%if data_o[2][key_s][0] is id_str:
 						<% MitarbeiterID = data_o[2][key_s][1] %>

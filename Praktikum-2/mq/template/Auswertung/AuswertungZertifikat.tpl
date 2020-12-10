@@ -43,8 +43,8 @@
 			<div> <a href="/auswertung_zertifikat_p"> - Zertifikate </a> </div>
 		</div>
 		
-		<!-- Oben nichts verändern-->
-		<!-- Hier wird immer der Inhaltsbereich verändert-->
+		<!-- Oben nichts verändern -->
+		<!-- Hier wird immer der Inhaltsbereich verändert -->
 	<div class="item-main">
 		<h3>Auswertung der Zertifikate</h3>
 		<table>
@@ -55,9 +55,10 @@
 				<th>berechtigt zu</th>
 			</tr>
 
+			<!-- Schleife über alle Zertifikate (data_o) -->
 			<% i = 0 %>
 			<% j = -1 %>
-			%for key_s in data_o:							<!-- Schleife über alle Zertifikate -->>
+			%for key_s in data_o:
 				<% j = j + 1 %>
 				%if data_o[key_s][0] != "":
 					<% i = i + 1 %>

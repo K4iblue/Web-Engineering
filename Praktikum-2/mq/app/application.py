@@ -328,19 +328,19 @@ class Application_cl(object):
 	#-------------------------------------------------------
 	def auswertung_mitarbeiter_p(self):
 	#-------------------------------------------------------
-		data_o = self.db_mitarbeiter_o.read_px() #Mitarbeiter
-		sorted_list = sorted(data_o.items(), key=lambda x: x[1]) #Alphabetisch sortiert
+		data_o = self.db_mitarbeiter_o.read_px()					# Mitarbeiter Daten Laden
+		sorted_list = sorted(data_o.items(), key=lambda x: x[1])	# Alphabetisch sortiert
 		myOrdDic = OrderedDict(sorted_list)
 		
-		return self.view_o.auswertungmitarbeiter_px(myOrdDic)	# An view.py übergeben
+		return self.view_o.auswertungmitarbeiter_px(myOrdDic)		# An view.py übergeben
 
 
 	@cherrypy.expose
 	#-------------------------------------------------------
 	def auswertung_mitarbeiter_Info_p(self, id_spl):
 	#-------------------------------------------------------
-		data0_o = self.db_mitarbeiter_o.read_px() #Mitarbeiter
-		sorted_list = sorted(data0_o.items(), key=lambda x: x[1]) 			#Alphabetisch sortiert
+		data0_o = self.db_mitarbeiter_o.read_px() 							# Mitarbeiter Daten Laden
+		sorted_list = sorted(data0_o.items(), key=lambda x: x[1]) 			# Alphabetisch sortiert
 		myOrdDic = OrderedDict(sorted_list)
 		
 		data1_o = self.db_weiterbildung_o.read_px()							# Weiterbildungs Daten Laden
@@ -357,9 +357,8 @@ class Application_cl(object):
 	#-------------------------------------------------------
 	def auswertung_weiterbildungen_p(self):
 	#-------------------------------------------------------
-		data_o = self.db_weiterbildung_o.read_px()		
-		
-		sorted_list = sorted(data_o.items(), key=lambda x: x[1])	#Alphabetisch sortiert
+		data_o = self.db_weiterbildung_o.read_px()					# Weiterbildungs Daten Laden
+		sorted_list = sorted(data_o.items(), key=lambda x: x[1])	# Alphabetisch sortiert
 		myOrdDic = OrderedDict(sorted_list)
 		
 		return self.view_o.auswertungweiterbildungen_px(myOrdDic)	# An view.py übergeben
@@ -369,8 +368,8 @@ class Application_cl(object):
 	#-------------------------------------------------------
 	def auswertung_weiterbildung_Info_p(self, id_spl):
 	#-------------------------------------------------------
-		data0_o = self.db_mitarbeiter_o.read_px() #Mitarbeiter
-		sorted_list = sorted(data0_o.items(), key=lambda x: x[1])			#Alphabetisch sortiert
+		data0_o = self.db_mitarbeiter_o.read_px() 							# Mitarbeiter Daten Laden
+		sorted_list = sorted(data0_o.items(), key=lambda x: x[1])			# Alphabetisch sortiert
 		myOrdDic = OrderedDict(sorted_list)
 
 		data1_o = self.db_weiterbildung_o.read_px()							# Weiterbildungs Daten Laden

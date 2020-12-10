@@ -38,8 +38,8 @@
 
 		<div class="item-pflege">
 			<div> Datenpflege: </div>
-				<div> <a href="/pflegemitarbeiter_p"> - Pflege: Mitarbeiter </a> </div>
-				<div> <a href="/pflegeweiterbildung_p"> - Pflege: Weiterbildung </a> </div>
+				<div> <a href="/pflegemitarbeiter_p"> Pflege: Mitarbeiterdaten </a> </div>
+				<div> <a href="/pflegeweiterbildung_p"> Pflege: Weiterbildung </a> </div>
 		</div>
 
 		<div class="item-teilnahme">
@@ -65,7 +65,7 @@
 		%if data_o[0][1][key_s][0] != "":
 			<% anfang = data_o[0][1][key_s][1] %>
 			<% ende = data_o[0][1][key_s][2] %>
-			%if ( ( anfang.split('-')[0] > heute.split('-')[0] ) or ( anfang.split('-')[0] == heute.split('-')[0] and anfang.split('-')[1] > heute.split('-')[1]) or ( anfang.split('-')[0] 	== heute.split('-')[0] and anfang.split('-')[1] == heute.split('-')[1] and anfang.split('-')[2] > heute.split('-')[2]) ):
+			%if ( ( int(anfang.split('-')[0]) > int(heute.split('-')[0] ) ) or ( int(anfang.split('-')[0] ) == int(heute.split('-')[0] ) and int(anfang.split('-')[1] ) > int(heute.split('-')[1] ) ) or ( int(anfang.split('-')[0] ) == int(heute.split('-')[0] ) and int(anfang.split('-')[1] ) == int(heute.split('-')[1] ) and int(anfang.split('-')[2] ) > int(heute.split('-')[2] ) ) ):
 				<% y = y + 1 %>
 			%endif
 		%endif
@@ -78,7 +78,7 @@
 		%if data_o[0][1][key_s][0] != "":
 			<% anfang = data_o[0][1][key_s][1] %>
 			<% ende = data_o[0][1][key_s][2] %>
-			%if ( ( ( anfang.split('-')[0] < heute.split('-')[0] ) or ( anfang.split('-')[0] == heute.split('-')[0] and anfang.split('-')[1] < heute.split('-')[1]) or ( anfang.split('-')[0] 	== heute.split('-')[0] and anfang.split('-')[1] == heute.split('-')[1] and anfang.split('-')[2] < heute.split('-')[2]) ) and ( ( ende.split('-')[0] > heute.split('-')[0] ) or ( 	ende.split('-')[0] == heute.split('-')[0] and ende.split('-')[1] > heute.split('-')[1]) or ( ende.split('-')[0] == heute.split('-')[0] and ende.split('-')[1] == heute.split('-')	[1] and ende.split('-')[2] > heute.split('-')[2] ) ) ):
+			%if ( ( ( int(anfang.split('-')[0]) < int(heute.split('-')[0] ) ) or ( int(anfang.split('-')[0] ) == int(heute.split('-')[0] ) and int(anfang.split('-')[1] ) < int(heute.split('-')[1] ) ) or ( int(anfang.split('-')[0] ) == int(heute.split('-')[0] ) and int(anfang.split('-')[1] ) == int(heute.split('-')[1] ) and int(anfang.split('-')[2] ) < int(heute.split('-')[2] ) ) ) and ( ( int(ende.split('-')[0] ) > int(heute.split('-')[0] ) ) or ( int(ende.split('-')[0] ) == int(heute.split('-')[0] ) and int(ende.split('-')[1] ) > int(heute.split('-')[1] ) ) or ( int(ende.split('-')[0] ) == int(heute.split('-')[0] ) and int(ende.split('-')[1] ) == int(heute.split('-')[1] ) and int(ende.split('-')[2] ) > int(heute.split('-')[2] ) ) ) ):
 				<% z = z + 1 %>
 			%endif
 		%endif
@@ -91,7 +91,7 @@
 		%if data_o[0][1][key_s][0] != "":
 			<% anfang = data_o[0][1][key_s][1] %>
 			<% ende = data_o[0][1][key_s][2] %>
-			%if ( ( ende.split('-')[0] < heute.split('-')[0] ) or ( ende.split('-')[0] == heute.split('-')[0] and ende.split('-')[1] < heute.split('-')[1]) or ( ende.split('-')[0] == heute.	split('-')[0] and ende.split('-')[1] == heute.split('-')[1] and ende.split('-')[2] < heute.split('-')[2]) ):
+			%if ( ( int(ende.split('-')[0] ) < int(heute.split('-')[0] ) ) or ( int(ende.split('-')[0] ) == int(heute.split('-')[0] ) and int(ende.split('-')[1] ) < int(heute.split('-')[1] ) ) or ( int(ende.split('-')[0] ) == int(heute.split('-')[0] ) and int(ende.split('-')[1] ) == int(heute.split('-')[1] ) and int(ende.split('-')[2] ) < int(heute.split('-')[2] ) ) ):
 				<% a = a + 1 %>
 			%endif
 		%endif

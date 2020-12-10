@@ -46,6 +46,7 @@ h3 {
 	grid-area: team;
 	background-color: lightskyblue;
 	text-align: right;
+	font-weight: bold;
 }
 
 .item-startseite {

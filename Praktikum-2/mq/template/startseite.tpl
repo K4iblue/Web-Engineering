@@ -37,19 +37,19 @@
 		</div>
 
 		<div class="item-pflege">
-			<div> Datenpflege: </div>
+			<div> Datenpflege </div>
 				<div> <a href="/pflegemitarbeiter_p"> Pflege: Mitarbeiterdaten </a> </div>
 				<div> <a href="/pflegeweiterbildung_p"> Pflege: Weiterbildung </a> </div>
 		</div>
 
 		<div class="item-teilnahme">
-			<div> Teilnahme: </div>
+			<div> Teilnahme </div>
 			<div> <a href="/sichtweisemitarbeiter_p"> - Sichtweise: Mitarbeiter </a> </div>
 			<div> <a href="/sichtweiseweiterbildungen_p"> - Sichtweise: Weiterbildung </a> </div>				
 		</div>
 
 		<div class="item-auswertung">
-			<div> Auswertung: </div>
+			<div> Auswertung </div>
 			<div> <a href="/auswertung_mitarbeiter_p"> - Mitarbeiter </a> </div>
 			<div> <a href="/auswertung_weiterbildungen_p"> - Weiterbildung </a> </div>
 			<div> <a href="/auswertung_zertifikat_p"> - Zertifikate </a> </div>

@@ -67,7 +67,7 @@
 					%if data_o[0][key_s][0] != "":
 						<% anfang = data_o[0][key_s][1] %>
 						<% ende = data_o[0][key_s][2] %>
-							%if anfang < heute:
+							%if anfang <= heute:
 								<% i = i + 1%>
 				
 								%if ende < heute:

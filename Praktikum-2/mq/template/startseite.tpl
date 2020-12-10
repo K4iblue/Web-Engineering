@@ -78,7 +78,7 @@
 		%if data_o[0][1][key_s][0] != "":
 			<% anfang = data_o[0][1][key_s][1] %>
 			<% ende = data_o[0][1][key_s][2] %>
-			%if ( ( ( int(anfang.split('-')[0]) < int(heute.split('-')[0] ) ) or ( int(anfang.split('-')[0] ) == int(heute.split('-')[0] ) and int(anfang.split('-')[1] ) < int(heute.split('-')[1] ) ) or ( int(anfang.split('-')[0] ) == int(heute.split('-')[0] ) and int(anfang.split('-')[1] ) == int(heute.split('-')[1] ) and int(anfang.split('-')[2] ) < int(heute.split('-')[2] ) ) ) and ( ( int(ende.split('-')[0] ) > int(heute.split('-')[0] ) ) or ( int(ende.split('-')[0] ) == int(heute.split('-')[0] ) and int(ende.split('-')[1] ) > int(heute.split('-')[1] ) ) or ( int(ende.split('-')[0] ) == int(heute.split('-')[0] ) and int(ende.split('-')[1] ) == int(heute.split('-')[1] ) and int(ende.split('-')[2] ) > int(heute.split('-')[2] ) ) ) ):
+			%if ( ( ( int(anfang.split('-')[0]) <= int(heute.split('-')[0] ) ) or ( int(anfang.split('-')[0] ) == int(heute.split('-')[0] ) and int(anfang.split('-')[1] ) < int(heute.split('-')[1] ) ) or ( int(anfang.split('-')[0] ) == int(heute.split('-')[0] ) and int(anfang.split('-')[1] ) == int(heute.split('-')[1] ) and int(anfang.split('-')[2] ) < int(heute.split('-')[2] ) ) ) and ( ( int(ende.split('-')[0] ) > int(heute.split('-')[0] ) ) or ( int(ende.split('-')[0] ) == int(heute.split('-')[0] ) and int(ende.split('-')[1] ) > int(heute.split('-')[1] ) ) or ( int(ende.split('-')[0] ) == int(heute.split('-')[0] ) and int(ende.split('-')[1] ) == int(heute.split('-')[1] ) and int(ende.split('-')[2] ) > int(heute.split('-')[2] ) ) ) ):
 				<% z = z + 1 %>
 			%endif
 		%endif

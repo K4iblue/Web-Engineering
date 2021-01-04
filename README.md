@@ -18,7 +18,7 @@ Anwendung zum Verwalten von Mitarbeiter und Weiterbildungen:
 
 Mitarbeiter können an Weiterbildungen teilnehmen um bei erfolgreicher Teilnahme, verschiedenen Qualifikationen und Zertifikate zu erhalten.
 
-# Praktikum 3 (Mitarbeiterqualifizierung (REST-Variante):
+# Praktikum 3 (Mitarbeiterqualifizierung (REST-Variante)):
 Fachlich die selbe Aufgabe wie Praktikum 2 (siehe oben)
 
 Dieses mal soll die Anwendung als "Single-Page-Application" mit serverseitigem REST-Interface realisiert werden.

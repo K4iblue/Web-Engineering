@@ -1,1 +1,0 @@
-pandoc -f markdown -t html5 -s Doku.md -o Doku.html

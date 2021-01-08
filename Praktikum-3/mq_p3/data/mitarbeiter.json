@@ -1,0 +1,23 @@
+{
+   "26c9394a-33d7-4642-9daf-9dea689926cb": {
+      "id": "26c9394a-33d7-4642-9daf-9dea689926cb",
+      "name": "A",
+      "vorname": "A",
+      "akagrad": "A",
+      "taetigkeit": "A"
+   },
+   "400ecba6-8d98-425a-8eda-9e60799065ab": {
+      "id": "400ecba6-8d98-425a-8eda-9e60799065ab",
+      "name": "B",
+      "vorname": "B",
+      "akagrad": "B",
+      "taetigkeit": "B"
+   },
+   "43438d65-d5a5-47ad-974f-b91a2e89bfe1": {
+      "id": "43438d65-d5a5-47ad-974f-b91a2e89bfe1",
+      "name": "C",
+      "vorname": "C",
+      "akagrad": "C",
+      "taetigkeit": "C"
+   }
+}

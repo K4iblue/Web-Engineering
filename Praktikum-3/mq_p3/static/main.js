@@ -251,6 +251,20 @@ class ListView_cl {
          }
       }
 
+      //Auswertung Mitarbeiter Anzeigen
+	   else if (event_opl.target.id == "anzeigen_auswertung_mitarbeiter") {
+
+         let elx_o = document.querySelector(".clSelected");
+         if (elx_o == null) {
+
+            alert("Bitte zuerst einen Eintrag auswählen!");
+         }else {
+
+            console.log("anzeigen_auswertung_mitarbeiter");
+            APPUTIL.es_o.publish_px("app.cmd", ["anzeigen_auswertung_mitarbeiter", elx_o.id] );
+         }
+      }
+
       //Teilnahme Mitarbeiter Anzeigen
 	   else if (event_opl.target.id == "anzeigen_teilnahme_mitarbeiter") {
 
@@ -396,6 +410,10 @@ class Application_cl {
 
       // Teilnahme Weiterbildung
       this.listView_teilnahme_weiterbildung_o = new ListView_cl("main", "teilnahmeWeiterbildung.tpl", "weiterbildung");     //Anzeigen aller Weiterbildungen
+   
+      // Auswertung Mitarbeiter
+      this.listView_auswertung_mitarbeiter_o = new ListView_cl("main", "auswertungMitarbeiter.tpl", "mitarbeiter");     //Anzeigen aller Mitarbeiter
+      this.AnzeigenView_auswertung_mitarbeiter_o = new AnzeigenView_cl("main", "auswertungMitarbeiteranzeigen.tpl", "mitarbeiter"); //Anzeigen Mitarbeiter
    }
    
    notify_px (self, message_spl, data_opl) {
@@ -490,6 +508,15 @@ class Application_cl {
             this.listView_teilnahme_weiterbildung_o.render_px(data_opl[1], currentDate);
             break;
 
+
+         // Auswertung Mitarbeiter
+         case "auswertung_mitarbeiter":
+            this.listView_auswertung_mitarbeiter_o.render_px(data_opl[1]);
+            break;
+
+         case "anzeigen_auswertung_mitarbeiter":
+            this.AnzeigenView_auswertung_mitarbeiter_o.render_px(data_opl[1]);
+            break;
 
          case "idBack":
 			   var input_action = document.getElementById("action");

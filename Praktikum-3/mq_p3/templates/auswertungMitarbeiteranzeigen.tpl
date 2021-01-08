@@ -1,6 +1,10 @@
 <!-- Template -->
 <!-- Contentbereich -->
 <div class="headline">Auswertung - Mitarbeiter - Detail</div>
+
+<hr>
+
+<div class="headline_small">Mitarbeiter</div>
 <table class="overview">
 	<tr>
         <th>Name</th>
@@ -18,7 +22,7 @@
 
 <hr>
 
-<div class="headline">Abgeschlossene Weiterbildungen</div>
+<div class="headline_small">Abgeschlossene Weiterbildungen</div>
 <table class="overview">
 	<tr>
         <th>Bezeichnung</th>

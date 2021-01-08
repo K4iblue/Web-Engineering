@@ -1,6 +1,10 @@
 <!-- Template -->
 <!-- Contentbereich -->
 <div class="headline">Teilnahme - Mitarbeiter - Detail</div>
+
+<hr>
+
+<div class="headline_small">Mitarbeiter</div>
 <table class="overview">
 	<tr>
         <th>Name</th>
@@ -18,7 +22,7 @@
 
 <hr>
 
-<div class="headline">Angebot - Weiterbildungen</div>
+<div class="headline_small">Angebot - Weiterbildungen</div>
     <table class="overview">
         <tr>
             <th>Bezeichnung</th>
@@ -42,7 +46,7 @@
 
 <hr>
 
-<div class="headline">Abgeschlosse/Geplante - Weiterbildungen</div>
+<div class="headline_small">Abgeschlosse/Geplante - Weiterbildungen</div>
 <table class="overview">
     <tr>
         <th>Bezeichnung</th>

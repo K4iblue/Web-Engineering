@@ -25,5 +25,23 @@
       "beschreibung_w": "Weiterbildung 3",
       "maxteilnehmer_w": "10",
       "minteilnehmer_w": "5"
+   },
+   "81efa9f2-66a8-40f5-9027-d88b2f21016a": {
+      "id": "81efa9f2-66a8-40f5-9027-d88b2f21016a",
+      "bezeichnung_w": "Weiterbildung 1.1 (Laufend)",
+      "von_w": "2021-01-10",
+      "bis_w": "2021-01-17",
+      "beschreibung_w": "Weiterbildung 1.1 (Laufend)",
+      "maxteilnehmer_w": "10",
+      "minteilnehmer_w": "5"
+   },
+   "712980c9-4f42-474c-ab20-6df5bae289f7": {
+      "id": "712980c9-4f42-474c-ab20-6df5bae289f7",
+      "bezeichnung_w": "Weiterbildung 2.1 (Geplant)",
+      "von_w": "2021-01-15",
+      "bis_w": "2021-01-17",
+      "beschreibung_w": "Weiterbildung 2.1 (Geplant)",
+      "maxteilnehmer_w": "10",
+      "minteilnehmer_w": "5"
    }
 }

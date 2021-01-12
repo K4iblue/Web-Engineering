@@ -16,5 +16,17 @@
       "bezeichnung_z": "Zertifikate 3",
       "beschreibung_z": "Zertifikate 3",
       "berechtigtzu_z": "Zertifikate 3"
+   },
+   "81efa9f2-66a8-40f5-9027-d88b2f21016a": {
+      "id": "81efa9f2-66a8-40f5-9027-d88b2f21016a",
+      "bezeichnung_z": "Weiterbildung 1.1 (Laufend)",
+      "beschreibung_z": "Weiterbildung 1.1 (Laufend)",
+      "berechtigtzu_z": "Weiterbildung 1.1 (Laufend)"
+   },
+   "712980c9-4f42-474c-ab20-6df5bae289f7": {
+      "id": "712980c9-4f42-474c-ab20-6df5bae289f7",
+      "bezeichnung_z": "Weiterbildung 2.1",
+      "beschreibung_z": "Weiterbildung 2.1",
+      "berechtigtzu_z": "Weiterbildung 2.1"
    }
 }

@@ -56,17 +56,24 @@ def main():
       {'/': {'request.dispatch': cherrypy.dispatch.MethodDispatcher()}}
    )
 
-   # 2. Eintrag: Method-Dispatcher für "Weiterbildung"
+   # 2. Eintrag: Method-Dispatcher für "Teilname"
    cherrypy.tree.mount(
       application.App_teilnahme_cl(),
       '/app/teilnahme/',
       {'/': {'request.dispatch': cherrypy.dispatch.MethodDispatcher()}}
-   )     
+   ) 
 
-   # 2. Eintrag: Method-Dispatcher für "Weiterbildung"
+   # 2. Eintrag: Method-Dispatcher für "Auswertung"
    cherrypy.tree.mount(
       application.App_auswertung_cl(),
       '/app/auswertung/',
+      {'/': {'request.dispatch': cherrypy.dispatch.MethodDispatcher()}}
+   ) 
+
+   # 2. Eintrag: Method-Dispatcher für "Auswertung Zertifikate"
+   cherrypy.tree.mount(
+      application.App_auswertung_zertifikate_cl(),
+      '/app/auswertungZertifikate/',
       {'/': {'request.dispatch': cherrypy.dispatch.MethodDispatcher()}}
    ) 
 

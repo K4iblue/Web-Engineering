@@ -330,14 +330,8 @@ class App_auswertung_cl(object): # AUSWERTUNG
    #-------------------------------------------------------
       self.database.readData_mitarbeiter()
       self.database.readData_weiterbildung()
-      #self.database.readData_zertifikat()
-      #self.database.readData_qualifikation()            # Brauchen wir eigentlich nicht
-      #self.database.readData_teilnahme()                # Brauchen wir HIER eigentlich nicht
       data_m = self.database.read_mitarbeiter()
       data_w = self.database.read_weiterbildung()
-      #data_z = self.database.read_zertifikat()
-      #data_q = self.database.read_qualifikation()       # Brauchen wir eigentlich nicht
-      #data_t = self.database.read_teilnahme()           # Brauchen wir HIER eigentlich nicht
 
       # Mitarbeiter sortieren
       sorted_data_m = sorted(data_m.items(), key=lambda x: x[1]['name'], reverse = False) #Alphabetisch sortiert
@@ -346,12 +340,6 @@ class App_auswertung_cl(object): # AUSWERTUNG
       # Weiterbildungen sortieren
       sorted_data_w = sorted(data_w.items(), key=lambda x: x[1]['bezeichnung_w'], reverse = False) #Alphabetisch sortiert
       ordered_dict_w = OrderedDict(sorted_data_w)
-
-      # Zertifikate sortieren
-      #sorted_data_z = sorted(data_z.items(), key=lambda x: x[1]['bezeichnung_z'], reverse = False) #Alphabetisch sortiert
-      #ordered_dict_z = OrderedDict(sorted_data_z)
-
-      #ordered_dict_z = {}
 
       return self.view_o.createList_a(ordered_dict_m, ordered_dict_w)
    

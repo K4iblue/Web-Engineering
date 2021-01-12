@@ -15,7 +15,6 @@
       <!-- Mitarbeiter "rausfiltern"-->
          @if entry_a['name'] != null@
          <tr id="#entry_a['id_m']#">
-            <td>#entry_a['id_m']#</td>
 		      <td>#entry_a['name']#</td>
             <td>#entry_a['vorname']#</td>
             <td>#entry_a['akagrad']#</td>

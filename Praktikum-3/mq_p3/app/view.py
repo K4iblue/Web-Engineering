@@ -82,10 +82,10 @@ class View_cl(object):
 #-----------------------------------------------------------------------------------
 
    #-------------------------------------------------------
-   def createList_a(self, data_m, data_w, data_z):
+   def createList_a(self, data_m, data_w):
    #-------------------------------------------------------
       
-      datas_a = [data_m, data_w, data_z]
+      datas_a = {**data_m, **data_w}
 
       retVal_o = {
          'data': datas_a

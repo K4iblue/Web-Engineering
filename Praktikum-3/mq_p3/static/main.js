@@ -464,7 +464,7 @@ class Application_cl {
       this.AnzeigenView_auswertung_mitarbeiter_o = new AnzeigenView_cl("main", "auswertungMitarbeiteranzeigen.tpl", "mitarbeiter");
 
       // Auswertung: Weiterbildung
-      this.listView_auswertung_weiterbildung_o = new ListView_cl("main", "auswertungWeiterbildung.tpl", "weiterbildung");
+      this.listView_auswertung_weiterbildung_o = new ListView_cl("main", "auswertungWeiterbildung.tpl", "auswertung");
       this.AnzeigenView_auswertung_weiterbildung_o = new AnzeigenView_cl("main", "auswertungWeiterbildunganzeigen.tpl", "weiterbildung");
 
       // Auswertung: Zertifikate

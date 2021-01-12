@@ -42,5 +42,16 @@
       "minteilnehmer_w": "9",
       "id_q": "b8e0861a-eb7c-4ace-a74a-cebc9ba75d7d",
       "id_z": "538d4505-fdcd-438f-b6dc-854760f6a514"
+   },
+   "d84e8316-6715-4f0a-a999-4496c06bcc79": {
+      "id_w": "d84e8316-6715-4f0a-a999-4496c06bcc79",
+      "bezeichnung_w": "Weiterbildung 1.1",
+      "von_w": "2222-02-02",
+      "bis_w": "3333-03-03",
+      "beschreibung_w": "Weiterbildung 1.1",
+      "maxteilnehmer_w": "10",
+      "minteilnehmer_w": "4",
+      "id_q": "aec41fd2-093d-48ac-8849-5dd0839d0c4c",
+      "id_z": "5340ec32-65db-407e-be05-dfe08be92c8a"
    }
 }

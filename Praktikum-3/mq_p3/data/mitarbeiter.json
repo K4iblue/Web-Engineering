@@ -26,5 +26,40 @@
       "vorname": "Mitarbeiter 4",
       "akagrad": "Mitarbeiter 4",
       "taetigkeit": "Mitarbeiter 4"
+   },
+   "23e94bf0-b694-4d1e-bba7-4b34e9e4dc11": {
+      "id_m": "23e94bf0-b694-4d1e-bba7-4b34e9e4dc11",
+      "name": "Mitarbeiter 1.1",
+      "vorname": "Mitarbeiter 1.1",
+      "akagrad": "Mitarbeiter 1.1",
+      "taetigkeit": "Mitarbeiter 1.1"
+   },
+   "872e5c44-9dd3-456b-8fab-49c7df10da1f": {
+      "id_m": "872e5c44-9dd3-456b-8fab-49c7df10da1f",
+      "name": "Mitarbeiter 2.1",
+      "vorname": "Mitarbeiter 2.1",
+      "akagrad": "Mitarbeiter 2.1",
+      "taetigkeit": "Mitarbeiter 2.1"
+   },
+   "79e00e18-c7f4-4c6e-aaca-f8519c883df0": {
+      "id_m": "79e00e18-c7f4-4c6e-aaca-f8519c883df0",
+      "name": "Mitarbeiter 2.3",
+      "vorname": "Mitarbeiter 2.3",
+      "akagrad": "Mitarbeiter 2.3",
+      "taetigkeit": "Mitarbeiter 2.3"
+   },
+   "7fd7c8ad-b37e-4cd5-9685-72381d345d88": {
+      "id_m": "7fd7c8ad-b37e-4cd5-9685-72381d345d88",
+      "name": "Mitarbeiter 5",
+      "vorname": "Mitarbeiter 5",
+      "akagrad": "Mitarbeiter 5",
+      "taetigkeit": "Mitarbeiter 5"
+   },
+   "67823bc5-b237-41a9-949d-20928b217a78": {
+      "id_m": "67823bc5-b237-41a9-949d-20928b217a78",
+      "name": "Mitarbeiter 4.5",
+      "vorname": "Mitarbeiter 4.5",
+      "akagrad": "Mitarbeiter 4.5",
+      "taetigkeit": "Mitarbeiter 4.5"
    }
 }

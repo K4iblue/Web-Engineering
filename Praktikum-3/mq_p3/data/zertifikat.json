@@ -23,5 +23,12 @@
       "beschreibung_z": "Weiterbildung 4 (Geplant)",
       "berechtigtzu_z": "Weiterbildung 4 (Geplant)",
       "id_z": "538d4505-fdcd-438f-b6dc-854760f6a514"
+   },
+   "5340ec32-65db-407e-be05-dfe08be92c8a": {
+      "id_w": "d84e8316-6715-4f0a-a999-4496c06bcc79",
+      "bezeichnung_z": "Zertifikat 1.1",
+      "beschreibung_z": "Zertifikat 1.1",
+      "berechtigtzu_z": "Zertifikat 1.1",
+      "id_z": "5340ec32-65db-407e-be05-dfe08be92c8a"
    }
 }

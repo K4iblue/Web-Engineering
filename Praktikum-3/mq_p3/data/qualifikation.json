@@ -19,5 +19,11 @@
       "bezeichnung_q": "Weiterbildung 4 (Geplant)",
       "beschreibung_q": "Weiterbildung 4 (Geplant)",
       "id_q": "b8e0861a-eb7c-4ace-a74a-cebc9ba75d7d"
+   },
+   "aec41fd2-093d-48ac-8849-5dd0839d0c4c": {
+      "id_w": "d84e8316-6715-4f0a-a999-4496c06bcc79",
+      "bezeichnung_q": "Qualifikation 1.1",
+      "beschreibung_q": "Qualifikation 1.1",
+      "id_q": "aec41fd2-093d-48ac-8849-5dd0839d0c4c"
    }
 }

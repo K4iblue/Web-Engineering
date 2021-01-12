@@ -26,5 +26,19 @@
       "vorname": "Mitarbeiter 4",
       "akagrad": "Mitarbeiter 4",
       "taetigkeit": "Mitarbeiter 4"
+   },
+   "77361e5c-865c-4402-ad92-a28d3d9de1df": {
+      "id": "77361e5c-865c-4402-ad92-a28d3d9de1df",
+      "name": "Mitarbeiter 2.1",
+      "vorname": "Mitarbeiter 2.1",
+      "akagrad": "Mitarbeiter 2.1",
+      "taetigkeit": "Mitarbeiter 2.1"
+   },
+   "c2525b5b-367b-4626-8671-57e358266720": {
+      "id": "c2525b5b-367b-4626-8671-57e358266720",
+      "name": "Mitarbeiter 1.1",
+      "vorname": "Mitarbeiter 1.1",
+      "akagrad": "Mitarbeiter 1.1",
+      "taetigkeit": "Mitarbeiter 1.1"
    }
 }

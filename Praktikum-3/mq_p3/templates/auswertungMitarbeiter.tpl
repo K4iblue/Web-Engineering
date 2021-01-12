@@ -10,13 +10,16 @@
 	</tr>
    @var entry_a;@
    @var loop_i;@
+   @var counter = 0;@
    @for loop_i in context@
+      @counter++;@
       @entry_a = context[loop_i];@
       <tr id="#entry_a['id']#">
-		 <td>#entry_a['name']#</td>
+         <td>#counter#</td>
+         <td>#entry_a['name']#</td>
          <td>#entry_a['vorname']#</td>
          <td>#entry_a['akagrad']#</td>
-		 <td>#entry_a['taetigkeit']#</td>
+		   <td>#entry_a['taetigkeit']#</td>
       </tr>
    @endfor@
 </table>

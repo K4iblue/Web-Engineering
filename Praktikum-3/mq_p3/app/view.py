@@ -25,13 +25,13 @@ class View_cl(object):
       return json.dumps(data_m)
 
    #-------------------------------------------------------
-   def createDetail_m(self, data_m, data_w, data_q, data_z):
+   def createDetail_m(self, data_m, data_w, data_q, data_z, data_t):
    #-------------------------------------------------------
 
-      datas_w = {**data_m, **data_w, **data_q, **data_z}
+      datas_w = {**data_m, **data_w, **data_q, **data_z, **data_t}
 
       retVal_o = {
-         'data': data_m
+         'data': datas_w
       }
       return json.dumps(datas_w)
 
@@ -66,10 +66,10 @@ class View_cl(object):
 #-----------------------------------------------------------------------------------
 
    #-------------------------------------------------------
-   def createDetail_t(self, data_m, data_w):
+   def createDetail_t(self, data_m, data_w, data_t):
    #-------------------------------------------------------
 
-      datas_t = {**data_m, **data_w}  # Hier werden alle Daten zu einem Dictionary zusammengefügt
+      datas_t = {**data_m, **data_w}  # Hier werden alle Daten zu einem Dictionary zusammengefügt  !!!Wenn hier **data_t mit übergeben wird (und das brauchen wir), wird die Weiterbildung, zu der man sich angemeldet hat, nicht mehr angezeigt, sondern Mitarbeiterdaten werden anstelle dessen übergeben, siehe Netzwerkverkehr, prüfen.!!!
 
       retVal_o = {
          'data': datas_t
@@ -82,10 +82,10 @@ class View_cl(object):
 #-----------------------------------------------------------------------------------
 
    #-------------------------------------------------------
-   def createList_a(self, data_m, data_w):
+   def createList_a(self, data_m, data_w, data_z):
    #-------------------------------------------------------
       
-      datas_a = {**data_m, **data_w}
+      datas_a = [data_m, data_w, data_z]
 
       retVal_o = {
          'data': datas_a

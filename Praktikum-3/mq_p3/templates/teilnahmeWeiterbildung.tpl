@@ -30,7 +30,7 @@
 				@status = "laufend";@
 			@endif@
 
-      		<tr id="#entry_a['id']#">
+      		<tr id="#entry_a['id_w']#">
 				<td>#entry_a['bezeichnung_w']#</td>
         		<td>#entry_a['von_w']#</td>
         		<td>#entry_a['bis_w']#</td>
@@ -62,7 +62,7 @@
 		@var anfang = entry_a['von_w'];@
 		@var status;@
 		@if anfang > currentDate@
-	   		<tr id="#entry_a['id']#">
+	   		<tr id="#entry_a['id_w']#">
 				<td>#entry_a['bezeichnung_w']#</td>
 		  		<td>#entry_a['von_w']#</td>
 		  		<td>#entry_a['bis_w']#</td>

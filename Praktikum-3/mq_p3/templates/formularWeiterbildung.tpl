@@ -3,7 +3,7 @@
 <div class="headline">Formular - Weiterbildung</div>
 
    <form class="formular" id="idForm">
-         <input type="hidden" id="id" name="id" value="#context['id']#" />
+         <input type="hidden" id="id" name="id" value="#context['id_w']#" />
          
       <div>
          <label for="bezeichnung_w">Bezeichnung</label>

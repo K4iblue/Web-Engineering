@@ -3,7 +3,7 @@
 <div class="headline">Formular - Mitarbeiter</div>
 
    <form class="formular" id="idForm">
-         <input type="hidden" id="id" name="id" value="#context['id']#" />
+         <input type="hidden" id="id" name="id" value="#context['id_m']#" />
          
       <div>
          <label for="name">Name</label>

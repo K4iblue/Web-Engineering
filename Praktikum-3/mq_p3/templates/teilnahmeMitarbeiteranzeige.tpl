@@ -12,8 +12,8 @@
         <th>akademische Grade</th>
         <th>Tätigkeit</th>
     </tr>
-    <tr>
-        <td id="mitid" data-value=#context['id']# hidden>#context['id']#</td>
+    <tr id="#context['id_m']#">
+        <td id="mitid" data-value=#context['id_m']# hidden>#context['id_m']#</td>
         <td>#context['name']#</td>
         <td>#context['vorname']#</td>
 		<td>#context['akagrad']#</td>
@@ -38,18 +38,19 @@
    	    @var loop_i;@
    	    @for loop_i in context@
       	    @entry_a = context[loop_i];@
-
-		    @var anfang = entry_a['von_w'];@
-		    @var ende = entry_a['bis_w'];@
-		    @if currentDate <= anfang@
-                <tr id="#entry_a['id']#">
-			        <td>#entry_a['bezeichnung_w']#</td>
-        	        <td>#entry_a['von_w']#</td>
-        	        <td>#entry_a['bis_w']#</td>
-			        <td>#entry_a['beschreibung_w']#</td>
-			        <td>#entry_a['maxteilnehmer_w']#</td>
-			        <td>#entry_a['minteilnehmer_w']#</td>
-                </tr>
+            @if context['id_m']@
+		        @var anfang = entry_a['von_w'];@
+		        @var ende = entry_a['bis_w'];@
+		        @if currentDate <= anfang@
+                    <tr id="#entry_a['id_w']#">
+			            <td>#entry_a['bezeichnung_w']#</td>
+        	            <td>#entry_a['von_w']#</td>
+        	            <td>#entry_a['bis_w']#</td>
+			            <td>#entry_a['beschreibung_w']#</td>
+			            <td>#entry_a['maxteilnehmer_w']#</td>
+			            <td>#entry_a['minteilnehmer_w']#</td>
+                    </tr>
+                @endif@
             @endif@
         @endfor@
     </table>
@@ -75,7 +76,7 @@
 		    @var anfang = entry_a['von_w'];@
 		    @var ende = entry_a['bis_w'];@
 		    @if currentDate <= anfang@
-                <tr id="#entry_a['id']#">
+                <tr id="#entry_a['id_w']#">
 			        <td>#entry_a['bezeichnung_w']#</td>
         	        <td>#entry_a['von_w']#</td>
         	        <td>#entry_a['bis_w']#</td>
@@ -88,7 +89,7 @@
     </table>
 
     <div>
-        <button class="buttons" id="idSaveTeilnahme">Anmelden</button>
-        <button class="buttons" id="idDeleteTeilnahme">Stornieren</button>
+        <button class="anmelden" id="idSaveTeilnahme">Anmelden</button>
+        <button class="stornieren" id="idDeleteTeilnahme">Stornieren</button>
     </div>   
 <!-- EOF -->

@@ -1,29 +1,11 @@
 {
-   "7687d868-6ce0-4f0d-813f-2c55b1a2a361": {
-      "0bc7215e-f709-4019-868e-3cad0a3bc554": {
-         "id": "0bc7215e-f709-4019-868e-3cad0a3bc554",
-         "name": "Mitarbeiter 1",
-         "vorname": "Mitarbeiter 1",
-         "akagrad": "Mitarbeiter 1",
-         "taetigkeit": "Mitarbeiter 1",
-         "status": "angemeldet"
-      },
-      "f5d9df4b-36ee-4b82-903a-84cbbccc62e9": {
-         "id": "f5d9df4b-36ee-4b82-903a-84cbbccc62e9",
-         "name": "Mitarbeiter 4",
-         "vorname": "Mitarbeiter 4",
-         "akagrad": "Mitarbeiter 4",
-         "taetigkeit": "Mitarbeiter 4",
-         "status": "angemeldet"
-      }
-   },
-   "ea781ae1-9031-4695-990b-b4cbdd8cb0da": {
-      "0bc7215e-f709-4019-868e-3cad0a3bc554": {
-         "id": "0bc7215e-f709-4019-868e-3cad0a3bc554",
-         "name": "Mitarbeiter 1",
-         "vorname": "Mitarbeiter 1",
-         "akagrad": "Mitarbeiter 1",
-         "taetigkeit": "Mitarbeiter 1",
+   "30acd8bf-25cf-45c0-8ec9-9ee8b22b3bec": {
+      "423a09d4-8e74-4ccb-965a-829df145880f": {
+         "id_m": "423a09d4-8e74-4ccb-965a-829df145880f",
+         "name": "Mitarbeiter 2",
+         "vorname": "Mitarbeiter 2",
+         "akagrad": "Mitarbeiter 2",
+         "taetigkeit": "Mitarbeiter 2",
          "status": "angemeldet"
       }
    }

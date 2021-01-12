@@ -1,27 +1,23 @@
 {
-   "39969218-c48e-43a7-a0ca-5b88b709e24d": {
-      "id": "39969218-c48e-43a7-a0ca-5b88b709e24d",
-      "bezeichnung_q": "Qualifikation 1",
-      "beschreibung_q": "Qualifikation 1"
+   "10085838-a4a3-4b09-8953-c0669bf2650a": {
+      "id_w": "72afb0f5-e611-418a-9b29-c6922586446b",
+      "bezeichnung_q": "Weiterbildung 1 laufend478",
+      "beschreibung_q": "Weiterbildung 1 laufend"
    },
-   "7687d868-6ce0-4f0d-813f-2c55b1a2a361": {
-      "id": "7687d868-6ce0-4f0d-813f-2c55b1a2a361",
-      "bezeichnung_q": "Qualifikation 2",
-      "beschreibung_q": "Qualifikation 2"
+   "70b5efd6-a1ee-46ec-974c-63e04da374a6": {
+      "id_w": "30acd8bf-25cf-45c0-8ec9-9ee8b22b3bec",
+      "bezeichnung_q": "Weiterbildung 2 (Geplant)44",
+      "beschreibung_q": "Weiterbildung 2 (Geplant)"
    },
-   "ea781ae1-9031-4695-990b-b4cbdd8cb0da": {
-      "id": "ea781ae1-9031-4695-990b-b4cbdd8cb0da",
-      "bezeichnung_q": "Qualifikation 3",
-      "beschreibung_q": "Qualifikation 3"
+   "ed6e56a2-2d57-44ff-9492-06eca34e3a4e": {
+      "id_w": "c0df774f-526d-45b2-b2b1-357ab284016d",
+      "bezeichnung_q": "Weiterbildung 3 abgeschlossen",
+      "beschreibung_q": "Weiterbildung 3 abgeschlossen"
    },
-   "81efa9f2-66a8-40f5-9027-d88b2f21016a": {
-      "id": "81efa9f2-66a8-40f5-9027-d88b2f21016a",
-      "bezeichnung_q": "Weiterbildung 1.1 (Laufend)",
-      "beschreibung_q": "Weiterbildung 1.1 (Laufend)"
-   },
-   "712980c9-4f42-474c-ab20-6df5bae289f7": {
-      "id": "712980c9-4f42-474c-ab20-6df5bae289f7",
-      "bezeichnung_q": "Weiterbildung 2.1",
-      "beschreibung_q": "Weiterbildung 2.1"
+   "b8e0861a-eb7c-4ace-a74a-cebc9ba75d7d": {
+      "id_w": "6dc0eeb3-9696-4018-979e-e309b53585b4",
+      "bezeichnung_q": "Weiterbildung 4 (Geplant)",
+      "beschreibung_q": "Weiterbildung 4 (Geplant)",
+      "id_q": "b8e0861a-eb7c-4ace-a74a-cebc9ba75d7d"
    }
 }

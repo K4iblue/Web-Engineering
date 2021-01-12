@@ -131,11 +131,29 @@ class AnzeigenView_cl {
          }
    }
    
-   configHandleEvent_p () {
-      let el_o = document.querySelector(".buttons");
+   configHandleEvent_p () {   //Wenn die query selectors gleich sind, funktionieren die Listener nicht...
+      let el_o = document.querySelector(".anmelden");
+      let el_o2 = document.querySelector(".stornieren");
+      let el_o3 = document.querySelector(".zurückmitarbeiter"); //Zurück Button Mitarbeiter
+      let el_o4 = document.querySelector(".zurückweiterbildung"); //Zurück Button Weiterbildung
       if (el_o != null) {
          console.log("c: this.action = " + this.action);
          el_o.addEventListener("click", this.handleEvent_p);
+      }
+
+      if (el_o2 != null) {
+         console.log("c: this.action = " + this.action);
+         el_o2.addEventListener("click", this.handleEvent_p);
+      }
+
+      if (el_o3 != null) {
+         console.log("c: this.action = " + this.action);
+         el_o3.addEventListener("click", this.handleEvent_p);
+      }
+
+      if (el_o4 != null) {
+         console.log("c: this.action = " + this.action);
+         el_o4.addEventListener("click", this.handleEvent_p);
       }
    }
    
@@ -149,22 +167,26 @@ class AnzeigenView_cl {
          event_opl.preventDefault();
       }
 
-      else if (event_opl.target.id == "idBack") {
-         APPUTIL.es_o.publish_px("app.cmd", ["idBack", null]);
+      else if (event_opl.target.id == "idBackmitarbeiter") {
+         APPUTIL.es_o.publish_px("app.cmd", ["idBackmitarbeiter", null]);
+         event_opl.preventDefault();
+      }
+
+      else if (event_opl.target.id == "idBackweiterbildung") {
+         APPUTIL.es_o.publish_px("app.cmd", ["idBackweiterbildung", null]);
          event_opl.preventDefault();
       }
 
       // Teilnahme anmelden
-      else if (event_opl.target.id == "idSaveTeilnahme") {
+      else if (event_opl.target.id == "idSaveTeilnahme") {  //Wenn auf Anmelden geklickt wurde
          var elx_o = document.querySelector(".clSelected");   // Makierte Zeile
-         var mitarbeiterdaten = document.getElementById("mitid").dataset.value;
-         if (elx_o == null) {
+         var mitarbeiterdaten = document.getElementById("mitid").dataset.value;  //hole Mitarbeiter-ID von der Tpl Datei
+         if (elx_o == null || elx_o.id == mitarbeiterdaten) {
 
-            alert("Bitte zuerst einen Eintrag auswählen!");
+            alert("Bitte zuerst einen gültigen Eintrag auswählen!");
          } 
          else {
-
-            APPUTIL.es_o.publish_px("app.cmd", ["addteilnahme", elx_o.id, mitarbeiterdaten] );
+            APPUTIL.es_o.publish_px("app.cmd", ["addteilnahme", elx_o.id, mitarbeiterdaten] );  //rufe addteilnahme auf und übergebe die Weiterbildungs-ID und die Mitarbeiter-ID. Funktion läuft über publish_px in evs.js. Von dort wird die notify_px in main.js aufgerufen. Dort muss ein case und eine Funktion mit "addteilnahme" existieren. Und dort wird es dann in die Application.py übergeben mit dem Befehel POST, beim Löschen dann DELETE.
          }
       }
       
@@ -172,12 +194,11 @@ class AnzeigenView_cl {
       else if (event_opl.target.id == "idDeleteTeilnahme") {
          var elx_o = document.querySelector(".clSelected");   // Makierte Zeile
          var mitarbeiterdaten = document.getElementById("mitid").dataset.value;
-         if (elx_o == null) {
+         if (elx_o == null || elx_o.id == mitarbeiterdaten) {
 
-            alert("Bitte zuerst einen Eintrag auswählen!");
+            alert("Bitte zuerst einen gültigen Eintrag auswählen!");
          } 
          else {
-
             APPUTIL.es_o.publish_px("app.cmd", ["deleteteilnahme", elx_o.id, mitarbeiterdaten] );
          }
 	   }
@@ -443,7 +464,7 @@ class Application_cl {
       this.AnzeigenView_auswertung_mitarbeiter_o = new AnzeigenView_cl("main", "auswertungMitarbeiteranzeigen.tpl", "mitarbeiter");
 
       // Auswertung: Weiterbildung
-      this.listView_auswertung_weiterbildung_o = new ListView_cl("main", "auswertungWeiterbildung.tpl", "auswertung");
+      this.listView_auswertung_weiterbildung_o = new ListView_cl("main", "auswertungWeiterbildung.tpl", "weiterbildung");
       this.AnzeigenView_auswertung_weiterbildung_o = new AnzeigenView_cl("main", "auswertungWeiterbildunganzeigen.tpl", "weiterbildung");
 
       // Auswertung: Zertifikate
@@ -537,17 +558,18 @@ class Application_cl {
 
                // Add Teilnahme
                case "addteilnahme":
-                  var input_action = document.getElementById("action"); //wenn man bei url und publish_px die input_action übergibt, wo eigentlich "teilnahme" drin steht, gibt es den Error "action is null, warum?"
+                  //var input_action = document.getElementById("action"); //wenn man bei url und publish_px die input_action übergibt, wo eigentlich "teilnahme" drin steht, gibt es den Error "action is null, warum?"
                   var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2];   //1. Mitarbeiter, 2. Weiterbildung
+                  alert("Anmeldung erfolgreich");
                   fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'} })
       				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme", null]);
                break;
 
                // Delete Teilnahme
                case "deleteteilnahme":
-                  alert("d");
-                  var input_action = document.getElementById("action"); //wenn man bei url und publish_px die input_action übergibt, wo eigentlich "teilnahme" drin steht, gibt es den Error "action is null, warum?"
+                  //var input_action = document.getElementById("action"); //wenn man bei url und publish_px die input_action übergibt, wo eigentlich "teilnahme" drin steht, gibt es den Error "action is null, warum?"
                   var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2];   //1. Mitarbeiter, 2. Weiterbildung
+                  alert("Stornierung erfolgreich");
                   fetch(url, {method: 'DELETE', headers: {'Content-Type': 'application/json'} })
       				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme", null]);
                break;
@@ -578,6 +600,18 @@ class Application_cl {
       			   var input_action = document.getElementById("action");
       			   console.log("action = " + input_action.value);
                   APPUTIL.es_o.publish_px("app.cmd", [input_action.value, null]);
+               break;
+
+               case "idBackmitarbeiter":
+      			   //var input_action = document.getElementById("action");  //Erkennt nicht Mitarbeiter als Action
+      			   console.log("action = " + "mitarbeiter");
+                  APPUTIL.es_o.publish_px("app.cmd", ["mitarbeiter", null]);
+               break;
+
+               case "idBackweiterbildung":
+      			   //var input_action = document.getElementById("action");  //Erkennt nicht Weiterbildung als action
+      			   console.log("action = " + "weiterbildung");
+                  APPUTIL.es_o.publish_px("app.cmd", ["weiterbildung", null]);
                break;
 
       		   case "idDelete":

@@ -1,47 +1,46 @@
 {
-   "39969218-c48e-43a7-a0ca-5b88b709e24d": {
-      "id": "39969218-c48e-43a7-a0ca-5b88b709e24d",
-      "bezeichnung_w": "Weiterbildung 1 (Laufend)",
-      "von_w": "2021-01-10",
-      "bis_w": "2021-01-17",
-      "beschreibung_w": "Weiterbildung 1",
-      "maxteilnehmer_w": "10",
-      "minteilnehmer_w": "5"
+   "72afb0f5-e611-418a-9b29-c6922586446b": {
+      "id_w": "72afb0f5-e611-418a-9b29-c6922586446b",
+      "bezeichnung_w": "Weiterbildung 1 laufend",
+      "von_w": "2021-01-11",
+      "bis_w": "2021-01-14",
+      "beschreibung_w": "Weiterbildung 1 laufend",
+      "maxteilnehmer_w": "4",
+      "minteilnehmer_w": "5",
+      "id_q": "10085838-a4a3-4b09-8953-c0669bf2650a",
+      "id_z": "62c524dd-d208-4477-bd05-82cbdba9c279"
    },
-   "7687d868-6ce0-4f0d-813f-2c55b1a2a361": {
-      "id": "7687d868-6ce0-4f0d-813f-2c55b1a2a361",
-      "bezeichnung_w": "Weiterbildung 2 (Geplant)",
+   "30acd8bf-25cf-45c0-8ec9-9ee8b22b3bec": {
+      "id_w": "30acd8bf-25cf-45c0-8ec9-9ee8b22b3bec",
+      "bezeichnung_w": "Weiterbildung 2 (Geplant)dd",
+      "von_w": "2021-01-13",
+      "bis_w": "2021-01-15",
+      "beschreibung_w": "Weiterbildung 2 (Geplant)",
+      "maxteilnehmer_w": "5",
+      "minteilnehmer_w": "7",
+      "id_q": "70b5efd6-a1ee-46ec-974c-63e04da374a6",
+      "id_z": "3f8aae37-831d-4ab3-a477-f46c5615257e"
+   },
+   "c0df774f-526d-45b2-b2b1-357ab284016d": {
+      "id_w": "c0df774f-526d-45b2-b2b1-357ab284016d",
+      "bezeichnung_w": "Weiterbildung 3 abgeschlossen",
+      "von_w": "2021-01-05",
+      "bis_w": "2021-01-06",
+      "beschreibung_w": "Weiterbildung 3 abgeschlossen",
+      "maxteilnehmer_w": "6",
+      "minteilnehmer_w": "8",
+      "id_q": "ed6e56a2-2d57-44ff-9492-06eca34e3a4e",
+      "id_z": "4977d3ad-e445-4660-8fc7-f410b1945734"
+   },
+   "6dc0eeb3-9696-4018-979e-e309b53585b4": {
+      "id_w": "6dc0eeb3-9696-4018-979e-e309b53585b4",
+      "bezeichnung_w": "Weiterbildung 4 (Geplant)",
       "von_w": "2021-01-15",
-      "bis_w": "2021-01-17",
-      "beschreibung_w": "Weiterbildung 2",
-      "maxteilnehmer_w": "10",
-      "minteilnehmer_w": "5"
-   },
-   "ea781ae1-9031-4695-990b-b4cbdd8cb0da": {
-      "id": "ea781ae1-9031-4695-990b-b4cbdd8cb0da",
-      "bezeichnung_w": "Weiterbildung 3 (Geplant)",
-      "von_w": "2021-03-03",
-      "bis_w": "2021-03-04",
-      "beschreibung_w": "Weiterbildung 3",
-      "maxteilnehmer_w": "10",
-      "minteilnehmer_w": "5"
-   },
-   "81efa9f2-66a8-40f5-9027-d88b2f21016a": {
-      "id": "81efa9f2-66a8-40f5-9027-d88b2f21016a",
-      "bezeichnung_w": "Weiterbildung 1.1 (Laufend)",
-      "von_w": "2021-01-10",
-      "bis_w": "2021-01-17",
-      "beschreibung_w": "Weiterbildung 1.1 (Laufend)",
-      "maxteilnehmer_w": "10",
-      "minteilnehmer_w": "5"
-   },
-   "712980c9-4f42-474c-ab20-6df5bae289f7": {
-      "id": "712980c9-4f42-474c-ab20-6df5bae289f7",
-      "bezeichnung_w": "Weiterbildung 2.1 (Geplant)",
-      "von_w": "2021-01-15",
-      "bis_w": "2021-01-17",
-      "beschreibung_w": "Weiterbildung 2.1 (Geplant)",
-      "maxteilnehmer_w": "10",
-      "minteilnehmer_w": "5"
+      "bis_w": "2021-01-16",
+      "beschreibung_w": "Weiterbildung 4 (Geplant)",
+      "maxteilnehmer_w": "6",
+      "minteilnehmer_w": "9",
+      "id_q": "b8e0861a-eb7c-4ace-a74a-cebc9ba75d7d",
+      "id_z": "538d4505-fdcd-438f-b6dc-854760f6a514"
    }
 }

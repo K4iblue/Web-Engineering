@@ -34,7 +34,7 @@ class Database_cl(object):
         id_m = str(uuid.uuid4()) # UUID
         length = len(self.data_m)
         self.data_m[id_m] = data_m
-        self.data_m[id_m]['id'] = str(id_m)
+        self.data_m[id_m]['id_m'] = str(id_m)
         length = len(self.data_m)
         self.saveData_mitarbeiter()
         return length-1
@@ -45,12 +45,14 @@ class Database_cl(object):
         id_w = str(uuid.uuid4()) # UUID
 
         # Qualifikation und Zertifikat auch erstellen
-        self.create_qualifikation(data_q, id_w)
-        self.create_zertifikat(data_z, id_w)
+        id_q = self.create_qualifikation(data_q, id_w)
+        id_z = self.create_zertifikat(data_z, id_w)
 
         length = len(self.data_w)
         self.data_w[id_w] = data_w
-        self.data_w[id_w]['id'] = str(id_w)
+        self.data_w[id_w]['id_w'] = str(id_w)
+        self.data_w[id_w]['id_q'] = str(id_q)
+        self.data_w[id_w]['id_z'] = str(id_z)
         length = len(self.data_w)
         self.saveData_weiterbildung()
 
@@ -59,18 +61,24 @@ class Database_cl(object):
     #-------------------------------------------------------
     def create_qualifikation(self, data_q, id):
     #-------------------------------------------------------
-        id_q = id
+        id_q = str(uuid.uuid4()) # UUID
+        id_w = id
         self.data_q[id_q] = data_q
-        self.data_q[id_q]['id'] = str(id_q)
+        self.data_q[id_q]['id_q'] = str(id_q)
+        self.data_q[id_q]['id_w'] = str(id_w)
         self.saveData_qualifikation()
+        return id_q
 
     #-------------------------------------------------------
     def create_zertifikat(self, data_z, id):
     #-------------------------------------------------------
-        id_z = id
+        id_z = str(uuid.uuid4()) # UUID
+        id_w = id
         self.data_z[id_z] = data_z
-        self.data_z[id_z]['id'] = str(id_z)
+        self.data_z[id_z]['id_z'] = str(id_z)
+        self.data_z[id_z]['id_w'] = str(id_w)
         self.saveData_zertifikat()
+        return id_z
 
     #-------------------------------------------------------
     def create_teilnahme(self, data_t, id_w, id_m, data_new):
@@ -116,27 +124,27 @@ class Database_cl(object):
         return data_w
 
     #-------------------------------------------------------
-    def read_qualifikation(self, id_q = None):
+    def read_qualifikation(self, id_q = None, data_w = None):
     #-------------------------------------------------------
         data_q = None
         if id_q == None:
             data_q = self.data_q
         else:
             try:
-                data_q = self.data_q[id_q]
+                data_q = self.data_q[data_w['id_q']]
             except:
                 data_q = {}            
         return data_q
 
     #-------------------------------------------------------
-    def read_zertifikat(self, id_z = None):
+    def read_zertifikat(self, id_z = None, data_w = None):
     #-------------------------------------------------------
         data_z = None
         if id_z == None:
             data_z = self.data_z
         else:
             try:
-                data_z = self.data_z[id_z]
+                data_z = self.data_z[data_w['id_z']]
             except:
                 data_z = {}            
         return data_z
@@ -168,10 +176,16 @@ class Database_cl(object):
         return
 
     #-------------------------------------------------------
-    def update_weiterbildung(self, id_w, data_w):
+    def update_weiterbildung(self, id_w, data_w, data_q, data_z):
     #-------------------------------------------------------
+        data_tmp = self.read_weiterbildung(id_w)
         if id_w in self.data_w:
+            id_q = self.update_qualifikation(data_tmp['id_q'], data_q)
+            id_z = self.update_zertifikat(data_tmp['id_z'], data_z)
+
             self.data_w[id_w] = data_w
+            self.data_w[id_w]['id_q'] = str(id_q)
+            self.data_w[id_w]['id_z'] = str(id_z)
             self.saveData_weiterbildung()
         return
 
@@ -181,7 +195,7 @@ class Database_cl(object):
         if id_q in self.data_q:
             self.data_q[id_q] = data_q
             self.saveData_qualifikation()
-        return
+        return id_q
 
     #-------------------------------------------------------
     def update_zertifikat(self, id_z, data_z):
@@ -189,7 +203,7 @@ class Database_cl(object):
         if id_z in self.data_z:
             self.data_z[id_z] = data_z
             self.saveData_zertifikat()
-        return
+        return id_z
 
     #-------------------------------------------------------
     def update_teilnahme(self, id_t, data_m, data_t):

@@ -53,7 +53,7 @@
     </tr>				
 </table>
 <div>
-    <button class="buttons" id="idBack">Zurück</button>
+    <button class="zurückweiterbildung" id="idBackweiterbildung">Zurück</button>
 </div>
 
 <div> </div>

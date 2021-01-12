@@ -14,7 +14,7 @@
    @var loop_i;@
    @for loop_i in context@
       @entry_a = context[loop_i];@
-      <tr id="#entry_a['id']#">
+      <tr id="#entry_a['id_w']#">
 		 <td>#entry_a['bezeichnung_w']#</td>
          <td>#entry_a['von_w']#</td>
          <td>#entry_a['bis_w']#</td>

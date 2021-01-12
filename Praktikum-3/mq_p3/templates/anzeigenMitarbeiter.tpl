@@ -47,7 +47,7 @@
     </tr> 	
 </table>
 <div>
-    <button class="buttons" id="idBack">Zurück</button>
+    <button class="zurückmitarbeiter" id="idBackmitarbeiter">Zurück</button>
 </div>
 <!-- EOF -->
 				

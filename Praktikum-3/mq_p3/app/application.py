@@ -3,6 +3,7 @@ import cherrypy
 
 from .database import Database_cl
 from .view import View_cl
+from collections import OrderedDict
 
 
 #----------------------------------------------------------
@@ -79,8 +80,13 @@ class App_mitarbeiter_cl(object): # MITARBEITER
    #-------------------------------------------------------
       self.database.readData_mitarbeiter()
       data_m = self.database.read_mitarbeiter(id_spl)
+      data_w = self.database.read_weiterbildung()
+      #data_q = self.database.read_qualifikation()
+      #data_z = self.database.read_zertifikat()
+      data_q = {}
+      data_z = {}
 
-      return self.view_o.createDetail_m(data_m)
+      return self.view_o.createDetail_m(data_m, data_w, data_q, data_z)
 
 
 #----------------------------------------------------------
@@ -206,7 +212,7 @@ class App_weiterbildung_cl(object): # WEITERBILDUNG
 
 
 #----------------------------------------------------------
-class App_teilnahme_cl(object): # WEITERBILDUNG
+class App_teilnahme_cl(object): # TEILNAHME
 #----------------------------------------------------------
 
    exposed = True # gilt für alle Methoden
@@ -218,7 +224,7 @@ class App_teilnahme_cl(object): # WEITERBILDUNG
       self.view_o = View_cl()
 
    #-------------------------------------------------------
-   def GET(self, id=None, weiterbildung=None):
+   def GET(self, id=None, teilnahme=None):
    #-------------------------------------------------------
       retVal_s = ''
 
@@ -227,68 +233,48 @@ class App_teilnahme_cl(object): # WEITERBILDUNG
          retVal_s = self.getList_w()
       else:
          # Anforderung eines Details
-         retVal_s = self.getDetail_w(id)
+         retVal_s = self.getDetail_t(id)
 
       return retVal_s
    
    #-------------------------------------------------------
-   def POST(self, id, name, vorname, akagrad, taetigkeit, bezeichnung_w, von_w, bis_w, beschreibung_w, maxteilnehmer_w, minteilnehmer_w):
+   def POST(self, id_w, id_m):
    #-------------------------------------------------------
       
-      data_m = { 
-      'id':id,
-      'name':name,
-      'vorname':vorname,
-      'akagrad':akagrad,
-      'taetigkeit':taetigkeit
-      }  
+      status = "angemeldet"
+      #data_w = self.database.read_weiterbildung()
+      data_m = self.database.read_mitarbeiter()
+      data_t = self.database.read_teilnahme()
 
-      data_w = { 
-      'id':id,
-      'bezeichnung_w':bezeichnung_w,
-      'von_w':von_w,
-      'bis_w':bis_w,
-      'beschreibung_w':beschreibung_w,
-      'maxteilnehmer_w':maxteilnehmer_w,
-      'minteilnehmer_w':minteilnehmer_w
-      }
+      data_new = data_m[id_m]
+      if status not in data_new:	#entfernt doppelte Statuseinträge
+         data_new["status"] = status
 
-      data_t = [data_m, data_w]  # Keine Ahnung ob das so überhaupt geht?
-      id = self.database.create_teilnahme(data_t)
+      id = self.database.create_teilnahme(data_t, id_w, id_m, data_new)
+      status = ""
       
       return str(id)
       
    #-------------------------------------------------------
-   def PUT(self, id, name, vorname, akagrad, taetigkeit, bezeichnung_w, von_w, bis_w, beschreibung_w, maxteilnehmer_w, minteilnehmer_w):
+   def PUT(self, id_m, id_w):
    #-------------------------------------------------------
       
-      data_m = { 
-      'id':id,
-      'name':name,
-      'vorname':vorname,
-      'akagrad':akagrad,
-      'taetigkeit':taetigkeit
-      }  
+      data_m = self.database.read_mitarbeiter(id_m)
+      data_w = self.database.read_weiterbildung(id_w)
 
-      data_w = { 
-      'id':id,
-      'bezeichnung_w':bezeichnung_w,
-      'von_w':von_w,
-      'bis_w':bis_w,
-      'beschreibung_w':beschreibung_w,
-      'maxteilnehmer_w':maxteilnehmer_w,
-      'minteilnehmer_w':minteilnehmer_w
-      }
-
-      data_t = [data_m, data_w]  # Keine Ahnung ob das so überhaupt geht?
-      self.database.update_teilnahme(id, data_t)
+      self.database.update_teilnahme(id, data_m, data_w)
       
       return id
    
    #-------------------------------------------------------
-   def DELETE(self, id):
+   def DELETE(self, id_w, id_m):
    #-------------------------------------------------------
-      self.database.delete_teilnahme(id)
+
+      #data_m = self.database.read_mitarbeiter(id_m)
+      #data_w = self.database.read_weiterbildung(id_w)
+      #data_t = self.database.read_teilnahme()
+
+      self.database.delete_teilnahme(id_w, id_m)
 
    #-------------------------------------------------------
    def getList_w(self):
@@ -303,16 +289,14 @@ class App_teilnahme_cl(object): # WEITERBILDUNG
       return self.view_o.createList_w(data_w, data_q, data_z)
    
    #-------------------------------------------------------
-   def getDetail_w(self, id_spl):
+   def getDetail_t(self, id_spl):
    #-------------------------------------------------------
+      self.database.readData_mitarbeiter()
       self.database.readData_weiterbildung()
-      self.database.readData_qualifikation()
-      self.database.readData_zertifikat()
-      data_w = self.database.read_weiterbildung(id_spl)
-      data_q = self.database.read_qualifikation(id_spl)
-      data_z = self.database.read_zertifikat(id_spl)
+      data_m = self.database.read_mitarbeiter(id_spl)
+      data_w = self.database.read_weiterbildung()
 
-      return self.view_o.createDetail_w(data_w, data_q, data_z)
+      return self.view_o.createDetail_t(data_m, data_w)
 
 
 # EOF

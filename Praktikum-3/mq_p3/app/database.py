@@ -21,6 +21,7 @@ class Database_cl(object):
         self.readData_weiterbildung()
         self.readData_qualifikation()
         self.readData_zertifikat()
+        self.readData_teilnahme()
 
 
 #-----------------------------------------------------------------------------------
@@ -72,11 +73,17 @@ class Database_cl(object):
         self.saveData_zertifikat()
 
     #-------------------------------------------------------
-    def create_teilnahme(self, data_t):
+    def create_teilnahme(self, data_t, id_w, id_m, data_new):
     #-------------------------------------------------------
-        # TODO
-        return
+        id_t = id_w # UUID
+        if id_w not in data_t:
+            self.data_t[str(id_w)] = {} #Bei Mitarbeiter wird nur die Id in die Json eingetragen.
+            self.saveData_teilnahme()
 
+        self.data_t[str(id_w)][str(id_m)] = data_new
+        self.saveData_teilnahme()
+        return str(id_t)
+     
 
 #-----------------------------------------------------------------------------------
 # READ FUNKTIONEN
@@ -185,7 +192,7 @@ class Database_cl(object):
         return
 
     #-------------------------------------------------------
-    def update_teilnahme(self, id_t, data_t):
+    def update_teilnahme(self, id_t, data_m, data_t):
     #-------------------------------------------------------
         if id_t in self.data_t:
             self.data_t[id_t] = data_t
@@ -226,9 +233,9 @@ class Database_cl(object):
         return
 
     #-------------------------------------------------------
-    def delete_teilnahme(self, id_t):
+    def delete_teilnahme(self, id_w, id_m):
     #-------------------------------------------------------
-        if self.data_t.pop(id_t) != None:
+        if self.data_t[id_w].pop(id_m, None) != None:
            self.saveData_teilnahme()
         return
 
@@ -310,7 +317,9 @@ class Database_cl(object):
             fp_o = codecs.open(os.path.join('data', 'teilnahme.json'), 'r', 'utf-8')
         except:
             self.data_t = {}
-        
+            #for loop_i in range(1,50):
+                #self.data_t[loop_i] = {}
+            self.saveData_teilnahme()
         else:
             with fp_o:
                 self.data_t = json.load(fp_o)
@@ -348,6 +357,6 @@ class Database_cl(object):
     def saveData_teilnahme(self):
     #-------------------------------------------------------
         with codecs.open(os.path.join('data', 'teilnahme.json'), 'w', 'utf-8') as fp_o:
-            json.dump(self.data_z, fp_o, indent=3)
+            json.dump(self.data_t, fp_o, indent=3)
 
 # EOF

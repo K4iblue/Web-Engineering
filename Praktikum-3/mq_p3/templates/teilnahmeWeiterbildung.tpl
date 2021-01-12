@@ -31,13 +31,13 @@
 			@endif@
 
       		<tr id="#entry_a['id']#">
-			<td>#entry_a['bezeichnung_w']#</td>
-        	<td>#entry_a['von_w']#</td>
-        	<td>#entry_a['bis_w']#</td>
-			<td>#entry_a['beschreibung_w']#</td>
-			<td>#entry_a['maxteilnehmer_w']#</td>
-			<td>#entry_a['minteilnehmer_w']#</td>
-			<td>#status#</td>
+				<td>#entry_a['bezeichnung_w']#</td>
+        		<td>#entry_a['von_w']#</td>
+        		<td>#entry_a['bis_w']#</td>
+				<td>#entry_a['beschreibung_w']#</td>
+				<td>#entry_a['maxteilnehmer_w']#</td>
+				<td>#entry_a['minteilnehmer_w']#</td>
+				<td>#status#</td>
       		</tr>
 		@endif@
    	@endfor@

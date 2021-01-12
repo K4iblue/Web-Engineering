@@ -49,10 +49,10 @@ class FormView_cl {
 
    configHandleEvent_p () {
       let el_o = document.querySelector("form");
-         if (el_o != null) {
-		      console.log("c: this.action = " + this.action);
-            el_o.addEventListener("click", this.handleEvent_p);
-         }
+      if (el_o != null) {
+	      console.log("c: this.action = " + this.action);
+         el_o.addEventListener("click", this.handleEvent_p);
+      }
    }
 
    handleEvent_p (event_opl) {
@@ -132,18 +132,55 @@ class AnzeigenView_cl {
    }
    
    configHandleEvent_p () {
-      let el_o = document.querySelector("form");
-         if (el_o != null) {
-            console.log("c: this.action = " + this.action);
-            el_o.addEventListener("click", this.handleEvent_p);
-         }
+      let el_o = document.querySelector(".buttons");
+      if (el_o != null) {
+         console.log("c: this.action = " + this.action);
+         el_o.addEventListener("click", this.handleEvent_p);
+      }
    }
    
    handleEvent_p (event_opl) {
-      if (event_opl.target.id == "idBack") {
+      if (event_opl.target.tagName.toUpperCase() == "TD") {
+         let elx_o = document.querySelector(".clSelected");
+            if (elx_o != null) {
+               elx_o.classList.remove("clSelected");
+            }
+         event_opl.target.parentNode.classList.add("clSelected");
+         event_opl.preventDefault();
+      }
+
+      else if (event_opl.target.id == "idBack") {
          APPUTIL.es_o.publish_px("app.cmd", ["idBack", null]);
          event_opl.preventDefault();
       }
+
+      // Teilnahme anmelden
+      else if (event_opl.target.id == "idSaveTeilnahme") {
+         var elx_o = document.querySelector(".clSelected");   // Makierte Zeile
+         var mitarbeiterdaten = document.getElementById("mitid").dataset.value;
+         if (elx_o == null) {
+
+            alert("Bitte zuerst einen Eintrag auswählen!");
+         } 
+         else {
+
+            APPUTIL.es_o.publish_px("app.cmd", ["addteilnahme", elx_o.id, mitarbeiterdaten] );
+         }
+      }
+      
+      // Teilnahme stornieren
+      else if (event_opl.target.id == "idDeleteTeilnahme") {
+         var elx_o = document.querySelector(".clSelected");   // Makierte Zeile
+         var mitarbeiterdaten = document.getElementById("mitid").dataset.value;
+         if (elx_o == null) {
+
+            alert("Bitte zuerst einen Eintrag auswählen!");
+         } 
+         else {
+
+            APPUTIL.es_o.publish_px("app.cmd", ["deleteteilnahme", elx_o.id, mitarbeiterdaten] );
+         }
+	   }
    }
 }
 
@@ -189,9 +226,9 @@ class ListView_cl {
 
    configHandleEvent_p () {
       let el_o = document.querySelector(this.el_s);
-         if (el_o != null) {
-            el_o.addEventListener("click", this.handleEvent_p);
-         }
+      if (el_o != null) {
+         el_o.addEventListener("click", this.handleEvent_p);
+      }
    }
 
    handleEvent_p (event_opl) {
@@ -396,7 +433,7 @@ class Application_cl {
       
       // Teilnahme: Mitarbeiter
       this.listView_teilnahme_mitarbeiter_o = new ListView_cl("main", "teilnahmeMitarbeiter.tpl", "mitarbeiter");
-      this.AnzeigenView_teilnahme_mitarbeiter_o = new AnzeigenView_cl("main", "teilnahmeMitarbeiteranzeige.tpl", "mitarbeiter");
+      this.AnzeigenView_teilnahme_mitarbeiter_o = new AnzeigenView_cl("main", "teilnahmeMitarbeiteranzeige.tpl", "teilnahme");   //vllt deshalb error unten in bei add und delete teilnahme?
 
       // Teilnahme: Weiterbildung
       this.listView_teilnahme_weiterbildung_o = new ListView_cl("main", "teilnahmeWeiterbildung.tpl", "weiterbildung");
@@ -496,6 +533,23 @@ class Application_cl {
                // Teilnahme Weiterbildung
                case "teilnahme_weiterbildung":
                   this.listView_teilnahme_weiterbildung_o.render_px(data_opl[1], currentDate);
+               break;
+
+               // Add Teilnahme
+               case "addteilnahme":
+                  var input_action = document.getElementById("action"); //wenn man bei url und publish_px die input_action übergibt, wo eigentlich "teilnahme" drin steht, gibt es den Error "action is null, warum?"
+                  var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2];   //1. Mitarbeiter, 2. Weiterbildung
+                  fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'} })
+      				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme", null]);
+               break;
+
+               // Delete Teilnahme
+               case "deleteteilnahme":
+                  alert("d");
+                  var input_action = document.getElementById("action"); //wenn man bei url und publish_px die input_action übergibt, wo eigentlich "teilnahme" drin steht, gibt es den Error "action is null, warum?"
+                  var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2];   //1. Mitarbeiter, 2. Weiterbildung
+                  fetch(url, {method: 'DELETE', headers: {'Content-Type': 'application/json'} })
+      				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme", null]);
                break;
 
 

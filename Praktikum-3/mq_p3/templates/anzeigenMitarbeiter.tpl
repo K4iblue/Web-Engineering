@@ -1,5 +1,6 @@
 <!-- Template -->
 <!-- Contentbereich -->
+
 <div class="headline">Anzeige - Mitarbeiter</div>
 <table class="overview">
 	<tr>
@@ -48,8 +49,5 @@
 <div>
     <button class="buttons" id="idBack">Zurück</button>
 </div>
-
-<div> </div>
 <!-- EOF -->
-				
 				

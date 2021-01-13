@@ -17,11 +17,13 @@ class Database_cl(object):
         self.data_q = None
         self.data_z = None
         self.data_t = None
+        self.data_tIDs = None
         self.readData_mitarbeiter()
         self.readData_weiterbildung()
         self.readData_qualifikation()
         self.readData_zertifikat()
         self.readData_teilnahme()
+        self.readData_teilnahmeIDs()
 
 
 #-----------------------------------------------------------------------------------
@@ -83,15 +85,24 @@ class Database_cl(object):
     #-------------------------------------------------------
     def create_teilnahme(self, data_t, id_w, id_m, data_new):
     #-------------------------------------------------------
-        id_t = id_w # UUID
-        if id_w not in data_t:
-            self.data_t[str(id_w)] = {} #Bei Mitarbeiter wird nur die Id in die Json eingetragen.
-            self.saveData_teilnahme()
+        id_t = str(uuid.uuid4()) # UUID
 
-        self.data_t[str(id_w)][str(id_m)] = data_new
+        self.create_teilnahmeIDs(id_t)
+        #if id_w not in data_t:
+            #self.data_t[str(id_w)] = {} #Bei Mitarbeiter wird nur die Id in die Json eingetragen.
+            #self.saveData_teilnahme()
+
+        #self.data_t[str(id_w)][str(id_m)] = data_new
+        self.data_t[str(id_t)] = data_new
         self.saveData_teilnahme()
         return str(id_t)
-     
+
+    #-------------------------------------------------------
+    def create_teilnahmeIDs(self, id_t):
+    #-------------------------------------------------------
+        dataid = {"id_t": id_t}
+        self.data_tIDs[str(id_t)] = dataid
+        self.saveData_teilnahmeIDs()
 
 #-----------------------------------------------------------------------------------
 # READ FUNKTIONEN
@@ -162,6 +173,19 @@ class Database_cl(object):
                 data_t = {}            
         return data_t
 
+    #-------------------------------------------------------
+    def read_teilnahmeIDs(self, id_tID = None):
+    #-------------------------------------------------------
+        data_tIDs = None
+        if id_tID == None:
+            data_tIDs = self.data_tIDs
+        else:
+            try:
+                data_tIDs = self.data_tIDs[id_tID]
+            except:
+                data_tIDs = {}            
+        return data_tIDs
+
 
 #-----------------------------------------------------------------------------------
 # UPDATE FUNKTIONEN
@@ -228,8 +252,12 @@ class Database_cl(object):
     #-------------------------------------------------------
     def delete_weiterbildung(self, id_w):
     #-------------------------------------------------------
+        id_q = self.data_w[id_w]['id_q']
+        id_z = self.data_w[id_w]['id_z']
         if self.data_w.pop(id_w) != None:
-           self.saveData_weiterbildung()
+            self.delete_qualifikation(id_q)
+            self.delete_zertifikat(id_z)
+            self.saveData_weiterbildung()
         return
 
     #-------------------------------------------------------
@@ -249,24 +277,24 @@ class Database_cl(object):
     #-------------------------------------------------------
     def delete_teilnahme(self, id_w, id_m):
     #-------------------------------------------------------
-        if self.data_t[id_w].pop(id_m, None) != None:
-           self.saveData_teilnahme()
+        data_t = self.read_teilnahme()
+        data_tIDs = self.read_teilnahmeIDs()
+
+        for deletewert in data_tIDs: #iteriere durch die teilnahmeid json
+            print ("Value : %s" %  deletewert)
+            if id_w in data_t[deletewert]['id_w'] and id_m in data_t[deletewert]['id_m']:   #wenn id_w und id_m in teilnahme json vorhanden sind, dann lösche den Eintrag
+                data_t.pop(deletewert, None)
+                self.saveData_teilnahme()
+                self.delete_teilnahmeIDs(deletewert)
+                return str("Weiterbildung wurde storniert!")
+        return str("Sie waren nicht angemeldet!")
+
+    #-------------------------------------------------------
+    def delete_teilnahmeIDs(self, id_t):
+    #-------------------------------------------------------
+        if self.data_tIDs.pop(id_t, None) != None:
+           self.saveData_teilnahmeIDs()
         return
-
-#-----------------------------------------------------------------------------------
-# GET_DEFAULT FUNKTIONEN
-#-----------------------------------------------------------------------------------
-
-    #-------------------------------------------------------
-    def getDefault_mitarbeiter(self): #bei Dynamischen Tabellen nicht mehr notwendig
-    #-------------------------------------------------------
-        return ['', '', '']
-
-    #-------------------------------------------------------
-    def getDefault_weiterbildung(self): #bei Dynamischen Tabellen nicht mehr notwendig
-    #-------------------------------------------------------
-        return ['', '', '', '', '', '']
-
 
 #-----------------------------------------------------------------------------------
 # READ_DATA FUNKTIONEN
@@ -339,6 +367,21 @@ class Database_cl(object):
                 self.data_t = json.load(fp_o)
         return
 
+    #-------------------------------------------------------
+    def readData_teilnahmeIDs(self):
+    #-------------------------------------------------------
+        try:
+            fp_o = codecs.open(os.path.join('data', 'teilnahmeIDs.json'), 'r', 'utf-8')
+        except:
+            self.data_tIDs = {}
+            #for loop_i in range(1,50):
+                #self.data_t[loop_i] = {}
+            self.saveData_teilnahmeIDs()
+        else:
+            with fp_o:
+                self.data_tIDs = json.load(fp_o)
+        return
+
 #-----------------------------------------------------------------------------------
 # SAVE_DATA FUNKTIONEN
 #-----------------------------------------------------------------------------------
@@ -372,5 +415,11 @@ class Database_cl(object):
     #-------------------------------------------------------
         with codecs.open(os.path.join('data', 'teilnahme.json'), 'w', 'utf-8') as fp_o:
             json.dump(self.data_t, fp_o, indent=3)
+
+    #-------------------------------------------------------
+    def saveData_teilnahmeIDs(self):
+    #-------------------------------------------------------
+        with codecs.open(os.path.join('data', 'teilnahmeIDs.json'), 'w', 'utf-8') as fp_o:
+            json.dump(self.data_tIDs, fp_o, indent=3)
 
 # EOF

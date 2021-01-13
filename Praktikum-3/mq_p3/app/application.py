@@ -179,9 +179,7 @@ class App_weiterbildung_cl(object): # WEITERBILDUNG
    #-------------------------------------------------------
    def DELETE(self, id):
    #-------------------------------------------------------
-      self.database.delete_weiterbildung(id)          # Hier wird nur die Weiterbildung gelöscht
-      self.database.delete_qualifikation(id)          # Die anderen beiden werde nicht gelöscht, weil die IDs anders sind
-      self.database.delete_zertifikat(id)
+      self.database.delete_weiterbildung(id)          # In Database werden Qualifikation und Zertifikat gelöscht.
    
    #-------------------------------------------------------
    def getList_w(self):
@@ -245,12 +243,21 @@ class App_teilnahme_cl(object): # TEILNAHME
    #-------------------------------------------------------
       status = "angemeldet"
       #data_w = self.database.read_weiterbildung()
-      data_m = self.database.read_mitarbeiter()
+      #data_m = self.database.read_mitarbeiter()
       data_t = self.database.read_teilnahme()
+      data_tIDs = self.database.read_teilnahmeIDs()
 
-      data_new = data_m[id_m]
-      if status not in data_new:	#entfernt doppelte Statuseinträge
-         data_new["status"] = status
+      for suche in data_tIDs: #iteriere durch die teilnahmeid json
+         print ("Value : %s" %  suche)
+         if id_w in data_t[suche]['id_w'] and id_m in data_t[suche]['id_m']:   #wenn id_w und id_m schon in teilnahme json vorhanden sind, dann beende Programm mit Meldung
+            print ("ERROR")
+            return str("Sie sind schon an dieser Weiterbildung angemeldet!")
+      
+      data_new = {
+         'id_w':id_w,
+         'id_m':id_m,
+         'status':status
+      }
 
       id = self.database.create_teilnahme(data_t, id_w, id_m, data_new)
       status = ""
@@ -270,8 +277,10 @@ class App_teilnahme_cl(object): # TEILNAHME
    #-------------------------------------------------------
    def DELETE(self, id_w, id_m):
    #-------------------------------------------------------
-      self.database.delete_teilnahme(id_w, id_m)
+      ausgabe = self.database.delete_teilnahme(id_w, id_m)
 
+      return (ausgabe)
+      
    #-------------------------------------------------------
    def getList_w(self):
    #-------------------------------------------------------

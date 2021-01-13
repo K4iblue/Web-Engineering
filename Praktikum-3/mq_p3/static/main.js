@@ -635,7 +635,6 @@ class Application_cl {
                case "addteilnahme":
                   //var input_action = document.getElementById("action"); //wenn man bei url und publish_px die input_action übergibt, wo eigentlich "teilnahme" drin steht, gibt es den Error "action is null, warum?"
                   var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2];   // 1. Weiterbildung, 2. Mitarbeiter
-                  alert("Anmeldung erfolgreich");
                   fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'} })
       				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme_mitarbeiter", null]);
                break;
@@ -644,7 +643,6 @@ class Application_cl {
                case "deleteteilnahme":
                   //var input_action = document.getElementById("action"); //wenn man bei url und publish_px die input_action übergibt, wo eigentlich "teilnahme" drin steht, gibt es den Error "action is null, warum?"
                   var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2];   // 1. Weiterbildung, 2. Mitarbeiter
-                  alert("Stornierung erfolgreich");
                   fetch(url, {method: 'DELETE', headers: {'Content-Type': 'application/json'} })
       				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme_mitarbeiter", null]);
                break;

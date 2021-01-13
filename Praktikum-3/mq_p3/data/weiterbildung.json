@@ -1,0 +1,13 @@
+{
+   "6a921b35-195b-405e-9db6-5115bc48e630": {
+      "id_w": "6a921b35-195b-405e-9db6-5115bc48e630",
+      "bezeichnung_w": "Weiterbildung (Geplant)",
+      "von_w": "2021-01-14",
+      "bis_w": "2021-02-17",
+      "beschreibung_w": "Beschreibung 1",
+      "maxteilnehmer_w": "10",
+      "minteilnehmer_w": "2",
+      "id_q": "0a68af60-3f9e-43df-b3d5-58f5c1e3da71",
+      "id_z": "b5d9804c-bf4d-4120-8c1b-2bc05f865d7a"
+   }
+}

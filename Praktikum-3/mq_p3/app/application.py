@@ -427,11 +427,13 @@ class App_auswertung_zertifikat_cl(object): # AUSWERTUNG ZERTIFIKATE
    #-------------------------------------------------------
    def getDetail_z(self, id_spl):
    #-------------------------------------------------------
+      self.database.readData_mitarbeiter()
       self.database.readData_zertifikat()
       self.database.readData_teilnahme()
-      data_z = self.database.read_zertifikat()
+      data_m = self.database.read_mitarbeiter()
+      data_z = self.database.read_zertifikat(id_spl)
       data_t = self.database.read_teilnahme()
 
-      return self.view_o.createDetail_z(data_z, data_t)
+      return self.view_o.createDetail_z(data_m, data_z, data_t)
 
 # EOF

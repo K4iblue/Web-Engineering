@@ -1,0 +1,16 @@
+{
+   "20fdc74e-9a19-4fb6-8000-4608fe08ecb2": {
+      "id_m": "20fdc74e-9a19-4fb6-8000-4608fe08ecb2",
+      "name": "Klaps",
+      "vorname": "Kai",
+      "akagrad": "Abitur",
+      "taetigkeit": "Student"
+   },
+   "725a9356-3454-4071-b5e5-8d5f0cba6d1a": {
+      "id_m": "725a9356-3454-4071-b5e5-8d5f0cba6d1a",
+      "name": "Test Mitarbeiter",
+      "vorname": "Test Mitarbeiter",
+      "akagrad": "Test Grad",
+      "taetigkeit": "Test Arbeit"
+   }
+}

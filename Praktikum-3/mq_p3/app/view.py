@@ -1,5 +1,5 @@
 # coding: utf-8
-
+from .database import Database_cl
 import json
 
 #----------------------------------------------------------
@@ -9,7 +9,7 @@ class View_cl(object):
    #-------------------------------------------------------
    def __init__(self):
    #-------------------------------------------------------
-      pass
+      self.database = Database_cl()
 
 #-----------------------------------------------------------------------------------
 # MITARBEITER FUNKTIONEN
@@ -91,18 +91,15 @@ class View_cl(object):
       return json.dumps(data_z)
 
    #-------------------------------------------------------
-   def createDetail_z(self, data_z, data_t):
+   def createDetail_z(self, data_m, data_z, data_t):
    #-------------------------------------------------------
-      #if id_w aus data z == id aus data_t => data aus data_t in datas packen
-      datas_z = []
+      status = "erfolgreich"        # Status nach dem wir die Mitarbeiter sortieren, sollte wenn Teilnahme Weiterbildung fertig ist "Erfolgreich" sein
+      datas_z = []                  # Hier schreiben wir alle Daten rein, die wir dann im Template benutzen
 
-      for item in data_z.items():
-         print(item) 
-      #   if data_z[i]['id_w'] == data_t[i][id]:
-      #      datas_z.append(data_t[i])
-
-      #print(datas_z)
-      #datas_z = {**data_w, **data_q, **data_z}  # Hier werden alle Daten zu einem Dictionary zusammengefügt
+      for item in data_t:                                         # Durch alle Teilnahmen iterieren
+         if status in data_t[item]['status']:                     # Kontrolle ob Status "Erfolgreich" ist
+            id_m = data_t[item]['id_m']                           # Mitarbeiter ID auslesen
+            datas_z.append(self.database.read_mitarbeiter(id_m))  # Mitarbeiterdaten anhand ID auslesen und zu einer Liste zusammenfügen
 
       return json.dumps(datas_z)
 

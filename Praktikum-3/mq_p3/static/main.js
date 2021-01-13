@@ -317,6 +317,20 @@ class ListView_cl {
          }
       }
 
+      //Auswertung Zertifikat Anzeigen
+	   else if (event_opl.target.id == "anzeigen_auswertung_zertifikat") {
+
+         let elx_o = document.querySelector(".clSelected");
+         if (elx_o == null) {
+
+            alert("Bitte zuerst einen Eintrag auswählen!");
+         }else {
+
+            console.log("anzeigen_auswertung_zertifikat");
+            APPUTIL.es_o.publish_px("app.cmd", ["anzeigen_auswertung_zertifikat", elx_o.id] );
+         }
+      }
+
       //Teilnahme Mitarbeiter Anzeigen
 	   else if (event_opl.target.id == "anzeigen_teilnahme_mitarbeiter") {
 
@@ -483,6 +497,9 @@ class Application_cl {
       this.AnzeigenView_auswertung_weiterbildung_o = new AnzeigenView_cl("main", "auswertungWeiterbildunganzeigen.tpl", "weiterbildung");
 
       // Auswertung: Zertifikate
+      this.listView_auswertung_zertifikat_o = new ListView_cl("main", "auswertungZertifikat.tpl", "auswertung");
+      this.AnzeigenView_auswertung_zertifikat_o = new AnzeigenView_cl("main", "auswertungZertifikatanzeigen.tpl", "mitarbeiter");
+      
    }
    
    notify_px (self, message_spl, data_opl) {
@@ -508,7 +525,7 @@ class Application_cl {
                ["teilnahme_weiterbildung", "Teilnahme: Weiterbildung"],
                ["auswertung_mitarbeiter", "Auswertung: Mitarbeiter"],
                ["auswertung_weiterbildung", "Auswertung: Weiterbildung"],
-               ["auswertung_zertifikate", "Auswertung: Zertifikate"]
+               ["auswertung_zertifikat", "Auswertung: Zertifikat"]
             ];
             self.sideBar_o.render_px(nav_a);
             markup_s = APPUTIL.tm_o.execute_px("startseite.tpl", null);
@@ -613,6 +630,13 @@ class Application_cl {
                break;
 
                // Auswertung: Zertifikate
+               case "auswertung_zertifikat":
+                  this.listView_auswertung_zertifikat_o.render_px(data_opl[1]);
+               break;
+
+               case "anzeigen_auswertung_zertifikat":
+                  this.AnzeigenView_auswertung_zertifikat_o.render_px(data_opl[1]);
+               break;
 
                // Sonstige
                case "idBack":

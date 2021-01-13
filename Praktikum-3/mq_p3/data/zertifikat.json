@@ -1,9 +1,9 @@
 {
    "62c524dd-d208-4477-bd05-82cbdba9c279": {
       "id_w": "72afb0f5-e611-418a-9b29-c6922586446b",
-      "bezeichnung_z": "Weiterbildung 1 laufend",
-      "beschreibung_z": "Weiterbildung 1 laufend",
-      "berechtigtzu_z": "Weiterbildung 1 laufend"
+      "bezeichnung_z": "Weiterbildung 10",
+      "beschreibung_z": "Weiterbildung 10",
+      "berechtigtzu_z": "Weiterbildung 10"
    },
    "3f8aae37-831d-4ab3-a477-f46c5615257e": {
       "id_w": "30acd8bf-25cf-45c0-8ec9-9ee8b22b3bec",
@@ -30,5 +30,19 @@
       "beschreibung_z": "Zertifikat 1.1",
       "berechtigtzu_z": "Zertifikat 1.1",
       "id_z": "5340ec32-65db-407e-be05-dfe08be92c8a"
+   },
+   "f166e94b-9699-4c95-9a41-e249499554ca": {
+      "id_w": "8435ad71-fed6-400b-8494-483c5d26fe99",
+      "bezeichnung_z": "",
+      "beschreibung_z": "",
+      "berechtigtzu_z": "",
+      "id_z": "f166e94b-9699-4c95-9a41-e249499554ca"
+   },
+   "345d4390-812a-41fc-945f-940b4138caf0": {
+      "id_w": "9e7ccff9-186a-4d03-8403-d61ad5bfd58b",
+      "bezeichnung_z": "",
+      "beschreibung_z": "",
+      "berechtigtzu_z": "",
+      "id_z": "345d4390-812a-41fc-945f-940b4138caf0"
    }
 }

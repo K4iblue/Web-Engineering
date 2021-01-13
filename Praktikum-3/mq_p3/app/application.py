@@ -231,14 +231,18 @@ class App_teilnahme_cl(object): # TEILNAHME
          retVal_s = self.getList_w()
       else:
          # Anforderung eines Details
-         retVal_s = self.getDetail_t(id)
+         data_m = self.database.read_mitarbeiter()
+
+         if id in data_m:
+            retVal_s = self.getDetail_mt(id)
+         else:
+            retVal_s = self.getDetail_wt(id)
 
       return retVal_s
    
    #-------------------------------------------------------
    def POST(self, id_w, id_m):
    #-------------------------------------------------------
-      
       status = "angemeldet"
       #data_w = self.database.read_weiterbildung()
       data_m = self.database.read_mitarbeiter()
@@ -256,7 +260,6 @@ class App_teilnahme_cl(object): # TEILNAHME
    #-------------------------------------------------------
    def PUT(self, id_m, id_w):
    #-------------------------------------------------------
-      
       data_m = self.database.read_mitarbeiter(id_m)
       data_w = self.database.read_weiterbildung(id_w)
 
@@ -267,11 +270,6 @@ class App_teilnahme_cl(object): # TEILNAHME
    #-------------------------------------------------------
    def DELETE(self, id_w, id_m):
    #-------------------------------------------------------
-
-      #data_m = self.database.read_mitarbeiter(id_m)
-      #data_w = self.database.read_weiterbildung(id_w)
-      #data_t = self.database.read_teilnahme()
-
       self.database.delete_teilnahme(id_w, id_m)
 
    #-------------------------------------------------------
@@ -287,13 +285,25 @@ class App_teilnahme_cl(object): # TEILNAHME
       return self.view_o.createList_w(data_w, data_q, data_z)
    
    #-------------------------------------------------------
-   def getDetail_t(self, id_spl):
+   def getDetail_mt(self, id_spl):
    #-------------------------------------------------------
       self.database.readData_mitarbeiter()
       self.database.readData_weiterbildung()
       self.database.readData_teilnahme()
       data_m = self.database.read_mitarbeiter(id_spl)
       data_w = self.database.read_weiterbildung()
+      data_t = self.database.read_teilnahme()
+
+      return self.view_o.createDetail_t(data_m, data_w, data_t)
+
+   #-------------------------------------------------------
+   def getDetail_wt(self, id_spl):
+   #-------------------------------------------------------
+      self.database.readData_mitarbeiter()
+      self.database.readData_weiterbildung()
+      self.database.readData_teilnahme()
+      data_m = self.database.read_mitarbeiter()
+      data_w = self.database.read_weiterbildung(id_spl)
       data_t = self.database.read_teilnahme()
 
       return self.view_o.createDetail_t(data_m, data_w, data_t)
@@ -330,8 +340,14 @@ class App_auswertung_cl(object): # AUSWERTUNG
    #-------------------------------------------------------
       self.database.readData_mitarbeiter()
       self.database.readData_weiterbildung()
+      #self.database.readData_zertifikat()
+      #self.database.readData_qualifikation()            # Brauchen wir eigentlich nicht
+      #self.database.readData_teilnahme()                # Brauchen wir HIER eigentlich nicht
       data_m = self.database.read_mitarbeiter()
       data_w = self.database.read_weiterbildung()
+      #data_z = self.database.read_zertifikat()
+      #data_q = self.database.read_qualifikation()       # Brauchen wir eigentlich nicht
+      #data_t = self.database.read_teilnahme()           # Brauchen wir HIER eigentlich nicht
 
       # Mitarbeiter sortieren
       sorted_data_m = sorted(data_m.items(), key=lambda x: x[1]['name'], reverse = False) #Alphabetisch sortiert
@@ -340,6 +356,12 @@ class App_auswertung_cl(object): # AUSWERTUNG
       # Weiterbildungen sortieren
       sorted_data_w = sorted(data_w.items(), key=lambda x: x[1]['bezeichnung_w'], reverse = False) #Alphabetisch sortiert
       ordered_dict_w = OrderedDict(sorted_data_w)
+
+      # Zertifikate sortieren
+      #sorted_data_z = sorted(data_z.items(), key=lambda x: x[1]['bezeichnung_z'], reverse = False) #Alphabetisch sortiert
+      #ordered_dict_z = OrderedDict(sorted_data_z)
+
+      #ordered_dict_z = {}
 
       return self.view_o.createList_a(ordered_dict_m, ordered_dict_w)
    

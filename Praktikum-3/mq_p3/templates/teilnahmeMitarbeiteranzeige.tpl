@@ -1,7 +1,7 @@
 <!-- Template -->
 <!-- Contentbereich -->
-<div class="headline">Teilnahme - Mitarbeiter - Detail</div>
 
+<div class="headline">Teilnahme - Mitarbeiter - Detail</div>
 <hr>
 
 <div class="headline_small">Mitarbeiter</div>
@@ -38,7 +38,7 @@
    	    @var loop_i;@
    	    @for loop_i in context@
       	    @entry_a = context[loop_i];@
-            @if context['id_m']@
+                @if context['id_m']@
 		        @var anfang = entry_a['von_w'];@
 		        @var ende = entry_a['bis_w'];@
 		        @if currentDate <= anfang@
@@ -72,7 +72,7 @@
    	    @var loop_i;@
    	    @for loop_i in context@
       	    @entry_a = context[loop_i];@
-
+            
 		    @var anfang = entry_a['von_w'];@
 		    @var ende = entry_a['bis_w'];@
 		    @if currentDate <= anfang@
@@ -85,6 +85,7 @@
 			        <td>#entry_a['minteilnehmer_w']#</td>
                 </tr>
             @endif@
+            
         @endfor@
     </table>
 

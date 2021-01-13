@@ -331,6 +331,20 @@ class ListView_cl {
          }
       }
 
+      //Teilnahme Weiterbildung Anzeigen
+	   else if (event_opl.target.id == "anzeigen_teilnahme_weiterbildung") {
+
+         let elx_o = document.querySelector(".clSelected");
+         if (elx_o == null) {
+
+            alert("Bitte zuerst einen Eintrag auswählen!");
+         }else {
+
+            console.log("anzeigen_teilnahme_weiterbildung");
+            APPUTIL.es_o.publish_px("app.cmd", ["anzeigen_teilnahme_weiterbildung", elx_o.id] );
+         }
+      }
+
       //Erfassen Mitarbeiter
 	   else if (event_opl.target.id == "erfassen_mitarbeiter") {
 
@@ -458,7 +472,8 @@ class Application_cl {
 
       // Teilnahme: Weiterbildung
       this.listView_teilnahme_weiterbildung_o = new ListView_cl("main", "teilnahmeWeiterbildung.tpl", "weiterbildung");
-   
+      this.AnzeigenView_teilnahme_weiterbildung_o = new AnzeigenView_cl("main", "teilnahmeWeiterbildunganzeige.tpl", "teilnahme");
+
       // Auswertung: Mitarbeiter
       this.listView_auswertung_mitarbeiter_o = new ListView_cl("main", "auswertungMitarbeiter.tpl", "auswertung");
       this.AnzeigenView_auswertung_mitarbeiter_o = new AnzeigenView_cl("main", "auswertungMitarbeiteranzeigen.tpl", "mitarbeiter");
@@ -547,7 +562,7 @@ class Application_cl {
                break;
 
                case "anzeigen_teilnahme_mitarbeiter":
-                  this.AnzeigenView_teilnahme_mitarbeiter_o.render_px(data_opl[1]);
+                  this.AnzeigenView_teilnahme_mitarbeiter_o.render_px(data_opl[1], currentDate);
                break;
 
 
@@ -556,13 +571,17 @@ class Application_cl {
                   this.listView_teilnahme_weiterbildung_o.render_px(data_opl[1], currentDate);
                break;
 
+               case "anzeigen_teilnahme_weiterbildung":
+                  this.AnzeigenView_teilnahme_weiterbildung_o.render_px(data_opl[1]);
+               break;
+
                // Add Teilnahme
                case "addteilnahme":
                   //var input_action = document.getElementById("action"); //wenn man bei url und publish_px die input_action übergibt, wo eigentlich "teilnahme" drin steht, gibt es den Error "action is null, warum?"
                   var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2];   //1. Mitarbeiter, 2. Weiterbildung
                   alert("Anmeldung erfolgreich");
                   fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'} })
-      				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme", null]);
+      				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme_mitarbeiter", null]);
                break;
 
                // Delete Teilnahme
@@ -571,7 +590,7 @@ class Application_cl {
                   var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2];   //1. Mitarbeiter, 2. Weiterbildung
                   alert("Stornierung erfolgreich");
                   fetch(url, {method: 'DELETE', headers: {'Content-Type': 'application/json'} })
-      				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme", null]);
+      				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme_mitarbeiter", null]);
                break;
 
 

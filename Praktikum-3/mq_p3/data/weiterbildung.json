@@ -1,10 +1,10 @@
 {
    "72afb0f5-e611-418a-9b29-c6922586446b": {
       "id_w": "72afb0f5-e611-418a-9b29-c6922586446b",
-      "bezeichnung_w": "Weiterbildung 1 laufend",
+      "bezeichnung_w": "Weiterbildung 10",
       "von_w": "2021-01-11",
       "bis_w": "2021-01-14",
-      "beschreibung_w": "Weiterbildung 1 laufend",
+      "beschreibung_w": "Weiterbildung 10",
       "maxteilnehmer_w": "4",
       "minteilnehmer_w": "5",
       "id_q": "10085838-a4a3-4b09-8953-c0669bf2650a",
@@ -53,5 +53,27 @@
       "minteilnehmer_w": "4",
       "id_q": "aec41fd2-093d-48ac-8849-5dd0839d0c4c",
       "id_z": "5340ec32-65db-407e-be05-dfe08be92c8a"
+   },
+   "8435ad71-fed6-400b-8494-483c5d26fe99": {
+      "id_w": "8435ad71-fed6-400b-8494-483c5d26fe99",
+      "bezeichnung_w": "d",
+      "von_w": "2021-01-15",
+      "bis_w": "2021-01-23",
+      "beschreibung_w": "d",
+      "maxteilnehmer_w": "7",
+      "minteilnehmer_w": "8",
+      "id_q": "a72c0c00-c355-4822-ba62-be8a2076323d",
+      "id_z": "f166e94b-9699-4c95-9a41-e249499554ca"
+   },
+   "9e7ccff9-186a-4d03-8403-d61ad5bfd58b": {
+      "id_w": "9e7ccff9-186a-4d03-8403-d61ad5bfd58b",
+      "bezeichnung_w": "f",
+      "von_w": "2021-01-28",
+      "bis_w": "2021-01-24",
+      "beschreibung_w": "d",
+      "maxteilnehmer_w": "4",
+      "minteilnehmer_w": "5",
+      "id_q": "90dc3125-04f3-4325-b573-58d805653d78",
+      "id_z": "345d4390-812a-41fc-945f-940b4138caf0"
    }
 }

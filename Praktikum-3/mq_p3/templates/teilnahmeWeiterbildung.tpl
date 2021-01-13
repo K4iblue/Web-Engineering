@@ -77,6 +77,6 @@
 <input type="hidden" id="action" name="action" value="weiterbildung" />
 
 <div>
-	<button class="buttons" id="anzeigen_weiterbildung">Anzeigen</button>
+	<button class="buttons" id="anzeigen_teilnahme_weiterbildung">Anzeigen</button>
 </div>
 <!-- EOF -->

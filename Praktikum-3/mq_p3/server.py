@@ -72,8 +72,8 @@ def main():
 
    # 2. Eintrag: Method-Dispatcher für "Auswertung Zertifikate"
    cherrypy.tree.mount(
-      application.App_auswertung_zertifikate_cl(),
-      '/app/auswertungZertifikate/',
+      application.App_auswertung_zertifikat_cl(),
+      '/app/auswertungZertifikat/',
       {'/': {'request.dispatch': cherrypy.dispatch.MethodDispatcher()}}
    ) 
 

@@ -81,4 +81,29 @@ class View_cl(object):
 
       return json.dumps(datas_a)
 
+#-----------------------------------------------------------------------------------
+# AUSWERTUNG ZERTIFIKAT FUNKTIONEN
+#-----------------------------------------------------------------------------------
+
+   #-------------------------------------------------------
+   def createList_z(self, data_z):
+   #-------------------------------------------------------
+      return json.dumps(data_z)
+
+   #-------------------------------------------------------
+   def createDetail_z(self, data_z, data_t):
+   #-------------------------------------------------------
+      #if id_w aus data z == id aus data_t => data aus data_t in datas packen
+      datas_z = []
+
+      for item in data_z.items():
+         print(item) 
+      #   if data_z[i]['id_w'] == data_t[i][id]:
+      #      datas_z.append(data_t[i])
+
+      #print(datas_z)
+      #datas_z = {**data_w, **data_q, **data_z}  # Hier werden alle Daten zu einem Dictionary zusammengefügt
+
+      return json.dumps(datas_z)
+
 # EOF

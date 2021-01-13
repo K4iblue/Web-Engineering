@@ -497,8 +497,8 @@ class Application_cl {
       this.AnzeigenView_auswertung_weiterbildung_o = new AnzeigenView_cl("main", "auswertungWeiterbildunganzeigen.tpl", "weiterbildung");
 
       // Auswertung: Zertifikate
-      this.listView_auswertung_zertifikat_o = new ListView_cl("main", "auswertungZertifikat.tpl", "auswertung");
-      this.AnzeigenView_auswertung_zertifikat_o = new AnzeigenView_cl("main", "auswertungZertifikatanzeigen.tpl", "mitarbeiter");
+      this.listView_auswertung_zertifikat_o = new ListView_cl("main", "auswertungZertifikat.tpl", "auswertungZertifikat");
+      this.AnzeigenView_auswertung_zertifikat_o = new AnzeigenView_cl("main", "auswertungZertifikatanzeigen.tpl", "auswertungZertifikat");
       
    }
    

@@ -179,8 +179,8 @@ class App_weiterbildung_cl(object): # WEITERBILDUNG
    #-------------------------------------------------------
    def DELETE(self, id):
    #-------------------------------------------------------
-      self.database.delete_weiterbildung(id)
-      self.database.delete_qualifikation(id)
+      self.database.delete_weiterbildung(id)          # Hier wird nur die Weiterbildung gelöscht
+      self.database.delete_qualifikation(id)          # Die anderen beiden werde nicht gelöscht, weil die IDs anders sind
       self.database.delete_zertifikat(id)
    
    #-------------------------------------------------------
@@ -378,7 +378,7 @@ class App_auswertung_cl(object): # AUSWERTUNG
 
 
 #----------------------------------------------------------
-class App_auswertung_zertifikate_cl(object): # AUSWERTUNG ZERTIFIKATE
+class App_auswertung_zertifikat_cl(object): # AUSWERTUNG ZERTIFIKATE
 #----------------------------------------------------------
 
    exposed = True # gilt für alle Methoden
@@ -390,57 +390,39 @@ class App_auswertung_zertifikate_cl(object): # AUSWERTUNG ZERTIFIKATE
       self.view_o = View_cl()
 
    #-------------------------------------------------------
-   def GET(self, id=None, auswertung=None):
+   def GET(self, id=None, auswertungZertifikat=None):
    #-------------------------------------------------------
       retVal_s = ''
 
       if id == None:
          # Anforderung der Liste
-         retVal_s = self.getList_a()
+         retVal_s = self.getList_z()
       else:
          # Anforderung eines Details
-         retVal_s = self.getDetail_a(id)
+         retVal_s = self.getDetail_z(id)
 
       return retVal_s
 
    #-------------------------------------------------------
-   def getList_a(self):
+   def getList_z(self): # LISTE ALLER ZERTIFIKATE
    #-------------------------------------------------------
-      self.database.readData_mitarbeiter()
-      self.database.readData_weiterbildung()
       self.database.readData_zertifikat()
-      #self.database.readData_qualifikation()            # Brauchen wir eigentlich nicht
-      #self.database.readData_teilnahme()                # Brauchen wir HIER eigentlich nicht
-      data_m = self.database.read_mitarbeiter()
-      data_w = self.database.read_weiterbildung()
       data_z = self.database.read_zertifikat()
-      #data_q = self.database.read_qualifikation()       # Brauchen wir eigentlich nicht
-      #data_t = self.database.read_teilnahme()           # Brauchen wir HIER eigentlich nicht
-
-      # Mitarbeiter sortieren
-      sorted_data_m = sorted(data_m.items(), key=lambda x: x[1]['name'], reverse = False) #Alphabetisch sortiert
-      ordered_dict_m = OrderedDict(sorted_data_m)
-
-      # Weiterbildungen sortieren
-      sorted_data_w = sorted(data_w.items(), key=lambda x: x[1]['bezeichnung_w'], reverse = False) #Alphabetisch sortiert
-      ordered_dict_w = OrderedDict(sorted_data_w)
 
       # Zertifikate sortieren
-      #sorted_data_z = sorted(data_z.items(), key=lambda x: x[1]['bezeichnung_z'], reverse = False) #Alphabetisch sortiert
-      #ordered_dict_z = OrderedDict(sorted_data_z)
+      sorted_data_z = sorted(data_z.items(), key=lambda x: x[1]['bezeichnung_z'], reverse = False) #Alphabetisch sortiert
+      ordered_dict_z = OrderedDict(sorted_data_z)
 
-      #ordered_dict_z = {}
-
-      return self.view_o.createList_a(ordered_dict_m, ordered_dict_w)
+      return self.view_o.createList_z(ordered_dict_z)
    
    #-------------------------------------------------------
-   def getDetail_a(self, id_spl):
+   def getDetail_z(self, id_spl):
    #-------------------------------------------------------
-      self.database.readData_mitarbeiter()
-      self.database.readData_weiterbildung()
-      data_m = self.database.read_mitarbeiter(id_spl)
-      data_w = self.database.read_weiterbildung()
+      self.database.readData_zertifikat()
+      self.database.readData_teilnahme()
+      data_z = self.database.read_zertifikat()
+      data_t = self.database.read_teilnahme()
 
-      return self.view_o.createDetail_a(data_m, data_w)
+      return self.view_o.createDetail_z(data_z, data_t)
 
 # EOF

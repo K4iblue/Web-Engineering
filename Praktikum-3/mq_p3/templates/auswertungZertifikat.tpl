@@ -12,7 +12,7 @@
    @for loop_i in context@
       @entry_a = context[loop_i];@
       <!-- Zertifikate "rausfiltern"-->
-         @if entry_a['id_z'] != null@
+         @if (entry_a['bezeichnung_z'] != null)@
          <tr id="#entry_a['id_z']#">
 		      <td>#entry_a['bezeichnung_z']#</td>
             <td>#entry_a['beschreibung_z']#</td>

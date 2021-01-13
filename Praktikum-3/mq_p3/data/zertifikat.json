@@ -1,48 +1,14 @@
 {
-   "62c524dd-d208-4477-bd05-82cbdba9c279": {
-      "id_w": "72afb0f5-e611-418a-9b29-c6922586446b",
-      "bezeichnung_z": "Weiterbildung 10",
-      "beschreibung_z": "Weiterbildung 10",
-      "berechtigtzu_z": "Weiterbildung 10"
-   },
-   "3f8aae37-831d-4ab3-a477-f46c5615257e": {
-      "id_w": "30acd8bf-25cf-45c0-8ec9-9ee8b22b3bec",
-      "bezeichnung_z": "Weiterbildung 2 (Geplant)478",
-      "beschreibung_z": "Weiterbildung 2 (Geplant)",
-      "berechtigtzu_z": "Weiterbildung 2 (Geplant)"
-   },
-   "4977d3ad-e445-4660-8fc7-f410b1945734": {
-      "id_w": "c0df774f-526d-45b2-b2b1-357ab284016d",
-      "bezeichnung_z": "f",
-      "beschreibung_z": "r",
-      "berechtigtzu_z": "r"
-   },
-   "538d4505-fdcd-438f-b6dc-854760f6a514": {
-      "id_w": "6dc0eeb3-9696-4018-979e-e309b53585b4",
-      "bezeichnung_z": "Weiterbildung 4 (Geplant)",
-      "beschreibung_z": "Weiterbildung 4 (Geplant)",
-      "berechtigtzu_z": "Weiterbildung 4 (Geplant)",
-      "id_z": "538d4505-fdcd-438f-b6dc-854760f6a514"
-   },
-   "5340ec32-65db-407e-be05-dfe08be92c8a": {
-      "id_w": "d84e8316-6715-4f0a-a999-4496c06bcc79",
-      "bezeichnung_z": "Zertifikat 1.1",
-      "beschreibung_z": "Zertifikat 1.1",
-      "berechtigtzu_z": "Zertifikat 1.1",
-      "id_z": "5340ec32-65db-407e-be05-dfe08be92c8a"
-   },
    "f166e94b-9699-4c95-9a41-e249499554ca": {
       "id_w": "8435ad71-fed6-400b-8494-483c5d26fe99",
-      "bezeichnung_z": "",
-      "beschreibung_z": "",
-      "berechtigtzu_z": "",
-      "id_z": "f166e94b-9699-4c95-9a41-e249499554ca"
+      "bezeichnung_z": "Zertifikat 1",
+      "beschreibung_z": "Zertifikat 1",
+      "berechtigtzu_z": "Zertifikat 1"
    },
    "345d4390-812a-41fc-945f-940b4138caf0": {
       "id_w": "9e7ccff9-186a-4d03-8403-d61ad5bfd58b",
-      "bezeichnung_z": "",
-      "beschreibung_z": "",
-      "berechtigtzu_z": "",
-      "id_z": "345d4390-812a-41fc-945f-940b4138caf0"
+      "bezeichnung_z": "Zertifikat 3",
+      "beschreibung_z": "Zertifikat 3",
+      "berechtigtzu_z": "Zertifikat 3"
    }
 }

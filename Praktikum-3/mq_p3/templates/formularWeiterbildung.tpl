@@ -50,20 +50,20 @@
       
       <hr>
 
-      <div class="headline">Formular - Zertifikate</div>
+      <div class="headline">Formular - Zertifikat</div>
       <div>
          <label for="bezeichnung_z">Bezeichnung</label>
-         <input type="text" id="bezeichnung_z" name="bezeichnung_z" value="#context['bezeichnung_z']#" />
+         <input type="text" id="bezeichnung_z" name="bezeichnung_z" value="#context['bezeichnung_z']#" required />
       </div>
 
       <div>
          <label for="beschreibung_z">Beschreibung</label>
-         <input type="text" id="beschreibung_z" name="beschreibung_z" value="#context['beschreibung_z']#" />
+         <input type="text" id="beschreibung_z" name="beschreibung_z" value="#context['beschreibung_z']#" required />
       </div>
 
       <div>
          <label for="berechtigtzu_z">berechtigt zu</label>
-         <input type="text" id="berechtigtzu_z" name="berechtigtzu_z" value="#context['berechtigtzu_z']#" />
+         <input type="text" id="berechtigtzu_z" name="berechtigtzu_z" value="#context['berechtigtzu_z']#" required />
       </div>
 
       <div>

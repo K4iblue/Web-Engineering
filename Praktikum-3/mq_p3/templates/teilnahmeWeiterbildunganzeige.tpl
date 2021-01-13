@@ -38,13 +38,15 @@
     @var entry_a;@
    	@var loop_i;@
    	@for loop_i in context@
-      	@entry_a = context[loop_i];@
-		<tr id="#entry_a['id_m']#">
-			<td>#entry_a['name']#</td>
-        	<td>#entry_a['vorname']#</td>
-        	<td>#entry_a['akagrad']#</td>
-			<td>#entry_a['taetigkeit']#</td>
-        </tr>		
+          @entry_a = context[loop_i];@
+            @if entry_a['id_m'] != null@
+		        <tr id="#entry_a['id_m']#">
+		        	<td>#entry_a['name']#</td>
+                	<td>#entry_a['vorname']#</td>
+                	<td>#entry_a['akagrad']#</td>
+		        	<td>#entry_a['taetigkeit']#</td>
+                </tr>		
+            @endif@
 	@endfor@							
 </table>
 

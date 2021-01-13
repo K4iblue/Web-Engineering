@@ -39,7 +39,7 @@
 </table>
 
 <div>
-    <button class="buttons" id="idBack">Zurück</button>
+    <button class="zurück_auswertung_mitarbeiter" id="idBackAuswertungMitarbeiter">Zurück</button>
 </div>
 
 <div> </div>

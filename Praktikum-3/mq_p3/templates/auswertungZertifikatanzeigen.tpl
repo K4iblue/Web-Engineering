@@ -22,7 +22,7 @@
 
 
 <div>
-    <button class="buttons" id="idBack">Zurück</button>
+    <button class="zurück_auswertung_zertifikat" id="idBackAuswertungZertifikat">Zurück</button>
 </div>
 
 <div> </div>

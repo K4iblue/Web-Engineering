@@ -132,10 +132,19 @@ class AnzeigenView_cl {
    }
    
    configHandleEvent_p () {   //Wenn die query selectors gleich sind, funktionieren die Listener nicht...
+      
+      // Zurück Buttons: Teilnahme Mitarbeiter/ Weiterbildung anzeigen
       let el_o = document.querySelector(".anmelden");
       let el_o2 = document.querySelector(".stornieren");
-      let el_o3 = document.querySelector(".zurückmitarbeiter"); //Zurück Button Mitarbeiter
-      let el_o4 = document.querySelector(".zurückweiterbildung"); //Zurück Button Weiterbildung
+
+      // Zurück Buttons: Pflege Mitarbeiter/ Weiterbildung anzeigen
+      let el_o3 = document.querySelector(".zurückmitarbeiter");   // Pflege: Mitarbeiter Anzeigen
+      let el_o4 = document.querySelector(".zurückweiterbildung"); // Pflege: Weiterbildung Anzeigen
+
+      // Zurück Buttons: Auswertung anzeigen
+      let el_o5 = document.querySelector(".zurück_auswertung_mitarbeiter");   // Auswertung: Mitarbeiter anzeigen
+      let el_o6 = document.querySelector(".zurück_auswertung_weiterbildung"); // Auswertung: Weiterbildung anzeigen
+      let el_o7 = document.querySelector(".zurück_auswertung_zertifikat");    // Auswertung: Zertifikat anzeigen
       if (el_o != null) {
          console.log("c: this.action = " + this.action);
          el_o.addEventListener("click", this.handleEvent_p);
@@ -154,6 +163,21 @@ class AnzeigenView_cl {
       if (el_o4 != null) {
          console.log("c: this.action = " + this.action);
          el_o4.addEventListener("click", this.handleEvent_p);
+      }
+
+      if (el_o5 != null) {
+         console.log("c: this.action = " + this.action);
+         el_o5.addEventListener("click", this.handleEvent_p);
+      }
+
+      if (el_o6 != null) {
+         console.log("c: this.action = " + this.action);
+         el_o6.addEventListener("click", this.handleEvent_p);
+      }
+
+      if (el_o7 != null) {
+         console.log("c: this.action = " + this.action);
+         el_o7.addEventListener("click", this.handleEvent_p);
       }
    }
    
@@ -174,6 +198,21 @@ class AnzeigenView_cl {
 
       else if (event_opl.target.id == "idBackweiterbildung") {
          APPUTIL.es_o.publish_px("app.cmd", ["idBackweiterbildung", null]);
+         event_opl.preventDefault();
+      }
+
+      else if (event_opl.target.id == "idBackAuswertungMitarbeiter") {
+         APPUTIL.es_o.publish_px("app.cmd", ["idBackAuswertungMitarbeiter", null]);
+         event_opl.preventDefault();
+      }
+
+      else if (event_opl.target.id == "idBackAuswertungWeiterbildung") {
+         APPUTIL.es_o.publish_px("app.cmd", ["idBackAuswertungWeiterbildung", null]);
+         event_opl.preventDefault();
+      }
+
+      else if (event_opl.target.id == "idBackAuswertungZertifikat") {
+         APPUTIL.es_o.publish_px("app.cmd", ["idBackAuswertungZertifikat", null]);
          event_opl.preventDefault();
       }
 
@@ -595,7 +634,7 @@ class Application_cl {
                // Add Teilnahme
                case "addteilnahme":
                   //var input_action = document.getElementById("action"); //wenn man bei url und publish_px die input_action übergibt, wo eigentlich "teilnahme" drin steht, gibt es den Error "action is null, warum?"
-                  var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2];   //1. Mitarbeiter, 2. Weiterbildung
+                  var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2];   // 1. Weiterbildung, 2. Mitarbeiter
                   alert("Anmeldung erfolgreich");
                   fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'} })
       				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme_mitarbeiter", null]);
@@ -604,7 +643,7 @@ class Application_cl {
                // Delete Teilnahme
                case "deleteteilnahme":
                   //var input_action = document.getElementById("action"); //wenn man bei url und publish_px die input_action übergibt, wo eigentlich "teilnahme" drin steht, gibt es den Error "action is null, warum?"
-                  var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2];   //1. Mitarbeiter, 2. Weiterbildung
+                  var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2];   // 1. Weiterbildung, 2. Mitarbeiter
                   alert("Stornierung erfolgreich");
                   fetch(url, {method: 'DELETE', headers: {'Content-Type': 'application/json'} })
       				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme_mitarbeiter", null]);
@@ -655,6 +694,24 @@ class Application_cl {
       			   //var input_action = document.getElementById("action");  //Erkennt nicht Weiterbildung als action
       			   console.log("action = " + "weiterbildung");
                   APPUTIL.es_o.publish_px("app.cmd", ["weiterbildung", null]);
+               break;
+
+               case "idBackAuswertungMitarbeiter":
+      			   //var input_action = document.getElementById("action");  //Erkennt nicht Weiterbildung als action
+      			   console.log("action = " + "auswertung");
+                  APPUTIL.es_o.publish_px("app.cmd", ["auswertung_mitarbeiter", null]);
+               break;
+
+               case "idBackAuswertungWeiterbildung":
+      			   //var input_action = document.getElementById("action");  //Erkennt nicht Weiterbildung als action
+      			   console.log("action = " + "auswertung");
+                  APPUTIL.es_o.publish_px("app.cmd", ["auswertung_weiterbildung", null]);
+               break;
+
+               case "idBackAuswertungZertifikat":
+      			   //var input_action = document.getElementById("action");  //Erkennt nicht Weiterbildung als action
+      			   console.log("action = " + "auswertungZertifikat");
+                  APPUTIL.es_o.publish_px("app.cmd", ["auswertung_zertifikat", null]);
                break;
 
       		   case "idDelete":

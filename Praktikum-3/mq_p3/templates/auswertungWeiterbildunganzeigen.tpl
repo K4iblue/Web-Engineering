@@ -51,7 +51,7 @@
     </table>
 
 <div>
-    <button class="buttons" id="idBack">Zurück</button>
+    <button class="zurück_auswertung_weiterbildung" id="idBackAuswertungWeiterbildung">Zurück</button>
 </div>
 
 <div> </div>

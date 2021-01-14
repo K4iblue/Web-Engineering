@@ -2,28 +2,6 @@
 <div class="headline"> Startseite</div>
 
 <div>
-	@var entry_a;@
-	@var status_geplant = 0;@
-	@var status_laufend = 0;@
-	@var status_abgeschlossen = 0;@
-	@var loop_i;@
-	@for loop_i in context@
-	   @entry_a = context[loop_i];@
-	
-	 @var anfang = entry_a['von_w'];@
-	 @var ende = entry_a['bis_w'];@
-	 @var status;@
-	 @if anfang <= currentDate@
-		 @if ende < currentDate@
-			 @status_abgeschlossen++;@ <!-- Anzahl "abgeschlossen" erhöhen -->
-		 @else:@
-			 @status_laufend++;@ <!-- Anzahl "laufend" erhöhen -->
-		 @endif@
-
-	@if anfang > currentDate@
-		@status_geplant++;@	<!-- Anzahl "geplant" erhöhen -->
-	@endif@
-
 	<table class="overview">
 		<tr>
 			<th>Anzahl Mitarbeiter</th>

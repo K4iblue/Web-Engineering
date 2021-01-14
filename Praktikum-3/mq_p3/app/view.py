@@ -82,8 +82,8 @@ class View_cl(object):
       # Teilnehmer herausfiltern
       for item in data_t:  # Durch alle Teilnahmen iterieren
          if id_w == data_t[item]['id_w']:             # Wenn Weiterbildungs ID in Teilnahme gefunden wird
-            id_m = data_t[item]['id_m']               # Mitarbeiter ID auslesen aus der gefundenen Teilnahme
-            datas_w_anzeigen.append(data_m[id_m])     # Mitarbeiter Daten in die Liste eintragen
+            id_m = data_t[item]['id_m']                  # Mitarbeiter ID auslesen aus der gefundenen Teilnahme
+            datas_w_anzeigen.append(data_m[id_m])        # Mitarbeiter Daten in die Liste eintragen
 
       return json.dumps(datas_w_anzeigen)
 

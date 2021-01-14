@@ -1,27 +1,12 @@
 # coding: utf-8
-
 import json
-
 import os
 import os.path
 import codecs
-
 import cherrypy
 
-# Method-Dispatching!
-
-# Übersicht Anforderungen / Methoden
-# (beachte: / relativ zu /templates, siehe Konfiguration Server!)
-
-"""
-
-Anforderung       GET          PUT          POST          DELETE
-----------------------------------------------------------------
-/                 Alle         -            -             -
-                  Templates
-                  liefern
-
-"""
+# Aus dem "Demonstrator" übernommen
+# Wird benutzt um alle Templates an den Client zu schicken
 
 #----------------------------------------------------------
 class Template_cl(object):

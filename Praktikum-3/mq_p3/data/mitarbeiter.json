@@ -61,5 +61,19 @@
       "vorname": "Mitarbeiter 4.5",
       "akagrad": "Mitarbeiter 4.5",
       "taetigkeit": "Mitarbeiter 4.5"
+   },
+   "1b0c97cd-78ee-4d4d-a667-377d6061f89c": {
+      "id_m": "1b0c97cd-78ee-4d4d-a667-377d6061f89c",
+      "name": "Klaps",
+      "vorname": "Kai",
+      "akagrad": "Abitur",
+      "taetigkeit": "Student"
+   },
+   "61be35fb-d094-41a7-8db6-b9f406005c95": {
+      "id_m": "61be35fb-d094-41a7-8db6-b9f406005c95",
+      "name": "Test 5",
+      "vorname": "Test 56",
+      "akagrad": "Test 3666",
+      "taetigkeit": "Test 466"
    }
 }

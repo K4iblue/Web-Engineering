@@ -42,5 +42,16 @@
       "minteilnehmer_w": "3",
       "id_q": "87c60c45-7874-4764-9b4c-130c46040c72",
       "id_z": "7d410888-cf15-43c0-ae9f-6277b4cdd5a9"
+   },
+   "90c42a4b-47e2-453b-97f8-6816e8e6a75b": {
+      "id_w": "90c42a4b-47e2-453b-97f8-6816e8e6a75b",
+      "bezeichnung_w": "41421",
+      "von_w": "4242-02-24",
+      "bis_w": "4444-04-04",
+      "beschreibung_w": "24214",
+      "maxteilnehmer_w": "4124",
+      "minteilnehmer_w": "12412412",
+      "id_q": "577045da-10c5-4b76-97d8-05266a34d597",
+      "id_z": "2f39789c-6f6d-467c-a7be-3c1a8919da1f"
    }
 }

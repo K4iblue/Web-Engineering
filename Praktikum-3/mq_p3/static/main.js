@@ -634,10 +634,13 @@ class Application_cl {
                ["auswertung_zertifikat", "Auswertung: Zertifikat"]
             ];
             self.sideBar_o.render_px(nav_a);
-            self.startseite_o.render_px(data_opl[1]);
+            //self.AnzeigenView_startseite_o.render_px(data_opl[1]);
             
             // Startseite laden, beim ersten Seitenaufruf
-            markup_s = APPUTIL.tm_o.execute_px("startseite.tpl", null);
+            var url = "/app/" + 'startseite';
+            fetch(url, {method: 'GET', headers: {'Content-Type': 'application/json'} })
+            APPUTIL.es_o.publish_px("app.cmd", ["home", null]);
+            //markup_s = APPUTIL.tm_o.execute_px("startseite.tpl", null);
             el_o = document.querySelector("main");
                if (el_o != null) {
                   el_o.innerHTML = markup_s;

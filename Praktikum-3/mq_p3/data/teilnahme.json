@@ -1,52 +1,17 @@
 {
-   "421162a1-1ae0-4379-9f71-3c23efd37291": {
-      "id_w": "9839b9c8-c278-4848-b43f-642c2b3373c4",
-      "id_m": "2af92da1-36ce-4d66-957b-f900f2934305",
+   "5fde830f-ff36-4478-98dd-c5ad4923a25d": {
+      "id_w": "07090655-84d8-4631-b742-aecfe44061da",
+      "id_m": "faae36dd-3625-4cc5-a1a8-e2d88ed4bac7",
       "status": "erfolgreich"
    },
-   "57f9e172-49a0-4685-85a2-75a1abdb7795": {
-      "id_w": "3d2b3ebb-76db-4c03-af3c-7560e2f66027",
-      "id_m": "2af92da1-36ce-4d66-957b-f900f2934305",
+   "1d96db4f-d3a6-4859-a0cf-3e12bb78d670": {
+      "id_w": "07090655-84d8-4631-b742-aecfe44061da",
+      "id_m": "52403af3-5f8e-4c73-9d91-8c9d368d718d",
+      "status": "erfolgreich"
+   },
+   "dc2545ac-8961-4cdc-9865-09e29ad6a3be": {
+      "id_w": "07090655-84d8-4631-b742-aecfe44061da",
+      "id_m": "c583a7f1-c6ce-4265-bafd-b8f5d375b4fc",
       "status": "nicht erfolgreich"
-   },
-   "e9eb0f83-c341-4809-aa44-6884009c1e3b": {
-      "id_w": "ce1e45f8-dbb2-4a41-a1b7-68a2d3164081",
-      "id_m": "7fd7c8ad-b37e-4cd5-9685-72381d345d88",
-      "status": "erfolgreich"
-   },
-   "4618797d-9616-41bb-a106-23f44a841377": {
-      "id_w": "3d2b3ebb-76db-4c03-af3c-7560e2f66027",
-      "id_m": "23e94bf0-b694-4d1e-bba7-4b34e9e4dc11",
-      "status": "angemeldet"
-   },
-   "b142fe52-4941-4997-90a1-f192f2099a2f": {
-      "id_w": "3d2b3ebb-76db-4c03-af3c-7560e2f66027",
-      "id_m": "f7936f06-e66d-4648-8c8f-990af772ff0d",
-      "status": "angemeldet"
-   },
-   "637c8e73-ce27-4a51-a7d8-9dc6732881c7": {
-      "id_w": "3d2b3ebb-76db-4c03-af3c-7560e2f66027",
-      "id_m": "1b0c97cd-78ee-4d4d-a667-377d6061f89c",
-      "status": "abgebrochen"
-   },
-   "5c28e4a6-caaf-4ac9-a4c2-6b11f525d1fb": {
-      "id_w": "ce1e45f8-dbb2-4a41-a1b7-68a2d3164081",
-      "id_m": "1b0c97cd-78ee-4d4d-a667-377d6061f89c",
-      "status": "angemeldet"
-   },
-   "a7b4b516-53aa-404f-8587-896ae5b04adc": {
-      "id_w": "9839b9c8-c278-4848-b43f-642c2b3373c4",
-      "id_m": "1b0c97cd-78ee-4d4d-a667-377d6061f89c",
-      "status": "angemeldet"
-   },
-   "c90735ae-26a6-476d-a3aa-129e86a0b873": {
-      "id_w": "90c42a4b-47e2-453b-97f8-6816e8e6a75b",
-      "id_m": "2af92da1-36ce-4d66-957b-f900f2934305",
-      "status": "angemeldet"
-   },
-   "90ce34d9-4041-4c94-a08d-964585cb2a4e": {
-      "id_w": "90c42a4b-47e2-453b-97f8-6816e8e6a75b",
-      "id_m": "1b0c97cd-78ee-4d4d-a667-377d6061f89c",
-      "status": "angemeldet"
    }
 }

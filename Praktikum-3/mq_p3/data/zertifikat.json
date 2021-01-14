@@ -1,37 +1,23 @@
 {
-   "de15131e-53e0-4189-9135-73c68ae09ab1": {
-      "id_w": "3d2b3ebb-76db-4c03-af3c-7560e2f66027",
-      "bezeichnung_z": "fdd",
-      "beschreibung_z": "f",
-      "berechtigtzu_z": "f",
-      "id_z": "de15131e-53e0-4189-9135-73c68ae09ab1"
+   "f1473217-3e2b-48fd-af08-c2b433178aca": {
+      "id_w": "795ddc2b-f4f0-4f4e-9a4d-771a9f9f5fab",
+      "bezeichnung_z": "Zertifikat 1",
+      "beschreibung_z": "Zertifikat 1",
+      "berechtigtzu_z": "Zertifikat 1",
+      "id_z": "f1473217-3e2b-48fd-af08-c2b433178aca"
    },
-   "243e22a8-4aed-47c3-86d5-bca500148283": {
-      "id_w": "9839b9c8-c278-4848-b43f-642c2b3373c4",
-      "bezeichnung_z": "1",
-      "beschreibung_z": "1",
-      "berechtigtzu_z": "1",
-      "id_z": "243e22a8-4aed-47c3-86d5-bca500148283"
+   "16f7d42e-fcd9-4475-bff3-f50af0b39d1d": {
+      "id_w": "55f89ad1-6c78-4a12-805e-b48670298e9a",
+      "bezeichnung_z": "Zertifikat 2",
+      "beschreibung_z": "Zertifikat 2",
+      "berechtigtzu_z": "Zertifikat 2",
+      "id_z": "16f7d42e-fcd9-4475-bff3-f50af0b39d1d"
    },
-   "0358b9fc-736c-4e1d-a6fa-25daeec50f17": {
-      "id_w": "ce1e45f8-dbb2-4a41-a1b7-68a2d3164081",
-      "bezeichnung_z": "2",
-      "beschreibung_z": "2",
-      "berechtigtzu_z": "2",
-      "id_z": "0358b9fc-736c-4e1d-a6fa-25daeec50f17"
-   },
-   "7d410888-cf15-43c0-ae9f-6277b4cdd5a9": {
-      "id_w": "6513a73a-47ac-43a7-b7f4-c9304bfcf853",
-      "bezeichnung_z": "3",
-      "beschreibung_z": "3",
-      "berechtigtzu_z": "3",
-      "id_z": "7d410888-cf15-43c0-ae9f-6277b4cdd5a9"
-   },
-   "2f39789c-6f6d-467c-a7be-3c1a8919da1f": {
-      "id_w": "90c42a4b-47e2-453b-97f8-6816e8e6a75b",
-      "bezeichnung_z": "414",
-      "beschreibung_z": "14142",
-      "berechtigtzu_z": "42141",
-      "id_z": "2f39789c-6f6d-467c-a7be-3c1a8919da1f"
+   "be823822-92bd-4d1b-923d-bb8809708249": {
+      "id_w": "07090655-84d8-4631-b742-aecfe44061da",
+      "bezeichnung_z": "Zertifikat 3",
+      "beschreibung_z": "Zertifikat 3",
+      "berechtigtzu_z": "Zertifikat 3",
+      "id_z": "be823822-92bd-4d1b-923d-bb8809708249"
    }
 }

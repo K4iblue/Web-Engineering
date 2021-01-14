@@ -1,68 +1,46 @@
 {
-   "3d2b3ebb-76db-4c03-af3c-7560e2f66027": {
-      "id_w": "3d2b3ebb-76db-4c03-af3c-7560e2f66027",
-      "bezeichnung_w": "ddddd",
-      "von_w": "2021-01-01",
-      "bis_w": "2021-02-09",
-      "beschreibung_w": "d",
-      "maxteilnehmer_w": "5",
-      "minteilnehmer_w": "6",
-      "id_q": "0458c87a-50f2-49da-83c9-dd25ba25a1a7",
-      "id_z": "de15131e-53e0-4189-9135-73c68ae09ab1"
-   },
-   "9839b9c8-c278-4848-b43f-642c2b3373c4": {
-      "id_w": "9839b9c8-c278-4848-b43f-642c2b3373c4",
-      "bezeichnung_w": "1",
-      "von_w": "2021-01-14",
-      "bis_w": "2021-01-23",
-      "beschreibung_w": "2",
-      "maxteilnehmer_w": "5",
-      "minteilnehmer_w": "6",
-      "id_q": "24109a86-dcde-49d4-a0bc-cd51fe4b33eb",
-      "id_z": "243e22a8-4aed-47c3-86d5-bca500148283"
-   },
-   "ce1e45f8-dbb2-4a41-a1b7-68a2d3164081": {
-      "id_w": "ce1e45f8-dbb2-4a41-a1b7-68a2d3164081",
-      "bezeichnung_w": "e",
-      "von_w": "2021-01-25",
-      "bis_w": "2021-01-28",
-      "beschreibung_w": "2",
-      "maxteilnehmer_w": "2",
-      "minteilnehmer_w": "2",
-      "id_q": "bedc0366-d58d-4671-a541-b05c02a45715",
-      "id_z": "0358b9fc-736c-4e1d-a6fa-25daeec50f17"
-   },
-   "6513a73a-47ac-43a7-b7f4-c9304bfcf853": {
-      "id_w": "6513a73a-47ac-43a7-b7f4-c9304bfcf853",
-      "bezeichnung_w": "3",
-      "von_w": "2020-12-28",
-      "bis_w": "2021-01-06",
-      "beschreibung_w": "3",
-      "maxteilnehmer_w": "3",
-      "minteilnehmer_w": "3",
-      "id_q": "87c60c45-7874-4764-9b4c-130c46040c72",
-      "id_z": "7d410888-cf15-43c0-ae9f-6277b4cdd5a9"
-   },
-   "90c42a4b-47e2-453b-97f8-6816e8e6a75b": {
-      "id_w": "90c42a4b-47e2-453b-97f8-6816e8e6a75b",
-      "bezeichnung_w": "41421",
-      "von_w": "4242-02-24",
-      "bis_w": "4444-04-04",
-      "beschreibung_w": "24214",
-      "maxteilnehmer_w": "4124",
-      "minteilnehmer_w": "12412412",
-      "id_q": "577045da-10c5-4b76-97d8-05266a34d597",
-      "id_z": "2f39789c-6f6d-467c-a7be-3c1a8919da1f"
-   },
-   "48c913a1-6a39-4a62-a5c8-fd1977125c37": {
-      "id_w": "48c913a1-6a39-4a62-a5c8-fd1977125c37",
-      "bezeichnung_w": "AAAAAAAAA",
-      "von_w": "11111-11-11",
-      "bis_w": "22222-02-22",
-      "beschreibung_w": "AAAAAAAAA",
+   "795ddc2b-f4f0-4f4e-9a4d-771a9f9f5fab": {
+      "id_w": "795ddc2b-f4f0-4f4e-9a4d-771a9f9f5fab",
+      "bezeichnung_w": "Weiterbildung 1",
+      "von_w": "2021-02-01",
+      "bis_w": "2021-02-05",
+      "beschreibung_w": "Weiterbildung 1 ",
       "maxteilnehmer_w": "10",
-      "minteilnehmer_w": "10",
-      "id_q": "1d3f0921-6288-4897-b02a-4da569a21eb6",
-      "id_z": "266f0ddf-d9ca-4b39-9e74-615fbc3ea94e"
+      "minteilnehmer_w": "5",
+      "id_q": "1bea0d02-42bb-41f8-85be-bd4c816179eb",
+      "id_z": "f1473217-3e2b-48fd-af08-c2b433178aca"
+   },
+   "55f89ad1-6c78-4a12-805e-b48670298e9a": {
+      "id_w": "55f89ad1-6c78-4a12-805e-b48670298e9a",
+      "bezeichnung_w": "Weiterbildung 2 (Laufend)",
+      "von_w": "2021-01-01",
+      "bis_w": "2021-01-20",
+      "beschreibung_w": "Weiterbildung 2",
+      "maxteilnehmer_w": "8",
+      "minteilnehmer_w": "4",
+      "id_q": "7e32b1fb-46e9-4dcd-808b-d80feb61b680",
+      "id_z": "16f7d42e-fcd9-4475-bff3-f50af0b39d1d"
+   },
+   "07090655-84d8-4631-b742-aecfe44061da": {
+      "id_w": "07090655-84d8-4631-b742-aecfe44061da",
+      "bezeichnung_w": "Weiterbildung 3 (Abgeschlossen)",
+      "von_w": "2021-01-01",
+      "bis_w": "2021-01-10",
+      "beschreibung_w": "Weiterbildung 3 (Abgeschlossen)",
+      "maxteilnehmer_w": "5",
+      "minteilnehmer_w": "1",
+      "id_q": "fa2c9e65-abfa-4570-a216-6a1dd562ec8b",
+      "id_z": "be823822-92bd-4d1b-923d-bb8809708249"
+   },
+   "f8ec5239-4d79-4aa7-b843-4c1cc91d8a79": {
+      "id_w": "f8ec5239-4d79-4aa7-b843-4c1cc91d8a79",
+      "bezeichnung_w": "Test",
+      "von_w": "2222-02-22",
+      "bis_w": "3456-02-22",
+      "beschreibung_w": "Test",
+      "maxteilnehmer_w": "10",
+      "minteilnehmer_w": "5",
+      "id_q": "23e841e3-01bf-4937-9673-1b47050e5cd0",
+      "id_z": "55336ef7-a0fb-4045-b309-ba49594eb842"
    }
 }

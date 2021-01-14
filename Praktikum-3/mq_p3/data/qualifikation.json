@@ -1,32 +1,20 @@
 {
-   "0458c87a-50f2-49da-83c9-dd25ba25a1a7": {
-      "id_w": "3d2b3ebb-76db-4c03-af3c-7560e2f66027",
-      "bezeichnung_q": "f",
-      "beschreibung_q": "f",
-      "id_q": "0458c87a-50f2-49da-83c9-dd25ba25a1a7"
+   "1bea0d02-42bb-41f8-85be-bd4c816179eb": {
+      "id_w": "795ddc2b-f4f0-4f4e-9a4d-771a9f9f5fab",
+      "bezeichnung_q": "Qualifikation 1",
+      "beschreibung_q": "Qualifikation 1",
+      "id_q": "1bea0d02-42bb-41f8-85be-bd4c816179eb"
    },
-   "24109a86-dcde-49d4-a0bc-cd51fe4b33eb": {
-      "id_w": "9839b9c8-c278-4848-b43f-642c2b3373c4",
-      "bezeichnung_q": "",
-      "beschreibung_q": "",
-      "id_q": "24109a86-dcde-49d4-a0bc-cd51fe4b33eb"
+   "7e32b1fb-46e9-4dcd-808b-d80feb61b680": {
+      "id_w": "55f89ad1-6c78-4a12-805e-b48670298e9a",
+      "bezeichnung_q": "Qualifikation 2",
+      "beschreibung_q": "Qualifikation 2",
+      "id_q": "7e32b1fb-46e9-4dcd-808b-d80feb61b680"
    },
-   "bedc0366-d58d-4671-a541-b05c02a45715": {
-      "id_w": "ce1e45f8-dbb2-4a41-a1b7-68a2d3164081",
-      "bezeichnung_q": "2",
-      "beschreibung_q": "2",
-      "id_q": "bedc0366-d58d-4671-a541-b05c02a45715"
-   },
-   "87c60c45-7874-4764-9b4c-130c46040c72": {
-      "id_w": "6513a73a-47ac-43a7-b7f4-c9304bfcf853",
-      "bezeichnung_q": "3",
-      "beschreibung_q": "3",
-      "id_q": "87c60c45-7874-4764-9b4c-130c46040c72"
-   },
-   "577045da-10c5-4b76-97d8-05266a34d597": {
-      "id_w": "90c42a4b-47e2-453b-97f8-6816e8e6a75b",
-      "bezeichnung_q": "4141",
-      "beschreibung_q": "41241",
-      "id_q": "577045da-10c5-4b76-97d8-05266a34d597"
+   "fa2c9e65-abfa-4570-a216-6a1dd562ec8b": {
+      "id_w": "07090655-84d8-4631-b742-aecfe44061da",
+      "bezeichnung_q": "Qualifikation 3",
+      "beschreibung_q": "Qualifikation 3",
+      "id_q": "fa2c9e65-abfa-4570-a216-6a1dd562ec8b"
    }
 }

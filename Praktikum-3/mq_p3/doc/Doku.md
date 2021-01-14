@@ -59,13 +59,15 @@ POST()         Daten neu erstellen
 PUT()          Daten updaten
 DELETE()       Daten löschen
 
-#### Funktionen für die Auswertung:
-Funktion       Zweck                                                                                             
--------------- -----------------------------------------------
-GET()          Daten anfordern
-POST()         Daten neu erstellen
-PUT()          Daten updaten
-DELETE()       Daten löschen
+#### Funktionen für die Auswertung (jeweils für Mitarbeiter, Weiterbildung, Zertifikat):
+Funktion                Zweck                                                                                             
+--------------          -----------------------------------------------
+GET()                   Daten anfordern
+POST()                  Daten neu erstellen
+PUT()                   Daten updaten
+DELETE()                Daten löschen
+getList_auswertung()    Anforderung der Liste aller Daten
+getDetail_auswertung()  Anforderung eines Details 
 
 ### database.py
 Die Datenbank ist ausschließlich für die Verwaltung der Daten zuständig.

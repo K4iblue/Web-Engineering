@@ -317,7 +317,7 @@ class App_teilnahme_cl(object): # TEILNAHME
 
 
 #----------------------------------------------------------
-class App_auswertung_cl(object): # AUSWERTUNG
+class App_auswertung_mitarbeiter_cl(object): # AUSWERTUNG MITARBEITER
 #----------------------------------------------------------
 
    exposed = True # gilt für alle Methoden
@@ -335,46 +335,30 @@ class App_auswertung_cl(object): # AUSWERTUNG
 
       if id == None:
          # Anforderung der Liste
-         retVal_s = self.getList_a()
+         retVal_s = self.getList_auswertung_mitarbeiter()
       else:
          # Anforderung eines Details
-         retVal_s = self.getDetail_a(id)
+         retVal_s = self.getDetail_auswertung_mitarbeiter(id)
 
       return retVal_s
 
    #-------------------------------------------------------
-   def getList_a(self):
+   def getList_auswertung_mitarbeiter(self):
    #-------------------------------------------------------
+      # Daten auslesen und in "data_m" packen
       self.database.readData_mitarbeiter()
-      self.database.readData_weiterbildung()
-      #self.database.readData_zertifikat()
-      #self.database.readData_qualifikation()            # Brauchen wir eigentlich nicht
-      #self.database.readData_teilnahme()                # Brauchen wir HIER eigentlich nicht
       data_m = self.database.read_mitarbeiter()
-      data_w = self.database.read_weiterbildung()
-      #data_z = self.database.read_zertifikat()
-      #data_q = self.database.read_qualifikation()       # Brauchen wir eigentlich nicht
-      #data_t = self.database.read_teilnahme()           # Brauchen wir HIER eigentlich nicht
 
-      # Mitarbeiter sortieren
+      # Daten nach Namen sortieren und in ein geordnetes Dict packen
       sorted_data_m = sorted(data_m.items(), key=lambda x: x[1]['name'], reverse = False) #Alphabetisch sortiert
       ordered_dict_m = OrderedDict(sorted_data_m)
 
-      # Weiterbildungen sortieren
-      sorted_data_w = sorted(data_w.items(), key=lambda x: x[1]['bezeichnung_w'], reverse = False) #Alphabetisch sortiert
-      ordered_dict_w = OrderedDict(sorted_data_w)
-
-      # Zertifikate sortieren
-      #sorted_data_z = sorted(data_z.items(), key=lambda x: x[1]['bezeichnung_z'], reverse = False) #Alphabetisch sortiert
-      #ordered_dict_z = OrderedDict(sorted_data_z)
-
-      #ordered_dict_z = {}
-
-      return self.view_o.createList_a(ordered_dict_m, ordered_dict_w)
+      return self.view_o.createList_auswertung_mitarbeiter(ordered_dict_m)
    
    #-------------------------------------------------------
-   def getDetail_a(self, id_spl):
+   def getDetail_auswertung_mitarbeiter(self, id_spl):
    #-------------------------------------------------------
+      # Daten auslesen und in die jeweilige "data_" packen
       self.database.readData_mitarbeiter()
       self.database.readData_weiterbildung()
       self.database.readData_teilnahme()
@@ -382,11 +366,11 @@ class App_auswertung_cl(object): # AUSWERTUNG
       data_w = self.database.read_weiterbildung()
       data_t = self.database.read_teilnahme()
 
-      return self.view_o.createDetail_a(data_m, data_w, data_t, id_spl)
+      return self.view_o.createDetail_auswertung_mitarbeiter(data_m, data_w, data_t, id_spl)
 
 
 #----------------------------------------------------------
-class App_auswertung_weiterbildung_cl(object): # AUSWERTUNG Weiterbildung
+class App_auswertung_weiterbildung_cl(object): # AUSWERTUNG WEITERBILDUNG
 #----------------------------------------------------------
 
    exposed = True # gilt für alle Methoden
@@ -412,24 +396,25 @@ class App_auswertung_weiterbildung_cl(object): # AUSWERTUNG Weiterbildung
       return retVal_s
 
    #-------------------------------------------------------
-   def getList_auswertung_weiterbildung(self): # LISTE ALLER Weiterbildungen
+   def getList_auswertung_weiterbildung(self):
    #-------------------------------------------------------
+      # Daten auslesen und in "data_w" packen
       self.database.readData_weiterbildung()
       data_w = self.database.read_weiterbildung()
 
-      # Nach Namen sortieren
+      # Daten nach Namen sortieren und in ein geordnetes Dict packen
       sorted_data_w = sorted(data_w.items(), key=lambda x: x[1]['bezeichnung_w'], reverse = False) #Alphabetisch sortiert
-      ordered_dict_w = OrderedDict(sorted_data_w)  # Sortierte Liste zu Dict umwandeln
+      ordered_dict_w = OrderedDict(sorted_data_w)
 
       return self.view_o.createList_auswertung_weiterbildung(ordered_dict_w)
    
    #-------------------------------------------------------
    def getDetail_auswertung_weiterbildung(self, id_spl):
    #-------------------------------------------------------
+      # Daten auslesen und in die jeweilige "data_" packen
       self.database.readData_mitarbeiter()
       self.database.readData_weiterbildung()
       self.database.readData_teilnahme()
-
       data_m = self.database.read_mitarbeiter()
       data_w = self.database.read_weiterbildung(id_spl)
       data_t = self.database.read_teilnahme()
@@ -456,38 +441,38 @@ class App_auswertung_zertifikat_cl(object): # AUSWERTUNG ZERTIFIKATE
 
       if id == None:
          # Anforderung der Liste
-         retVal_s = self.getList_z()
+         retVal_s = self.getList_auswertung_zertifikat()
       else:
          # Anforderung eines Details
-         retVal_s = self.getDetail_z(id)
+         retVal_s = self.getDetail_auswertung_zertifikat(id)
 
       return retVal_s
 
    #-------------------------------------------------------
-   def getList_z(self): # LISTE ALLER ZERTIFIKATE
+   def getList_auswertung_zertifikat(self): # LISTE ALLER ZERTIFIKATE
    #-------------------------------------------------------
+      # Daten auslesen und in "data_z" packen
       self.database.readData_zertifikat()
       data_z = self.database.read_zertifikat()
 
-      # Nach Namen sortieren
+      # Daten nach Namen sortieren und in ein geordnetes Dict packen
       sorted_data_z = sorted(data_z.items(), key=lambda x: x[1]['bezeichnung_z'], reverse = False) #Alphabetisch sortiert
       ordered_dict_z = OrderedDict(sorted_data_z)
 
-      return self.view_o.createList_z(ordered_dict_z)
+      return self.view_o.createList_auswertung_zertifikat(ordered_dict_z)
    
    #-------------------------------------------------------
-   def getDetail_z(self, id_spl):
+   def getDetail_auswertung_zertifikat(self, id_spl):
    #-------------------------------------------------------
+      # Daten auslesen und in die jeweilige "data_" packen
       self.database.readData_mitarbeiter()
       self.database.readData_weiterbildung()
       self.database.readData_zertifikat()
       self.database.readData_teilnahme()
-
-      data_m = self.database.read_mitarbeiter()    # 2x Mitarbeiter ??
-      data_w = self.database.read_mitarbeiter()    # 2x Mitarbeiter ??
+      data_m = self.database.read_mitarbeiter()
       data_z = self.database.read_zertifikat()
       data_t = self.database.read_teilnahme()
 
-      return self.view_o.createDetail_z(data_m, data_w, data_z, data_t, id_spl)
+      return self.view_o.createDetail_auswertung_zertifikat(data_m, data_z, data_t, id_spl)
 
 # EOF

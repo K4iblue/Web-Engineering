@@ -591,8 +591,8 @@ class Application_cl {
       this.AnzeigenView_teilnahme_weiterbildung_o = new AnzeigenView_cl("main", "teilnahmeWeiterbildunganzeige.tpl", "teilnahme");
 
       // Auswertung: Mitarbeiter
-      this.listView_auswertung_mitarbeiter_o = new ListView_cl("main", "auswertungMitarbeiter.tpl", "auswertung");
-      this.AnzeigenView_auswertung_mitarbeiter_o = new AnzeigenView_cl("main", "auswertungMitarbeiteranzeigen.tpl", "auswertung");
+      this.listView_auswertung_mitarbeiter_o = new ListView_cl("main", "auswertungMitarbeiter.tpl", "auswertungMitarbeiter");
+      this.AnzeigenView_auswertung_mitarbeiter_o = new AnzeigenView_cl("main", "auswertungMitarbeiteranzeigen.tpl", "auswertungMitarbeiter");
 
       // Auswertung: Weiterbildung
       this.listView_auswertung_weiterbildung_o = new ListView_cl("main", "auswertungWeiterbildung.tpl", "auswertungWeiterbildung");
@@ -778,13 +778,13 @@ class Application_cl {
 
                case "idBackAuswertungMitarbeiter":
       			   //var input_action = document.getElementById("action");  //Erkennt nicht Weiterbildung als action
-      			   console.log("action = " + "auswertung");
+      			   console.log("action = " + "auswertungMitarbeiter");
                   APPUTIL.es_o.publish_px("app.cmd", ["auswertung_mitarbeiter", null]);
                break;
 
                case "idBackAuswertungWeiterbildung":
       			   //var input_action = document.getElementById("action");  //Erkennt nicht Weiterbildung als action
-      			   console.log("action = " + "auswertung");
+      			   console.log("action = " + "auswertungWeiterbildung");
                   APPUTIL.es_o.publish_px("app.cmd", ["auswertung_weiterbildung", null]);
                break;
 

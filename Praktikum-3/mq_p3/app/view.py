@@ -64,25 +64,21 @@ class View_cl(object):
 #-----------------------------------------------------------------------------------
 
    #-------------------------------------------------------
-   def createList_a(self, data_m, data_w):
+   def createList_auswertung_mitarbeiter(self, data_m):
    #-------------------------------------------------------
-      
-      datas_a = {**data_m, **data_w}
-
-      return json.dumps(datas_a)
+      return json.dumps(data_m)
 
    #-------------------------------------------------------
-   def createDetail_a(self, data_m, data_w, data_t, id_spl):
+   def createDetail_auswertung_mitarbeiter(self, data_m, data_w, data_t, id_spl):
    #-------------------------------------------------------
-
-      id_m = data_m[id_spl]['id_m']
-      datas_am = []  # Hier schreiben wir alle Daten rein, die wir dann im Template benutzen
-      datas_am.append(data_m[id_spl])
+      id_m = data_m[id_spl]['id_m']       # Mitarbeiter ID aus data_m auslesen
+      datas_am = []                       # Hier schreiben wir alle Daten rein, die wir dann im Template benutzen
+      datas_am.append(data_m[id_spl])     # Mitarbeiterdaten in die Liste eintragen
 
       for item in data_t:  # Durch alle Teilnahmen iterieren
-         if id_m == data_t[item]['id_m']:
-            id_w = data_t[item]['id_w']
-            datas_am.append(data_w[id_w])
+         if id_m == data_t[item]['id_m']:    # Wenn Mitarbeiter ID in Teilnahme gefunden wird
+            id_w = data_t[item]['id_w']      # Weiterbildungs ID auslesen aus der gefundenen Teilnahme
+            datas_am.append(data_w[id_w])    # Weiterbildungsdaten in die Liste eintragen
 
       return json.dumps(datas_am)
 
@@ -99,39 +95,38 @@ class View_cl(object):
    def createDetail_auswertung_weiterbildung(self, data_m, data_w, data_t, id_spl):
    #-------------------------------------------------------
       status = "erfolgreich"        # Status nach dem wir die Mitarbeiter sortieren
-      datas_w = []                  # Hier schreiben wir alle Daten rein, die wir dann im Template benutzen
-      
+      datas_aw = []                 # Hier schreiben wir alle Daten rein, die wir dann im Template benutzen
       id_w = id_spl                 # Weiterbildungs ID auslesen         
-      datas_w.append(data_w)        # Weiterbildungsdaten in die Liste eintragen
+      datas_aw.append(data_w)       # Weiterbildungsdaten in die Liste eintragen
 
       for item in data_t:  # Durch alle Teilnahmen iterieren
-         if status == data_t[item]['status'] and id_w == data_t[item]['id_w']:   # Kontrolle ob Status "Erfolgreich" ist und ob Zertifikat ID in data_t (ohne das zeigt er die Mitarbeiter bei jedem Zertifikat an, obwohl man nicht in Teilnahme steht)
-            id_m = data_t[item]['id_m']   # Mitarbeiter ID auslesen         
-            datas_w.append(data_m[id_m])  # Mitarbeiterdaten anhand ID auslesen und zu einer Liste zusammenfügen
+         if status == data_t[item]['status'] and id_w == data_t[item]['id_w']:   # Kontrolle ob Status "Erfolgreich" ist und ob Zertifikat ID in data_t ist
+            id_m = data_t[item]['id_m']                                          # Mitarbeiter ID auslesen         
+            datas_aw.append(data_m[id_m])                                        # Mitarbeiterdaten anhand ID auslesen und zu einer Liste zusammenfügen
 
-      return json.dumps(datas_w)
+      return json.dumps(datas_aw)
 
 #-----------------------------------------------------------------------------------
 # AUSWERTUNG FUNKTIONEN - ZERTIFIKAT 
 #-----------------------------------------------------------------------------------
 
    #-------------------------------------------------------
-   def createList_z(self, data_z):
+   def createList_auswertung_zertifikat(self, data_z):
    #-------------------------------------------------------
       return json.dumps(data_z)
 
    #-------------------------------------------------------
-   def createDetail_z(self, data_m, data_w, data_z, data_t, id_spl):
+   def createDetail_auswertung_zertifikat(self, data_m, data_z, data_t, id_spl):
    #-------------------------------------------------------
-      status = "erfolgreich"        # Status nach dem wir die Mitarbeiter sortieren
-      datas_z = []                  # Hier schreiben wir alle Daten rein, die wir dann im Template benutzen
-      id_w = data_z[id_spl]['id_w']
+      status = "erfolgreich"           # Status nach dem wir die Mitarbeiter sortieren
+      datas_az = []                    # Hier schreiben wir alle Daten rein, die wir dann im Template benutzen
+      id_w = data_z[id_spl]['id_w']    # Weiterbildungs ID aus data_z auslesen
 
       for item in data_t:  # Durch alle Teilnahmen iterieren
-         if status == data_t[item]['status'] and id_w == data_t[item]['id_w']:   # Kontrolle ob Status "Erfolgreich" ist und ob Zertifikat ID in data_t (ohne das zeigt er die Mitarbeiter bei jedem Zertifikat an, obwohl man nicht in Teilnahme steht)
-            id_m = data_t[item]['id_m']   # Mitarbeiter ID auslesen         
-            datas_z.append(data_m[id_m])  # Mitarbeiterdaten anhand ID auslesen und zu einer Liste zusammenfügen
+         if status == data_t[item]['status'] and id_w == data_t[item]['id_w']:   # Kontrolle ob Status "Erfolgreich" ist und ob Zertifikat ID in data_t ist
+            id_m = data_t[item]['id_m']                                          # Mitarbeiter ID auslesen         
+            datas_az.append(data_m[id_m])                                        # Mitarbeiterdaten anhand ID auslesen und zu einer Liste zusammenfügen
 
-      return json.dumps(datas_z)
+      return json.dumps(datas_az)
 
 # EOF

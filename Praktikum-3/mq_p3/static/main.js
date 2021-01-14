@@ -3,7 +3,7 @@
 //------------------------------------------------------------------------------
 'use strict'
 
-// Aktuelles Datum
+// Aktuelles Datum wird für einige Templates gebraucht
 var currentDate = new Date();
 var dd = String(currentDate.getDate()).padStart(2, '0');
 var mm = String(currentDate.getMonth()+1).padStart(2, '0'); // Januar ist 0, deswegen +1
@@ -15,13 +15,13 @@ class FormView_cl {
 //------------------------------------------------------------------------------
    // Konstruktor für "Formular" Ansicht
    constructor (el_spl, template_spl, action) {
-      this.el_s = el_spl;
-      this.template_s = template_spl;
-	   this.action = action;
+      this.el_s = el_spl;  //main (Hauptfenster wo alles angezeigt wird)
+      this.template_s = template_spl;  //Template Name
+	   this.action = action;   //mitarbeiter, weiterbildung etc.
    }
 
    render_px (id_spl, typ) {
-      let path_s = "/app/" + this.action + "/" + id_spl;
+      let path_s = "/app/" + this.action + "/" + id_spl; //der Pfad wird gesetzt
 	      if(typ != ""){
 		      path_s = path_s + "/" + typ;
 	      }
@@ -29,8 +29,8 @@ class FormView_cl {
       let requester_o = new APPUTIL.Requester_cl();
       requester_o.request_px(path_s,
          function (responseText_spl) {
-            let data_o = JSON.parse(responseText_spl);
-            this.doRender_p(data_o);
+            let data_o = JSON.parse(responseText_spl);   //hole Json Daten aus view.py
+            this.doRender_p(data_o);   //übergebe die Daten an die Renderfunktion
          }.bind(this),
          function (responseText_spl) {
             alert("Form - render failed");
@@ -38,6 +38,7 @@ class FormView_cl {
       );
    }
 
+   //Tpl wird gerendert
    doRender_p (data_opl) {
       let markup_s = APPUTIL.tm_o.execute_px(this.template_s, data_opl);
       let el_o = document.querySelector(this.el_s);
@@ -47,7 +48,7 @@ class FormView_cl {
          }
    }
 
-   configHandleEvent_p () {
+   configHandleEvent_p () {   //setzte Event-Listener in form tag. Der EventListener reagiert auf den Button Speichern, Abbrechen etc., da diese innerhalb des Form Tags sind)
       let el_o = document.querySelector("form");
       if (el_o != null) {
 	      console.log("c: this.action = " + this.action);
@@ -56,26 +57,28 @@ class FormView_cl {
    }
 
    handleEvent_p (event_opl) {
-      if (event_opl.target.id == "idBack") {
+
+      if (event_opl.target.id == "idBack") { //Button Zurück
          APPUTIL.es_o.publish_px("app.cmd", ["idBack", null]);
          event_opl.preventDefault();
       }
-      else if (event_opl.target.id == "idSave") {
+
+      else if (event_opl.target.id == "idSave") {  //speichere Daten
 		   let data ={};
-         var form = document.getElementById("idForm");
-         var inputs = form[0].getElementsByTagName("input");
+         var form = document.getElementById("idForm");   //Alle Daten aus den input-Feldern werden ausgelesen
+         //var inputs = form[0].getElementsByTagName("input");
          var input_action = document.getElementById("action");
 
-            for (var i = 0; i< inputs.length; i++){
+            //for (var i = 0; i< inputs.length; i++){
 
-               data[inputs[i].name] = inputs[i].value;
-            }
+               //data[inputs[i].name] = inputs[i].value;   //
+            //}
 
-		   let json = JSON.stringify(data);
+		   //let json = JSON.stringify(data);
 		   var para = new URLSearchParams(new FormData(form));
 		   let url = "/app/" + input_action.value + "/";
 		   var type = "POST";
-		      if(form[0].value != ''){
+		      if(form[0].value != '') {  //wenn Daten schon vorher in den input-Feldern sind dann ändere Typ auf PUT (bearbeiten)
 
 			      type = "PUT";
 		      }
@@ -83,7 +86,7 @@ class FormView_cl {
 		   console.log("Save: url = " + url);
 		   console.log("Save: form[0].value = " + form[0].value);
 		 
-		   fetch(url, {method: type, body: para, header: {"Content-type": "application/x-www-form-urlencoded"}}).then(res => res.json())
+		   fetch(url, {method: type, body: para, header: {"Content-type": "application/x-www-form-urlencoded"}}).then(res => res.json()) //übergebe Daten an Application.py
 		   .then(response => console.log("Success ID = ", response, alert("speichern erfolgreich"), APPUTIL.es_o.publish_px("app.cmd", ["input_action", response])))
 		   .catch(error => console.error("Error", error));
 		 
@@ -99,13 +102,13 @@ class AnzeigenView_cl {
 //------------------------------------------------------------------------------
    // Konstruktor für "Anzeigen" Ansicht
    constructor (el_spl, template_spl, action) {
-      this.el_s = el_spl;
-      this.template_s = template_spl;
-      this.action = action;
+      this.el_s = el_spl;  //main (Hauptfenster wo alles angezeigt wird)
+      this.template_s = template_spl;  //Template Name
+      this.action = action;   //mitarbeiter, weiterbildung etc.
    }
 
    render_px (id_spl, typ) {
-      let path_s = "/app/" + this.action + "/" + id_spl;
+      let path_s = "/app/" + this.action + "/" + id_spl; //der Pfad wird gesetzt
          if(typ != ""){
             path_s = path_s + "/" + typ;
          }
@@ -113,8 +116,8 @@ class AnzeigenView_cl {
       let requester_o = new APPUTIL.Requester_cl();
       requester_o.request_px(path_s,
          function (responseText_spl) {
-            let data_o = JSON.parse(responseText_spl);
-            this.doRender_p(data_o);
+            let data_o = JSON.parse(responseText_spl);   //hole Json daten aus View.py
+            this.doRender_p(data_o);   //übergebe die Daten an die Renderfunktion
          }.bind(this),
          function (responseText_spl) {
             alert("Anzeigen - render failed");
@@ -122,6 +125,7 @@ class AnzeigenView_cl {
       );
    }
    
+   //Tpl wird gerendert
    doRender_p (data_opl) {
       let markup_s = APPUTIL.tm_o.execute_px(this.template_s, data_opl);
       let el_o = document.querySelector(this.el_s);
@@ -133,69 +137,79 @@ class AnzeigenView_cl {
    
    configHandleEvent_p () {   //Wenn die query selectors gleich sind, funktionieren die Listener nicht...
       
-      // Zurück Buttons: Teilnahme Mitarbeiter/ Weiterbildung anzeigen
+      // Anmelden/Stornieren Buttons: Teilnahme Mitarbeiter anzeigen
       let el_o = document.querySelector(".anmelden");
       let el_o2 = document.querySelector(".stornieren");
 
       // Zurück Buttons: Pflege Mitarbeiter/ Weiterbildung anzeigen
-      let el_o3 = document.querySelector(".zurückmitarbeiter");   // Pflege: Mitarbeiter Anzeigen
-      let el_o4 = document.querySelector(".zurückweiterbildung"); // Pflege: Weiterbildung Anzeigen
+      let el_o3 = document.querySelector(".zurückmitarbeiter");   // Pflege: Mitarbeiter Anzeigen Zurück
+      let el_o4 = document.querySelector(".zurückweiterbildung"); // Pflege: Weiterbildung Anzeigen Zurück
 
       // Zurück Buttons: Auswertung anzeigen
       let el_o5 = document.querySelector(".zurück_auswertung_mitarbeiter");   // Auswertung: Mitarbeiter anzeigen
       let el_o6 = document.querySelector(".zurück_auswertung_weiterbildung"); // Auswertung: Weiterbildung anzeigen
       let el_o7 = document.querySelector(".zurück_auswertung_zertifikat");    // Auswertung: Zertifikat anzeigen
 
-      // Teilnahme Weiterbildung Aktion
+      // Erfolg/Nichterfolg/Abbruch Buttons: Teilnahme Weiterbildung anzeigen
       let el_o8 = document.querySelector(".erfolg");    // Erfolg
       let el_o9 = document.querySelector(".nichterfolg");    // NichtErfolg
       let el_o10 = document.querySelector(".abbruch");    // Abbruch
 
+      //EventListener wird gesetzt
       if (el_o != null) {
          console.log("c: this.action = " + this.action);
          el_o.addEventListener("click", this.handleEvent_p);
       }
 
+      //EventListener wird gesetzt
       if (el_o2 != null) {
          console.log("c: this.action = " + this.action);
          el_o2.addEventListener("click", this.handleEvent_p);
       }
 
+      //EventListener wird gesetzt
       if (el_o3 != null) {
          console.log("c: this.action = " + this.action);
          el_o3.addEventListener("click", this.handleEvent_p);
       }
 
+      //EventListener wird gesetzt
       if (el_o4 != null) {
          console.log("c: this.action = " + this.action);
          el_o4.addEventListener("click", this.handleEvent_p);
       }
 
+      //EventListener wird gesetzt
       if (el_o5 != null) {
          console.log("c: this.action = " + this.action);
          el_o5.addEventListener("click", this.handleEvent_p);
       }
 
+      //EventListener wird gesetzt
       if (el_o6 != null) {
          console.log("c: this.action = " + this.action);
          el_o6.addEventListener("click", this.handleEvent_p);
       }
 
+      //EventListener wird gesetzt
       if (el_o7 != null) {
          console.log("c: this.action = " + this.action);
          el_o7.addEventListener("click", this.handleEvent_p);
       }
 
+      //EventListener wird gesetzt
       if (el_o8 != null) {
          console.log("c: this.action = " + this.action);
          el_o8.addEventListener("click", this.handleEvent_p);
       }
 
+      //EventListener wird gesetzt
       if (el_o9 != null) {
          console.log("c: this.action = " + this.action);
          el_o9.addEventListener("click", this.handleEvent_p);
       }
 
+      //EventListener wird gesetzt
       if (el_o10 != null) {
          console.log("c: this.action = " + this.action);
          el_o10.addEventListener("click", this.handleEvent_p);
@@ -203,7 +217,8 @@ class AnzeigenView_cl {
    }
    
    handleEvent_p (event_opl) {
-      if (event_opl.target.tagName.toUpperCase() == "TD") {
+
+      if (event_opl.target.tagName.toUpperCase() == "TD") { //falls eine Tabellenzeile ausgewählt wurde, setzte eine ID. Auf diese ID können die anderen events zugreifen, um so die ID der Tabellenzeile zu erhalten, z.b. die Mitarbeiter-ID
          let elx_o = document.querySelector(".clSelected");
             if (elx_o != null) {
                elx_o.classList.remove("clSelected");
@@ -212,96 +227,101 @@ class AnzeigenView_cl {
          event_opl.preventDefault();
       }
 
+      //Zurückbuttons
       else if (event_opl.target.id == "idBackmitarbeiter") {
          APPUTIL.es_o.publish_px("app.cmd", ["idBackmitarbeiter", null]);
          event_opl.preventDefault();
       }
 
+      //Zurückbuttons
       else if (event_opl.target.id == "idBackweiterbildung") {
          APPUTIL.es_o.publish_px("app.cmd", ["idBackweiterbildung", null]);
          event_opl.preventDefault();
       }
 
+      //Zurückbuttons
       else if (event_opl.target.id == "idBackAuswertungMitarbeiter") {
          APPUTIL.es_o.publish_px("app.cmd", ["idBackAuswertungMitarbeiter", null]);
          event_opl.preventDefault();
       }
 
+      //Zurückbuttons
       else if (event_opl.target.id == "idBackAuswertungWeiterbildung") {
          APPUTIL.es_o.publish_px("app.cmd", ["idBackAuswertungWeiterbildung", null]);
          event_opl.preventDefault();
       }
 
+      //Zurückbuttons
       else if (event_opl.target.id == "idBackAuswertungZertifikat") {
          APPUTIL.es_o.publish_px("app.cmd", ["idBackAuswertungZertifikat", null]);
          event_opl.preventDefault();
       }
 
-      //Status Erfolg
-      else if (event_opl.target.id == "erfolgTeilnahme") {
-         var elx_o = document.querySelector(".clSelected");   // Makierte Zeile
+      //Status Erfolg in Teilnahme Weiterbildung Anzeigen
+      else if (event_opl.target.id == "erfolgTeilnahme") {  //Wenn auf Erfolg geklickt wurde
+         var elx_o = document.querySelector(".clSelected");   //ID von Tabellenzeile wird abgefragt
          var weiterbildungdaten = document.getElementById("weiid").dataset.value;  //hole Weiterbildung-ID von der Tpl Datei
-         if (elx_o == null || elx_o.id == weiterbildungdaten) {
+         if (elx_o == null || elx_o.id == weiterbildungdaten) {   //Falls kein Tabelleneintrag ausgewählt wurde oder der ausgewählte Tabelleneintrag == der WeiterbildungsID ist, dann blockiere. (Man kann den Status nur für Mitarbeiter ändern, nicht für eine Weiterbildung :))
 
             alert("Bitte zuerst einen gültigen Eintrag auswählen!");
          } 
          else {
             status = "erfolgreich";
-            APPUTIL.es_o.publish_px("app.cmd", ["erfolgTeilnahme", elx_o.id, weiterbildungdaten, status]);
+            APPUTIL.es_o.publish_px("app.cmd", ["erfolgTeilnahme", elx_o.id, weiterbildungdaten, status]);  //übergebe die Mitarbeiter-ID und die WeiterbildungsID, sowie den Status
          }
       }
 
-      //Status NichtErfolg
-      else if (event_opl.target.id == "nichterfolgTeilnahme") {
-         var elx_o = document.querySelector(".clSelected");   // Makierte Zeile
+      //Status NichtErfolg in Teilnahme Weiterbildung Anzeigen
+      else if (event_opl.target.id == "nichterfolgTeilnahme") {   //Wenn auf Nichterfolg geklickt wurde
+         var elx_o = document.querySelector(".clSelected");   //ID von Tabellenzeile wird abgefragt
          var weiterbildungdaten = document.getElementById("weiid").dataset.value;  //hole Weiterbildung-ID von der Tpl Datei
-         if (elx_o == null || elx_o.id == weiterbildungdaten) {
+         if (elx_o == null || elx_o.id == weiterbildungdaten) {   //Falls kein Tabelleneintrag ausgewählt wurde oder der ausgewählte Tabelleneintrag == der WeiterbildungsID ist, dann blockiere. (Man kann den Status nur für Mitarbeiter ändern, nicht für eine Weiterbildung :))
 
             alert("Bitte zuerst einen gültigen Eintrag auswählen!");
          } 
          else {
             status = "nicht erfolgreich";
-            APPUTIL.es_o.publish_px("app.cmd", ["nichterfolgTeilnahme", elx_o.id, weiterbildungdaten, status]);
+            APPUTIL.es_o.publish_px("app.cmd", ["nichterfolgTeilnahme", elx_o.id, weiterbildungdaten, status]);   //übergebe die Mitarbeiter-ID und die WeiterbildungsID, sowie den Status
          }
       }
 
-      //Status Abbruch
-      else if (event_opl.target.id == "abbruchTeilnahme") {
-         var elx_o = document.querySelector(".clSelected");   // Makierte Zeile
+      //Status Abbruch in Teilnahme Weiterbildung Anzeigen
+      else if (event_opl.target.id == "abbruchTeilnahme") { //Wenn auf Abbrechen geklickt wurde
+         var elx_o = document.querySelector(".clSelected");   //ID von Tabellenzeile wird abgefragt
          var weiterbildungdaten = document.getElementById("weiid").dataset.value;  //hole Weiterbildung-ID von der Tpl Datei
-         if (elx_o == null || elx_o.id == weiterbildungdaten) {
+         if (elx_o == null || elx_o.id == weiterbildungdaten) {   //Falls kein Tabelleneintrag ausgewählt wurde oder der ausgewählte Tabelleneintrag == der WeiterbildungsID ist, dann blockiere. (Man kann den Status nur für Mitarbeiter ändern, nicht für eine Weiterbildung :))
 
             alert("Bitte zuerst einen gültigen Eintrag auswählen!");
          } 
          else {
             status = "abgebrochen";
-            APPUTIL.es_o.publish_px("app.cmd", ["abbruchTeilnahme", elx_o.id, weiterbildungdaten, status]);
+            APPUTIL.es_o.publish_px("app.cmd", ["abbruchTeilnahme", elx_o.id, weiterbildungdaten, status]); //übergebe die Mitarbeiter-ID und die WeiterbildungsID, sowie den Status
          }
       }
 
-      // Teilnahme anmelden
+      // Teilnahme anmelden in Teilnahme Mitarbeiter anzeigen
       else if (event_opl.target.id == "idSaveTeilnahme") {  //Wenn auf Anmelden geklickt wurde
-         var elx_o = document.querySelector(".clSelected");   // Makierte Zeile
+         var elx_o = document.querySelector(".clSelected");   //ID von Tabellenzeile wird abgefragt
          var mitarbeiterdaten = document.getElementById("mitid").dataset.value;  //hole Mitarbeiter-ID von der Tpl Datei
-         if (elx_o == null || elx_o.id == mitarbeiterdaten) {
+         if (elx_o == null || elx_o.id == mitarbeiterdaten) {  //Falls kein Tabelleneintrag ausgewählt wurde oder der ausgewählte Tabelleneintrag == der MitarbeiterID ist, dann blockiere. (Man kann sich für keinen Mitarbeiter anmelden. Nur für eine Weiterbildung :))
 
             alert("Bitte zuerst einen gültigen Eintrag auswählen!");
          } 
          else {
-            APPUTIL.es_o.publish_px("app.cmd", ["addteilnahme", elx_o.id, mitarbeiterdaten] );  //rufe addteilnahme auf und übergebe die Weiterbildungs-ID und die Mitarbeiter-ID. Funktion läuft über publish_px in evs.js. Von dort wird die notify_px in main.js aufgerufen. Dort muss ein case und eine Funktion mit "addteilnahme" existieren. Und dort wird es dann in die Application.py übergeben mit dem Befehel POST, beim Löschen dann DELETE.
+            APPUTIL.es_o.publish_px("app.cmd", ["addteilnahme", elx_o.id, mitarbeiterdaten] );  //rufe addteilnahme auf und übergebe die Weiterbildungs-ID und die Mitarbeiter-ID. Funktion läuft über publish_px in evs.js. Von dort wird die notify_px in main.js aufgerufen. Dort muss ein case und eine Funktion mit "addteilnahme" existieren. Und dort wird es dann in die Application.py übergeben mit dem Befehel POST.
          }
       }
       
-      // Teilnahme stornieren
-      else if (event_opl.target.id == "idDeleteTeilnahme") {
-         var elx_o = document.querySelector(".clSelected");   // Makierte Zeile
-         var mitarbeiterdaten = document.getElementById("mitid").dataset.value;
-         if (elx_o == null || elx_o.id == mitarbeiterdaten) {
+      // Teilnahme stornieren in Teilnahme Mitarbeiter anzeigen
+      else if (event_opl.target.id == "idDeleteTeilnahme") {   //Wenn auf Stornieren geklickt wurde
+         var elx_o = document.querySelector(".clSelected");   //ID von Tabellenzeile wird abgefragt
+         var mitarbeiterdaten = document.getElementById("mitid").dataset.value;  //hole Mitarbeiter-ID von der Tpl Datei
+         if (elx_o == null || elx_o.id == mitarbeiterdaten) {  //Falls kein Tabelleneintrag ausgewählt wurde oder der ausgewählte Tabelleneintrag == der MitarbeiterID ist, dann blockiere. (Man kann keinen Mitarbeiter stornieren. Nur eine Weiterbildung :))
 
             alert("Bitte zuerst einen gültigen Eintrag auswählen!");
          } 
          else {
-            APPUTIL.es_o.publish_px("app.cmd", ["deleteteilnahme", elx_o.id, mitarbeiterdaten] );
+            APPUTIL.es_o.publish_px("app.cmd", ["deleteteilnahme", elx_o.id, mitarbeiterdaten] );  //rufe deleteteilnahme auf und übergebe die Weiterbildungs-ID und die Mitarbeiter-ID. Funktion läuft über publish_px in evs.js. Von dort wird die notify_px in main.js aufgerufen. Dort muss ein case und eine Funktion mit "deleteteilnahme" existieren. Und dort wird es dann in die Application.py übergeben mit dem Befehel DELETE.
          }
 	   }
    }
@@ -312,17 +332,17 @@ class ListView_cl {
 //------------------------------------------------------------------------------
    // Konstruktor für "Listen" Ansicht
    constructor (el_spl, template_spl, action) {
-      this.el_s = el_spl;
-      this.template_s = template_spl;
-      this.configHandleEvent_p();
-	   this.action = action;
+      this.el_s = el_spl;  //main (Hauptfenster wo alles angezeigt wird)
+      this.template_s = template_spl;  //Template Name
+      this.configHandleEvent_p();   //ein EventListener wird erstellt, sobald man eine Seite aufruft, z.b. Pflege Weiterbildung
+	   this.action = action;   //mitarbeiter, weiterbildung etc.
 	   console.log("lv: this.action = " + this.action);
    }
 
    render_px (id) {
-      let path_s = "/app/" + this.action + "/";
+      let path_s = "/app/" + this.action + "/"; //Pfad wird übergeben
 	   console.log("render_px: id = " + id);
-	      if (id != null && id != -1){
+	      if (id != null && id != -1) { //Falls eine ID mitgeliefert wurde, aktualisere den Pfad
 		      path_s = path_s + null + "/" + id + "/";
          }
       
@@ -330,8 +350,8 @@ class ListView_cl {
       let requester_o = new APPUTIL.Requester_cl();
       requester_o.request_px(path_s,
          function (responseText_spl) {
-            let data_o = JSON.parse(responseText_spl);
-            this.doRender_p(data_o);
+            let data_o = JSON.parse(responseText_spl);   //hole Json Daten aus View.py
+            this.doRender_p(data_o);   //übergebe die Daten an die Renderfunktion
          }.bind(this),
          function (responseText_spl) {
             alert("List - render failed ");
@@ -339,6 +359,7 @@ class ListView_cl {
       );
    }
 
+   //Tpl wird gerendert
    doRender_p (data_opl) {
       let markup_s = APPUTIL.tm_o.execute_px(this.template_s, data_opl);
       let el_o = document.querySelector(this.el_s);
@@ -347,14 +368,15 @@ class ListView_cl {
          }
    }
 
-   configHandleEvent_p () {
+   configHandleEvent_p () {   //bei einem Klick auf etwas, wird die handleEvent Methode aufgerufen. Dort werden verschiedene IDs abgefragt, z.b. von Buttons etc.
       let el_o = document.querySelector(this.el_s);
       if (el_o != null) {
          el_o.addEventListener("click", this.handleEvent_p);
       }
    }
 
-   handleEvent_p (event_opl) {
+   handleEvent_p (event_opl) {   //falls eine Tabellenzeile ausgewählt wurde, setzte eine ID. Auf diese ID können die anderen events zugreifen, um so die ID der Tabellenzeile zu erhalten, z.b. die Mitarbeiter-ID
+
       if (event_opl.target.tagName.toUpperCase() == "TD") {
          let elx_o = document.querySelector(".clSelected");
             if (elx_o != null) {
@@ -364,168 +386,168 @@ class ListView_cl {
          event_opl.preventDefault();
       }
 
-      //Löschen
-	   else if (event_opl.target.id == "idDelete") {
-         let elx_o = document.querySelector(".clSelected");
-            if (elx_o == null) {
+      //Löschen eines ausgewählten Eintrags
+	   else if (event_opl.target.id == "idDelete") {   //wenn Button Entfernen gedrückt wurde
+         let elx_o = document.querySelector(".clSelected"); //ID von Tabellenzeile wird abgefragt
+            if (elx_o == null) { //Falls kein Tabelleneintrag ausgewählt wurde
 
                alert("Bitte zuerst einen Eintrag auswählen!");
             } 
             else {
 
-               APPUTIL.es_o.publish_px("app.cmd", ["idDelete", elx_o.id] );
+               APPUTIL.es_o.publish_px("app.cmd", ["idDelete", elx_o.id] );   //Tag idDelete und die ausgewählte Zeilen-ID wird übergeben. Weiter unten wird das Tag abgefragt und dann an Application.py übergeben.
             }
       }
 
-      //Anzeigen Mitarbeiter
-	   else if (event_opl.target.id == "anzeigen_mitarbeiter") {
+      //Anzeigen Mitarbeiter in Plege Mitarbeiter
+	   else if (event_opl.target.id == "anzeigen_mitarbeiter") {   //wenn Button Anzeigen gedrückt wurde
 
-         let elx_o = document.querySelector(".clSelected");
-         if (elx_o == null) {
+         let elx_o = document.querySelector(".clSelected"); //ID von Tabellenzeile wird abgefragt
+         if (elx_o == null) { //Falls kein Tabelleneintrag ausgewählt wurde
 
-            alert("Bitte zuerst einen Eintrag auswählen!");
+            alert("Bitte zuerst einen Eintrag auswählen!"); //Falls kein Tabelleneintrag ausgewählt wurde
          }else {
 
             console.log("anzeigen_mitarbeiter");
-            APPUTIL.es_o.publish_px("app.cmd", ["anzeigen_mitarbeiter", elx_o.id] );
+            APPUTIL.es_o.publish_px("app.cmd", ["anzeigen_mitarbeiter", elx_o.id] );   //Tag anzeigen_mitarbeiter und die ausgewählte Zeilen-ID wird übergeben. Weiter unten wird das Tag abgefragt und dann an Application.py übergeben.
          }
       }
 
       //Auswertung Mitarbeiter Anzeigen
-	   else if (event_opl.target.id == "anzeigen_auswertung_mitarbeiter") {
+	   else if (event_opl.target.id == "anzeigen_auswertung_mitarbeiter") { //wenn Button Anzeigen gedrückt wurde
 
-         let elx_o = document.querySelector(".clSelected");
-         if (elx_o == null) {
+         let elx_o = document.querySelector(".clSelected"); //ID von Tabellenzeile wird abgefragt
+         if (elx_o == null) { //Falls kein Tabelleneintrag ausgewählt wurde
 
             alert("Bitte zuerst einen Eintrag auswählen!");
          }else {
 
             console.log("anzeigen_auswertung_mitarbeiter");
-            APPUTIL.es_o.publish_px("app.cmd", ["anzeigen_auswertung_mitarbeiter", elx_o.id] );
+            APPUTIL.es_o.publish_px("app.cmd", ["anzeigen_auswertung_mitarbeiter", elx_o.id] ); //Tag anzeigen_auswertung_mitarbeiter und die ausgewählte Zeilen-ID wird übergeben. Weiter unten wird das Tag abgefragt und dann an Application.py übergeben.
          }
       }
 
       //Auswertung Weiterbildung Anzeigen
-	   else if (event_opl.target.id == "anzeigen_auswertung_weiterbildung") {
+	   else if (event_opl.target.id == "anzeigen_auswertung_weiterbildung") {  //wenn Button Anzeigen gedrückt wurde
 
-         let elx_o = document.querySelector(".clSelected");
-         if (elx_o == null) {
+         let elx_o = document.querySelector(".clSelected"); //ID von Tabellenzeile wird abgefragt
+         if (elx_o == null) { //Falls kein Tabelleneintrag ausgewählt wurde
 
             alert("Bitte zuerst einen Eintrag auswählen!");
          }else {
 
             console.log("anzeigen_auswertung_weiterbildung");
-            APPUTIL.es_o.publish_px("app.cmd", ["anzeigen_auswertung_weiterbildung", elx_o.id] );
+            APPUTIL.es_o.publish_px("app.cmd", ["anzeigen_auswertung_weiterbildung", elx_o.id] );  //Tag anzeigen_auswertung_weiterbildung und die ausgewählte Zeilen-ID wird übergeben. Weiter unten wird das Tag abgefragt und dann an Application.py übergeben.
          }
       }
 
       //Auswertung Zertifikat Anzeigen
-	   else if (event_opl.target.id == "anzeigen_auswertung_zertifikat") {
+	   else if (event_opl.target.id == "anzeigen_auswertung_zertifikat") {  //wenn Button Anzeigen gedrückt wurde
 
-         let elx_o = document.querySelector(".clSelected");
-         if (elx_o == null) {
+         let elx_o = document.querySelector(".clSelected"); //ID von Tabellenzeile wird abgefragt
+         if (elx_o == null) { //Falls kein Tabelleneintrag ausgewählt wurde
 
             alert("Bitte zuerst einen Eintrag auswählen!");
          }else {
 
             console.log("anzeigen_auswertung_zertifikat");
-            APPUTIL.es_o.publish_px("app.cmd", ["anzeigen_auswertung_zertifikat", elx_o.id] );
+            APPUTIL.es_o.publish_px("app.cmd", ["anzeigen_auswertung_zertifikat", elx_o.id] );  //Tag anzeigen_auswertung_zertifikat und die ausgewählte Zeilen-ID wird übergeben. Weiter unten wird das Tag abgefragt und dann an Application.py übergeben.
          }
       }
 
       //Teilnahme Mitarbeiter Anzeigen
-	   else if (event_opl.target.id == "anzeigen_teilnahme_mitarbeiter") {
+	   else if (event_opl.target.id == "anzeigen_teilnahme_mitarbeiter") {  //wenn Button Anzeigen gedrückt wurde
 
-         let elx_o = document.querySelector(".clSelected");
-         if (elx_o == null) {
+         let elx_o = document.querySelector(".clSelected"); //ID von Tabellenzeile wird abgefragt
+         if (elx_o == null) { //Falls kein Tabelleneintrag ausgewählt wurde
 
             alert("Bitte zuerst einen Eintrag auswählen!");
          }else {
 
             console.log("anzeigen_teilnahme_mitarbeiter");
-            APPUTIL.es_o.publish_px("app.cmd", ["anzeigen_teilnahme_mitarbeiter", elx_o.id] );
+            APPUTIL.es_o.publish_px("app.cmd", ["anzeigen_teilnahme_mitarbeiter", elx_o.id] );  //Tag anzeigen_teilnahme_mitarbeiter und die ausgewählte Zeilen-ID wird übergeben. Weiter unten wird das Tag abgefragt und dann an Application.py übergeben.
          }
       }
 
       //Teilnahme Weiterbildung Anzeigen
-	   else if (event_opl.target.id == "anzeigen_teilnahme_weiterbildung") {
+	   else if (event_opl.target.id == "anzeigen_teilnahme_weiterbildung") {   //wenn Button Anzeigen gedrückt wurde
 
-         let elx_o = document.querySelector(".clSelected");
-         if (elx_o == null) {
+         let elx_o = document.querySelector(".clSelected"); //ID von Tabellenzeile wird abgefragt
+         if (elx_o == null) { //Falls kein Tabelleneintrag ausgewählt wurde
 
             alert("Bitte zuerst einen Eintrag auswählen!");
          }else {
 
             console.log("anzeigen_teilnahme_weiterbildung");
-            APPUTIL.es_o.publish_px("app.cmd", ["anzeigen_teilnahme_weiterbildung", elx_o.id] );
+            APPUTIL.es_o.publish_px("app.cmd", ["anzeigen_teilnahme_weiterbildung", elx_o.id] );   //Tag anzeigen_teilnahme_weiterbildung und die ausgewählte Zeilen-ID wird übergeben. Weiter unten wird das Tag abgefragt und dann an Application.py übergeben.
          }
       }
 
-      //Erfassen Mitarbeiter
-	   else if (event_opl.target.id == "erfassen_mitarbeiter") {
+      //Erfassen Mitarbeiter in Pflege Weiterbildung
+	   else if (event_opl.target.id == "erfassen_mitarbeiter") {   //wenn Button Erfassen gedrückt wurde
 
 		   console.log("erfassen_mitarbeiter");
-		   APPUTIL.es_o.publish_px("app.cmd", ["form_mitarbeiter", null] );
+		   APPUTIL.es_o.publish_px("app.cmd", ["form_mitarbeiter", null] );  //Tag form_mitarbeiter wird übergeben. Weiter unten wird das Tag abgefragt und dann an Application.py übergeben.
       }
       
       //Liste anzeigen aller Mitarbeiter
 	   else if (event_opl.target.id == "mitarbeiter") {
 
-		   APPUTIL.es_o.publish_px("app.cmd", ["mitarbeiter", null] );
+		   APPUTIL.es_o.publish_px("app.cmd", ["mitarbeiter", null] ); //Tag mitarbeiter wird übergeben. Weiter unten wird das Tag abgefragt und dann an Application.py übergeben. 
       }
       
-      //Bearbeiten Mitarbeiter
-      else if (event_opl.target.id == "bearbeiten_mitarbeiter") {
+      //Bearbeiten Mitarbeiter in Pflege Mitarbeiter
+      else if (event_opl.target.id == "bearbeiten_mitarbeiter") { //wenn Button Bearbeiten gedrückt wurde
 
-         let elx_o = document.querySelector(".clSelected");
-         if (elx_o == null) {
+         let elx_o = document.querySelector(".clSelected"); //ID von Tabellenzeile wird abgefragt
+         if (elx_o == null) { //Falls kein Tabelleneintrag ausgewählt wurde
 
             alert("Bitte zuerst einen Eintrag auswählen!");
          }else {
 
             console.log("bearbeiten_mitarbeiter");
-            APPUTIL.es_o.publish_px("app.cmd", ["form_mitarbeiter", elx_o.id] );
+            APPUTIL.es_o.publish_px("app.cmd", ["form_mitarbeiter", elx_o.id] ); //Tag form_mitarbeiter wird übergeben. Weiter unten wird das Tag abgefragt und dann an Application.py übergeben.
          }
       }
 
       //Anzeigen Weiterbildung
-	   else if (event_opl.target.id == "anzeigen_weiterbildung") {
+	   else if (event_opl.target.id == "anzeigen_weiterbildung") { //wenn Button Anzeigen gedrückt wurde
 
-         let elx_o = document.querySelector(".clSelected");
-         if (elx_o == null) {
+         let elx_o = document.querySelector(".clSelected"); //ID von Tabellenzeile wird abgefragt
+         if (elx_o == null) { //Falls kein Tabelleneintrag ausgewählt wurde
 
             alert("Bitte zuerst einen Eintrag auswählen!");
          }else {
 
             console.log("anzeigen_weiterbildung");
-            APPUTIL.es_o.publish_px("app.cmd", ["anzeigen_weiterbildung", elx_o.id] );
+            APPUTIL.es_o.publish_px("app.cmd", ["anzeigen_weiterbildung", elx_o.id] ); //Tag anzeigen_weiterbildung und die ausgewählte Zeilen-ID wird übergeben. Weiter unten wird das Tag abgefragt und dann an Application.py übergeben.
          }
       }
 
-      //Erfassen Weiterbildung
-	   else if (event_opl.target.id == "erfassen_weiterbildung") {
+      //Erfassen Weiterbildung in Pflege Weiterbildung
+	   else if (event_opl.target.id == "erfassen_weiterbildung") { //wenn Button Erfassen gedrückt wurde
 
 		   console.log("erfassen_weiterbildung");
-		   APPUTIL.es_o.publish_px("app.cmd", ["form_weiterbildung", null] );
+		   APPUTIL.es_o.publish_px("app.cmd", ["form_weiterbildung", null] );   //Tag form_weiterbildung wird übergeben. Weiter unten wird das Tag abgefragt und dann an Application.py übergeben. 
       }
 
       //Liste anzeigen aller Weiterbildungen
 	   else if (event_opl.target.id == "weiterbildung") {
 
-		   APPUTIL.es_o.publish_px("app.cmd", ["weiterbildung", null] );
+		   APPUTIL.es_o.publish_px("app.cmd", ["weiterbildung", null] );  //Tag weiterbildung wird übergeben. Weiter unten wird das Tag abgefragt und dann an Application.py übergeben. 
       }
 
-      //Bearbeiten Weiterbildung
-      else if (event_opl.target.id == "bearbeiten_weiterbildung") {
+      //Bearbeiten Weiterbildung in Pflege Weiterbildung
+      else if (event_opl.target.id == "bearbeiten_weiterbildung") {  //wenn Button Bearbeiten gedrückt wurde
 
-         let elx_o = document.querySelector(".clSelected");
-         if (elx_o == null) {
+         let elx_o = document.querySelector(".clSelected"); //ID von Tabellenzeile wird abgefragt
+         if (elx_o == null) { //Falls kein Tabelleneintrag ausgewählt wurde
 
             alert("Bitte zuerst einen Eintrag auswählen!");
          }else {
 
             console.log("bearbeiten_weiterbildung");
-            APPUTIL.es_o.publish_px("app.cmd", ["form_weiterbildung", elx_o.id] );
+            APPUTIL.es_o.publish_px("app.cmd", ["form_weiterbildung", elx_o.id] );  //Tag bearbeiten_weiterbildung und die ausgewählte Zeilen-ID wird übergeben. Weiter unten wird das Tag abgefragt und dann an Application.py übergeben.
          }
       }
    }
@@ -608,6 +630,7 @@ class Application_cl {
       
    }
    
+   //wird durch evs.js aufgerufen
    notify_px (self, message_spl, data_opl) {
       switch (message_spl) {
          case "templates.failed":
@@ -634,7 +657,6 @@ class Application_cl {
                ["auswertung_zertifikat", "Auswertung: Zertifikat"]
             ];
             self.sideBar_o.render_px(nav_a);
-            //self.AnzeigenView_startseite_o.render_px(data_opl[1]);
             
             // Startseite laden, beim ersten Seitenaufruf
             var url = "/app/" + 'startseite';
@@ -815,7 +837,7 @@ class Application_cl {
    }
 }
 
-window.onload = function () {
+window.onload = function () { //Application Klasse wird geladen, dass heißt alle Templates
    APPUTIL.es_o = new APPUTIL.EventService_cl();
    var app_o = new Application_cl();
    APPUTIL.createTemplateManager_px();

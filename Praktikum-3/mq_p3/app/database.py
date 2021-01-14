@@ -218,6 +218,7 @@ class Database_cl(object):
     #-------------------------------------------------------
         if id_q in self.data_q:
             self.data_q[id_q] = data_q
+            self.data_q[id_q]['id_q'] = id_q
             self.saveData_qualifikation()
         return id_q
 
@@ -226,16 +227,20 @@ class Database_cl(object):
     #-------------------------------------------------------
         if id_z in self.data_z:
             self.data_z[id_z] = data_z
+            self.data_z[id_z]['id_z'] = id_z
             self.saveData_zertifikat()
         return id_z
 
     #-------------------------------------------------------
-    def update_teilnahme(self, id_t, data_m, data_t):
+    def update_teilnahme(self, data_t, data_tIDs, id_m, id_w, status):
     #-------------------------------------------------------
-        if id_t in self.data_t:
-            self.data_t[id_t] = data_t
-            self.saveData_teilnahme()
-        return
+        for suche in data_tIDs: #iteriere durch die teilnahmeid json
+            print ("Value : %s" %  suche)
+            if id_m in data_t[suche]['id_m'] and id_w in data_t[suche]['id_w']:   #wenn id_w und id_m in teilnahme json vorhanden sind, dann ändere den Status
+                self.data_t[suche]['status'] = status
+                self.saveData_teilnahme()
+                return str("Status wurde geändert!")
+        return str("Status wurde nicht geändert!")
 
 
 #-----------------------------------------------------------------------------------

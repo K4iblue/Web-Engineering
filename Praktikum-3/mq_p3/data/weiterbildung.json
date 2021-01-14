@@ -1,13 +1,46 @@
 {
-   "6a921b35-195b-405e-9db6-5115bc48e630": {
-      "id_w": "6a921b35-195b-405e-9db6-5115bc48e630",
-      "bezeichnung_w": "Weiterbildung (Geplant)",
+   "3d2b3ebb-76db-4c03-af3c-7560e2f66027": {
+      "id_w": "3d2b3ebb-76db-4c03-af3c-7560e2f66027",
+      "bezeichnung_w": "d",
       "von_w": "2021-01-14",
-      "bis_w": "2021-02-17",
-      "beschreibung_w": "Beschreibung 1",
-      "maxteilnehmer_w": "10",
+      "bis_w": "2021-01-15",
+      "beschreibung_w": "d",
+      "maxteilnehmer_w": "5",
+      "minteilnehmer_w": "6",
+      "id_q": "0458c87a-50f2-49da-83c9-dd25ba25a1a7",
+      "id_z": "de15131e-53e0-4189-9135-73c68ae09ab1"
+   },
+   "9839b9c8-c278-4848-b43f-642c2b3373c4": {
+      "id_w": "9839b9c8-c278-4848-b43f-642c2b3373c4",
+      "bezeichnung_w": "1",
+      "von_w": "2021-01-14",
+      "bis_w": "2021-01-23",
+      "beschreibung_w": "2",
+      "maxteilnehmer_w": "5",
+      "minteilnehmer_w": "6",
+      "id_q": "24109a86-dcde-49d4-a0bc-cd51fe4b33eb",
+      "id_z": "243e22a8-4aed-47c3-86d5-bca500148283"
+   },
+   "ce1e45f8-dbb2-4a41-a1b7-68a2d3164081": {
+      "id_w": "ce1e45f8-dbb2-4a41-a1b7-68a2d3164081",
+      "bezeichnung_w": "2",
+      "von_w": "2021-01-25",
+      "bis_w": "2021-01-28",
+      "beschreibung_w": "2",
+      "maxteilnehmer_w": "2",
       "minteilnehmer_w": "2",
-      "id_q": "0a68af60-3f9e-43df-b3d5-58f5c1e3da71",
-      "id_z": "b5d9804c-bf4d-4120-8c1b-2bc05f865d7a"
+      "id_q": "bedc0366-d58d-4671-a541-b05c02a45715",
+      "id_z": "0358b9fc-736c-4e1d-a6fa-25daeec50f17"
+   },
+   "6513a73a-47ac-43a7-b7f4-c9304bfcf853": {
+      "id_w": "6513a73a-47ac-43a7-b7f4-c9304bfcf853",
+      "bezeichnung_w": "3",
+      "von_w": "2020-12-28",
+      "bis_w": "2021-01-06",
+      "beschreibung_w": "3",
+      "maxteilnehmer_w": "3",
+      "minteilnehmer_w": "3",
+      "id_q": "87c60c45-7874-4764-9b4c-130c46040c72",
+      "id_z": "7d410888-cf15-43c0-ae9f-6277b4cdd5a9"
    }
 }

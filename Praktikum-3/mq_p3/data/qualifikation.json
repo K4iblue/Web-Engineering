@@ -1,7 +1,26 @@
 {
-   "0a68af60-3f9e-43df-b3d5-58f5c1e3da71": {
-      "id_w": "6a921b35-195b-405e-9db6-5115bc48e630",
-      "bezeichnung_q": "Qualifikation 1",
-      "beschreibung_q": "Qual. Beschreibung 1"
+   "0458c87a-50f2-49da-83c9-dd25ba25a1a7": {
+      "id_w": "3d2b3ebb-76db-4c03-af3c-7560e2f66027",
+      "bezeichnung_q": "f",
+      "beschreibung_q": "f",
+      "id_q": "0458c87a-50f2-49da-83c9-dd25ba25a1a7"
+   },
+   "24109a86-dcde-49d4-a0bc-cd51fe4b33eb": {
+      "id_w": "9839b9c8-c278-4848-b43f-642c2b3373c4",
+      "bezeichnung_q": "1",
+      "beschreibung_q": "1",
+      "id_q": "24109a86-dcde-49d4-a0bc-cd51fe4b33eb"
+   },
+   "bedc0366-d58d-4671-a541-b05c02a45715": {
+      "id_w": "ce1e45f8-dbb2-4a41-a1b7-68a2d3164081",
+      "bezeichnung_q": "2",
+      "beschreibung_q": "2",
+      "id_q": "bedc0366-d58d-4671-a541-b05c02a45715"
+   },
+   "87c60c45-7874-4764-9b4c-130c46040c72": {
+      "id_w": "6513a73a-47ac-43a7-b7f4-c9304bfcf853",
+      "bezeichnung_q": "3",
+      "beschreibung_q": "3",
+      "id_q": "87c60c45-7874-4764-9b4c-130c46040c72"
    }
 }

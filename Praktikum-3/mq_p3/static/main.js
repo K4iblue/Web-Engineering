@@ -145,6 +145,12 @@ class AnzeigenView_cl {
       let el_o5 = document.querySelector(".zurück_auswertung_mitarbeiter");   // Auswertung: Mitarbeiter anzeigen
       let el_o6 = document.querySelector(".zurück_auswertung_weiterbildung"); // Auswertung: Weiterbildung anzeigen
       let el_o7 = document.querySelector(".zurück_auswertung_zertifikat");    // Auswertung: Zertifikat anzeigen
+
+      // Teilnahme Weiterbildung Aktion
+      let el_o8 = document.querySelector(".erfolg");    // Erfolg
+      let el_o9 = document.querySelector(".nichterfolg");    // NichtErfolg
+      let el_o10 = document.querySelector(".abbruch");    // Abbruch
+
       if (el_o != null) {
          console.log("c: this.action = " + this.action);
          el_o.addEventListener("click", this.handleEvent_p);
@@ -178,6 +184,21 @@ class AnzeigenView_cl {
       if (el_o7 != null) {
          console.log("c: this.action = " + this.action);
          el_o7.addEventListener("click", this.handleEvent_p);
+      }
+
+      if (el_o8 != null) {
+         console.log("c: this.action = " + this.action);
+         el_o8.addEventListener("click", this.handleEvent_p);
+      }
+
+      if (el_o9 != null) {
+         console.log("c: this.action = " + this.action);
+         el_o9.addEventListener("click", this.handleEvent_p);
+      }
+
+      if (el_o10 != null) {
+         console.log("c: this.action = " + this.action);
+         el_o10.addEventListener("click", this.handleEvent_p);
       }
    }
    
@@ -214,6 +235,48 @@ class AnzeigenView_cl {
       else if (event_opl.target.id == "idBackAuswertungZertifikat") {
          APPUTIL.es_o.publish_px("app.cmd", ["idBackAuswertungZertifikat", null]);
          event_opl.preventDefault();
+      }
+
+      //Status Erfolg
+      else if (event_opl.target.id == "erfolgTeilnahme") {
+         var elx_o = document.querySelector(".clSelected");   // Makierte Zeile
+         var weiterbildungdaten = document.getElementById("weiid").dataset.value;  //hole Weiterbildung-ID von der Tpl Datei
+         if (elx_o == null || elx_o.id == weiterbildungdaten) {
+
+            alert("Bitte zuerst einen gültigen Eintrag auswählen!");
+         } 
+         else {
+            status = "erfolgreich";
+            APPUTIL.es_o.publish_px("app.cmd", ["erfolgTeilnahme", elx_o.id, weiterbildungdaten, status]);
+         }
+      }
+
+      //Status NichtErfolg
+      else if (event_opl.target.id == "nichterfolgTeilnahme") {
+         var elx_o = document.querySelector(".clSelected");   // Makierte Zeile
+         var weiterbildungdaten = document.getElementById("weiid").dataset.value;  //hole Weiterbildung-ID von der Tpl Datei
+         if (elx_o == null || elx_o.id == weiterbildungdaten) {
+
+            alert("Bitte zuerst einen gültigen Eintrag auswählen!");
+         } 
+         else {
+            status = "nicht erfolgreich";
+            APPUTIL.es_o.publish_px("app.cmd", ["nichterfolgTeilnahme", elx_o.id, weiterbildungdaten, status]);
+         }
+      }
+
+      //Status Abbruch
+      else if (event_opl.target.id == "abbruchTeilnahme") {
+         var elx_o = document.querySelector(".clSelected");   // Makierte Zeile
+         var weiterbildungdaten = document.getElementById("weiid").dataset.value;  //hole Weiterbildung-ID von der Tpl Datei
+         if (elx_o == null || elx_o.id == weiterbildungdaten) {
+
+            alert("Bitte zuerst einen gültigen Eintrag auswählen!");
+         } 
+         else {
+            status = "abgebrochen";
+            APPUTIL.es_o.publish_px("app.cmd", ["abbruchTeilnahme", elx_o.id, weiterbildungdaten, status]);
+         }
       }
 
       // Teilnahme anmelden
@@ -529,7 +592,7 @@ class Application_cl {
 
       // Auswertung: Mitarbeiter
       this.listView_auswertung_mitarbeiter_o = new ListView_cl("main", "auswertungMitarbeiter.tpl", "auswertung");
-      this.AnzeigenView_auswertung_mitarbeiter_o = new AnzeigenView_cl("main", "auswertungMitarbeiteranzeigen.tpl", "mitarbeiter");
+      this.AnzeigenView_auswertung_mitarbeiter_o = new AnzeigenView_cl("main", "auswertungMitarbeiteranzeigen.tpl", "auswertung");
 
       // Auswertung: Weiterbildung
       this.listView_auswertung_weiterbildung_o = new ListView_cl("main", "auswertungWeiterbildung.tpl", "auswertung");
@@ -633,7 +696,6 @@ class Application_cl {
 
                // Add Teilnahme
                case "addteilnahme":
-                  //var input_action = document.getElementById("action"); //wenn man bei url und publish_px die input_action übergibt, wo eigentlich "teilnahme" drin steht, gibt es den Error "action is null, warum?"
                   var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2];   // 1. Weiterbildung, 2. Mitarbeiter
                   fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'} })
       				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme_mitarbeiter", null]);
@@ -641,10 +703,30 @@ class Application_cl {
 
                // Delete Teilnahme
                case "deleteteilnahme":
-                  //var input_action = document.getElementById("action"); //wenn man bei url und publish_px die input_action übergibt, wo eigentlich "teilnahme" drin steht, gibt es den Error "action is null, warum?"
                   var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2];   // 1. Weiterbildung, 2. Mitarbeiter
                   fetch(url, {method: 'DELETE', headers: {'Content-Type': 'application/json'} })
       				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme_mitarbeiter", null]);
+               break;
+
+               //Status Erfolg
+               case "erfolgTeilnahme":
+                  var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2] + "/" + data_opl[3];   // 1. Mitarbeiter, 2. Weiterbildung, 3. Status
+                  fetch(url, {method: 'PUT', headers: {'Content-Type': 'application/json'} })
+      				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme_weiterbildung", null]);
+               break;
+
+               //Status NichtErfolg
+               case "nichterfolgTeilnahme":
+                  var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2] + "/" + data_opl[3];   // 1. Mitarbeiter, 2. Weiterbildung, 3. Status
+                  fetch(url, {method: 'PUT', headers: {'Content-Type': 'application/json'} })
+      				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme_weiterbildung", null]);
+               break;
+
+               //Status Abbruch
+               case "abbruchTeilnahme":
+                  var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2] + "/" + data_opl[3];   // 1. Mitarbeiter, 2. Weiterbildung, 3. Status
+                  fetch(url, {method: 'PUT', headers: {'Content-Type': 'application/json'} })
+      				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme_weiterbildung", null]);
                break;
 
 

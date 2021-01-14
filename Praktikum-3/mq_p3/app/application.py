@@ -79,6 +79,10 @@ class App_mitarbeiter_cl(object): # MITARBEITER
    def getDetail_m(self, id_spl):
    #-------------------------------------------------------
       self.database.readData_mitarbeiter()
+      self.database.readData_weiterbildung()
+      self.database.readData_qualifikation()
+      self.database.readData_zertifikat()
+      self.database.readData_teilnahme()
       data_m = self.database.read_mitarbeiter(id_spl)
       data_w = self.database.read_weiterbildung()
       data_q = self.database.read_qualifikation()
@@ -185,13 +189,9 @@ class App_weiterbildung_cl(object): # WEITERBILDUNG
    def getList_w(self):
    #-------------------------------------------------------
       self.database.readData_weiterbildung()
-      self.database.readData_qualifikation()
-      self.database.readData_zertifikat()
       data_w = self.database.read_weiterbildung()
-      data_q = self.database.read_qualifikation()
-      data_z = self.database.read_zertifikat()
 
-      return self.view_o.createList_w(data_w, data_q, data_z)
+      return self.view_o.createList_w(data_w)
    
    #-------------------------------------------------------
    def getDetail_w(self, id_spl):
@@ -242,8 +242,6 @@ class App_teilnahme_cl(object): # TEILNAHME
    def POST(self, id_w, id_m):
    #-------------------------------------------------------
       status = "angemeldet"
-      #data_w = self.database.read_weiterbildung()
-      #data_m = self.database.read_mitarbeiter()
       data_t = self.database.read_teilnahme()
       data_tIDs = self.database.read_teilnahmeIDs()
 
@@ -265,12 +263,12 @@ class App_teilnahme_cl(object): # TEILNAHME
       return str(id)
       
    #-------------------------------------------------------
-   def PUT(self, id_m, id_w):
+   def PUT(self, id_m, id_w, status):
    #-------------------------------------------------------
-      data_m = self.database.read_mitarbeiter(id_m)
-      data_w = self.database.read_weiterbildung(id_w)
+      data_t = self.database.read_teilnahme()
+      data_tIDs = self.database.read_teilnahmeIDs()
 
-      self.database.update_teilnahme(id, data_m, data_w)
+      self.database.update_teilnahme(data_t, data_tIDs, id_m, id_w, status)
       
       return id
    
@@ -285,13 +283,9 @@ class App_teilnahme_cl(object): # TEILNAHME
    def getList_w(self):
    #-------------------------------------------------------
       self.database.readData_weiterbildung()
-      self.database.readData_qualifikation()
-      self.database.readData_zertifikat()
       data_w = self.database.read_weiterbildung()
-      data_q = self.database.read_qualifikation()
-      data_z = self.database.read_zertifikat()
 
-      return self.view_o.createList_w(data_w, data_q, data_z)
+      return self.view_o.createList_w(data_w)
    
    #-------------------------------------------------------
    def getDetail_mt(self, id_spl):
@@ -299,11 +293,13 @@ class App_teilnahme_cl(object): # TEILNAHME
       self.database.readData_mitarbeiter()
       self.database.readData_weiterbildung()
       self.database.readData_teilnahme()
+      self.database.readData_teilnahmeIDs()
       data_m = self.database.read_mitarbeiter(id_spl)
       data_w = self.database.read_weiterbildung()
       data_t = self.database.read_teilnahme()
+      data_tIDs = self.database.read_teilnahmeIDs()
 
-      return self.view_o.createDetail_t(data_m, data_w, data_t)
+      return self.view_o.createDetail_t(data_m, data_w, data_t, data_tIDs)
 
    #-------------------------------------------------------
    def getDetail_wt(self, id_spl):
@@ -311,11 +307,13 @@ class App_teilnahme_cl(object): # TEILNAHME
       self.database.readData_mitarbeiter()
       self.database.readData_weiterbildung()
       self.database.readData_teilnahme()
+      self.database.readData_teilnahmeIDs()
       data_m = self.database.read_mitarbeiter()
       data_w = self.database.read_weiterbildung(id_spl)
       data_t = self.database.read_teilnahme()
+      data_tIDs = self.database.read_teilnahmeIDs()
 
-      return self.view_o.createDetail_t(data_m, data_w, data_t)
+      return self.view_o.createDetail_t(data_m, data_w, data_t, data_tIDs)
 
 
 #----------------------------------------------------------
@@ -379,11 +377,12 @@ class App_auswertung_cl(object): # AUSWERTUNG
    #-------------------------------------------------------
       self.database.readData_mitarbeiter()
       self.database.readData_weiterbildung()
-      data_m = self.database.read_mitarbeiter(id_spl)
+      self.database.readData_teilnahme()
+      data_m = self.database.read_mitarbeiter()
       data_w = self.database.read_weiterbildung()
-      data_z = {} # Temporär für Debugging
+      data_t = self.database.read_teilnahme()
 
-      return self.view_o.createDetail_a(data_m, data_w, data_z)
+      return self.view_o.createDetail_a(data_m, data_w, data_t, id_spl)
 
 
 #----------------------------------------------------------
@@ -428,12 +427,15 @@ class App_auswertung_zertifikat_cl(object): # AUSWERTUNG ZERTIFIKATE
    def getDetail_z(self, id_spl):
    #-------------------------------------------------------
       self.database.readData_mitarbeiter()
+      self.database.readData_weiterbildung()
       self.database.readData_zertifikat()
       self.database.readData_teilnahme()
+
       data_m = self.database.read_mitarbeiter()
-      data_z = self.database.read_zertifikat(id_spl)
+      data_w = self.database.read_mitarbeiter()
+      data_z = self.database.read_zertifikat()
       data_t = self.database.read_teilnahme()
 
-      return self.view_o.createDetail_z(data_m, data_z, data_t)
+      return self.view_o.createDetail_z(data_m, data_w, data_z, data_t, id_spl)
 
 # EOF

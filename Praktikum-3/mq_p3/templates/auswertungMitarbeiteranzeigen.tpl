@@ -22,20 +22,27 @@
 
 <hr>
 
-<div class="headline_small">Abgeschlossene Weiterbildungen</div>
+<div class="headline_small">Weiterbildungen</div>
 <table class="overview">
 	<tr>
         <th>Bezeichnung</th>
         <th>Von</th>
         <th>Bis</th>
         <th>Status</th>
-    </tr>			
-    <tr>
-        <td>TODO</td>
-        <td>TODO</td>
-        <td>TODO</td>
-        <td>TODO</td>
-    </tr>					
+    </tr>
+    @var entry_a;@
+    @var loop_i;@
+    @for loop_i in context@
+        @entry_a = context[loop_i];@
+        @if entry_a['id_w'] != null@	
+        <tr>
+            <td>#entry_a['bezeichnung_w']#</td>
+            <td>#entry_a['von_w']#</td>
+	        <td>#entry_a['bis_w']#</td>
+	        <td>#entry_a['status']#</td>
+        </tr>
+        @endif@	
+    @endfor@
 </table>
 
 <div>

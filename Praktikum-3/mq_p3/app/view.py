@@ -9,7 +9,7 @@ class View_cl(object):
    #-------------------------------------------------------
    def __init__(self):
    #-------------------------------------------------------
-      self.database = Database_cl()
+      self.database = Database_cl
 
 #-----------------------------------------------------------------------------------
 # MITARBEITER FUNKTIONEN
@@ -34,10 +34,8 @@ class View_cl(object):
 #-----------------------------------------------------------------------------------
 
    #-------------------------------------------------------
-   def createList_w(self, data_w, data_q, data_z):
+   def createList_w(self, data_w):
    #-------------------------------------------------------
-      
-      datas_w = [data_w, data_q, data_z]
 
       return json.dumps(data_w)
 
@@ -54,10 +52,10 @@ class View_cl(object):
 #-----------------------------------------------------------------------------------
 
    #-------------------------------------------------------
-   def createDetail_t(self, data_m, data_w, data_t):
+   def createDetail_t(self, data_m, data_w, data_t, data_tIDs):
    #-------------------------------------------------------
 
-      datas_t = {**data_m, **data_w, **data_t}  # Hier werden alle Daten zu einem Dictionary zusammengefügt. !!!!!data_t verursacht, dass angemeldetete weiterbilungen nicht angezeigt werden in teilnahmemitarbeiteranzeige.tpl, weil jede ID nur einmal übergeben wird!!!!!
+      datas_t = {**data_m, **data_w, **data_t, **data_tIDs}  # Hier werden alle Daten zu einem Dictionary zusammengefügt. !!!!!data_t verursacht, dass angemeldetete weiterbilungen nicht angezeigt werden in teilnahmemitarbeiteranzeige.tpl, weil jede ID nur einmal übergeben wird!!!!!
 
       return json.dumps(datas_t)
 
@@ -74,12 +72,19 @@ class View_cl(object):
       return json.dumps(datas_a)
 
    #-------------------------------------------------------
-   def createDetail_a(self, data_w, data_q, data_z):
+   def createDetail_a(self, data_m, data_w, data_t, id_spl):
    #-------------------------------------------------------
 
-      datas_a = {**data_w, **data_q, **data_z}  # Hier werden alle Daten zu einem Dictionary zusammengefügt
+      id_m = data_m[id_spl]['id_m']
+      datas_am = []  # Hier schreiben wir alle Daten rein, die wir dann im Template benutzen
+      datas_am.append(data_m[id_spl])
 
-      return json.dumps(datas_a)
+      for item in data_t:  # Durch alle Teilnahmen iterieren
+         if id_m == data_t[item]['id_m']:
+            id_w = data_t[item]['id_w']
+            datas_am.append(data_w[id_w])
+
+      return json.dumps(datas_am)
 
 #-----------------------------------------------------------------------------------
 # AUSWERTUNG ZERTIFIKAT FUNKTIONEN
@@ -91,15 +96,16 @@ class View_cl(object):
       return json.dumps(data_z)
 
    #-------------------------------------------------------
-   def createDetail_z(self, data_m, data_z, data_t):
+   def createDetail_z(self, data_m, data_w, data_z, data_t, id_spl):
    #-------------------------------------------------------
       status = "erfolgreich"        # Status nach dem wir die Mitarbeiter sortieren, sollte wenn Teilnahme Weiterbildung fertig ist "Erfolgreich" sein
       datas_z = []                  # Hier schreiben wir alle Daten rein, die wir dann im Template benutzen
+      id_w = data_z[id_spl]['id_w']
 
-      for item in data_t:                                         # Durch alle Teilnahmen iterieren
-         if status in data_t[item]['status']:                     # Kontrolle ob Status "Erfolgreich" ist
-            id_m = data_t[item]['id_m']                           # Mitarbeiter ID auslesen
-            datas_z.append(self.database.read_mitarbeiter(id_m))  # Mitarbeiterdaten anhand ID auslesen und zu einer Liste zusammenfügen
+      for item in data_t:  # Durch alle Teilnahmen iterieren
+         if status == data_t[item]['status'] and id_w == data_t[item]['id_w']:   # Kontrolle ob Status "Erfolgreich" ist und ob Zertifikat ID in data_t (ohne das zeigt er die Mitarbeiter bei jedem Zertifikat an, obwohl man nicht in Teilnahme steht)
+            id_m = data_t[item]['id_m']   # Mitarbeiter ID auslesen         
+            datas_z.append(data_m[id_m])  # Mitarbeiterdaten anhand ID auslesen und zu einer Liste zusammenfügen
 
       return json.dumps(datas_z)
 

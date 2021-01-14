@@ -13,5 +13,15 @@
       "id_w": "ce1e45f8-dbb2-4a41-a1b7-68a2d3164081",
       "id_m": "7fd7c8ad-b37e-4cd5-9685-72381d345d88",
       "status": "erfolgreich"
+   },
+   "4618797d-9616-41bb-a106-23f44a841377": {
+      "id_w": "3d2b3ebb-76db-4c03-af3c-7560e2f66027",
+      "id_m": "23e94bf0-b694-4d1e-bba7-4b34e9e4dc11",
+      "status": "angemeldet"
+   },
+   "b142fe52-4941-4997-90a1-f192f2099a2f": {
+      "id_w": "3d2b3ebb-76db-4c03-af3c-7560e2f66027",
+      "id_m": "f7936f06-e66d-4648-8c8f-990af772ff0d",
+      "status": "angemeldet"
    }
 }

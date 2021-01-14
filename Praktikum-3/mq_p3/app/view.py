@@ -47,6 +47,26 @@ class View_cl(object):
 
       return json.dumps(datas_w)
 
+   #-------------------------------------------------------
+   def weiterbildung_anzeigen(self, data_m, data_w, data_q, data_z, data_t, id_spl):
+   #-------------------------------------------------------
+      datas_w_anzeigen = []            # Hier schreiben wir alle Daten rein, die wir dann im Template benutzen
+      datas_w_anzeigen.append(data_w)  # Weiterbildung in die Liste eintragen
+
+      id_w = data_w ['id_w']           # "id_w" aus Weiterbildungsdaten auslesen 
+      id_q = data_w['id_q']            # "id_q" aus Weiterbildungsdaten auslesen
+      id_z = data_w['id_z']            # "id_z" aus Weiterbildungsdaten auslesen
+      datas_w_anzeigen.append(data_q[id_q])  # Qualifikation in die Liste eintragen
+      datas_w_anzeigen.append(data_z[id_z])  # Zertifikat in die Liste eintragen
+
+      # Teilnehmer herausfiltern
+      for item in data_t:  # Durch alle Teilnahmen iterieren
+         if id_w == data_t[item]['id_w']:             # Wenn Weiterbildungs ID in Teilnahme gefunden wird
+            id_m = data_t[item]['id_m']               # Mitarbeiter ID auslesen aus der gefundenen Teilnahme
+            datas_w_anzeigen.append(data_m[id_m])     # Mitarbeiter Daten in die Liste eintragen
+
+      return json.dumps(datas_w_anzeigen)
+
 #-----------------------------------------------------------------------------------
 # TEILNAHME FUNKTIONEN
 #-----------------------------------------------------------------------------------

@@ -580,7 +580,7 @@ class Application_cl {
       // Datenpflege: Weiterbildung
       this.listView_weiterbildung_o = new ListView_cl("main", "pflegeWeiterbildung.tpl", "weiterbildung");
       this.FormView_weiterbildung_o = new FormView_cl("main", "formularWeiterbildung.tpl", "weiterbildung");
-      this.AnzeigenView_weiterbildung_o = new AnzeigenView_cl("main", "anzeigenWeiterbildung.tpl", "weiterbildung");
+      this.AnzeigenView_weiterbildung_o = new AnzeigenView_cl("main", "anzeigenWeiterbildung.tpl", "weiterbildungAnzeigen");
       
       // Teilnahme: Mitarbeiter
       this.listView_teilnahme_mitarbeiter_o = new ListView_cl("main", "teilnahmeMitarbeiter.tpl", "mitarbeiter");

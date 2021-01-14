@@ -207,6 +207,46 @@ class App_weiterbildung_cl(object): # WEITERBILDUNG
       return self.view_o.createDetail_w(data_w, data_q, data_z)
 
 
+
+#----------------------------------------------------------
+class App_weiterbildung_anzeigen_cl(object): # WEITERBILDUNG ANZEIGEN
+#----------------------------------------------------------
+
+   exposed = True # gilt für alle Methoden
+
+   #-------------------------------------------------------
+   def __init__(self):
+   #-------------------------------------------------------
+      self.database = Database_cl()
+      self.view_o = View_cl()
+
+   #-------------------------------------------------------
+   def GET(self, id=None, weiterbildungAnzeigen=None):
+   #-------------------------------------------------------
+      retVal_s = ''
+      retVal_s = self.get_weiterbildung_anzeigen(id)
+
+      return retVal_s
+   
+   #-------------------------------------------------------
+   def get_weiterbildung_anzeigen(self, id_spl):
+   #-------------------------------------------------------
+      # Daten auslesen und in die jeweilige "data_" packen
+      self.database.readData_mitarbeiter()
+      self.database.readData_weiterbildung()
+      self.database.readData_qualifikation()
+      self.database.readData_zertifikat()
+      self.database.readData_teilnahme()
+      data_m = self.database.read_mitarbeiter()
+      data_w = self.database.read_weiterbildung(id_spl)
+      data_q = self.database.read_qualifikation()
+      data_z = self.database.read_zertifikat()
+      data_t = self.database.read_teilnahme()
+
+      return self.view_o.weiterbildung_anzeigen(data_m, data_w, data_q, data_z, data_t, id_spl)
+
+
+
 #----------------------------------------------------------
 class App_teilnahme_cl(object): # TEILNAHME
 #----------------------------------------------------------
@@ -329,7 +369,7 @@ class App_auswertung_mitarbeiter_cl(object): # AUSWERTUNG MITARBEITER
       self.view_o = View_cl()
 
    #-------------------------------------------------------
-   def GET(self, id=None, auswertung=None):
+   def GET(self, id=None, auswertungMitarbeiter=None):
    #-------------------------------------------------------
       retVal_s = ''
 
@@ -382,7 +422,7 @@ class App_auswertung_weiterbildung_cl(object): # AUSWERTUNG WEITERBILDUNG
       self.view_o = View_cl()
 
    #-------------------------------------------------------
-   def GET(self, id=None, auswertungZertifikat=None):
+   def GET(self, id=None, auswertungWeiterbildung=None):
    #-------------------------------------------------------
       retVal_s = ''
 

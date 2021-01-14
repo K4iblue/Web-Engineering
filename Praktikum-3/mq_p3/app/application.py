@@ -386,6 +386,58 @@ class App_auswertung_cl(object): # AUSWERTUNG
 
 
 #----------------------------------------------------------
+class App_auswertung_weiterbildung_cl(object): # AUSWERTUNG Weiterbildung
+#----------------------------------------------------------
+
+   exposed = True # gilt für alle Methoden
+
+   #-------------------------------------------------------
+   def __init__(self):
+   #-------------------------------------------------------
+      self.database = Database_cl()
+      self.view_o = View_cl()
+
+   #-------------------------------------------------------
+   def GET(self, id=None, auswertungZertifikat=None):
+   #-------------------------------------------------------
+      retVal_s = ''
+
+      if id == None:
+         # Anforderung der Liste
+         retVal_s = self.getList_auswertung_weiterbildung()
+      else:
+         # Anforderung eines Details
+         retVal_s = self.getDetail_auswertung_weiterbildung(id)
+
+      return retVal_s
+
+   #-------------------------------------------------------
+   def getList_auswertung_weiterbildung(self): # LISTE ALLER Weiterbildungen
+   #-------------------------------------------------------
+      self.database.readData_weiterbildung()
+      data_w = self.database.read_weiterbildung()
+
+      # Nach Namen sortieren
+      sorted_data_w = sorted(data_w.items(), key=lambda x: x[1]['bezeichnung_w'], reverse = False) #Alphabetisch sortiert
+      ordered_dict_w = OrderedDict(sorted_data_w)  # Sortierte Liste zu Dict umwandeln
+
+      return self.view_o.createList_auswertung_weiterbildung(ordered_dict_w)
+   
+   #-------------------------------------------------------
+   def getDetail_auswertung_weiterbildung(self, id_spl):
+   #-------------------------------------------------------
+      self.database.readData_mitarbeiter()
+      self.database.readData_weiterbildung()
+      self.database.readData_teilnahme()
+
+      data_m = self.database.read_mitarbeiter()
+      data_w = self.database.read_weiterbildung(id_spl)
+      data_t = self.database.read_teilnahme()
+
+      return self.view_o.createDetail_auswertung_weiterbildung(data_m, data_w, data_t, id_spl)
+
+
+#----------------------------------------------------------
 class App_auswertung_zertifikat_cl(object): # AUSWERTUNG ZERTIFIKATE
 #----------------------------------------------------------
 
@@ -417,7 +469,7 @@ class App_auswertung_zertifikat_cl(object): # AUSWERTUNG ZERTIFIKATE
       self.database.readData_zertifikat()
       data_z = self.database.read_zertifikat()
 
-      # Zertifikate sortieren
+      # Nach Namen sortieren
       sorted_data_z = sorted(data_z.items(), key=lambda x: x[1]['bezeichnung_z'], reverse = False) #Alphabetisch sortiert
       ordered_dict_z = OrderedDict(sorted_data_z)
 
@@ -431,8 +483,8 @@ class App_auswertung_zertifikat_cl(object): # AUSWERTUNG ZERTIFIKATE
       self.database.readData_zertifikat()
       self.database.readData_teilnahme()
 
-      data_m = self.database.read_mitarbeiter()
-      data_w = self.database.read_mitarbeiter()
+      data_m = self.database.read_mitarbeiter()    # 2x Mitarbeiter ??
+      data_w = self.database.read_mitarbeiter()    # 2x Mitarbeiter ??
       data_z = self.database.read_zertifikat()
       data_t = self.database.read_teilnahme()
 

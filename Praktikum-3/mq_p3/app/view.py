@@ -60,7 +60,7 @@ class View_cl(object):
       return json.dumps(datas_t)
 
 #-----------------------------------------------------------------------------------
-# AUSWERTUNG FUNKTIONEN
+# AUSWERTUNG FUNKTIONEN - Mitarbeiter
 #-----------------------------------------------------------------------------------
 
    #-------------------------------------------------------
@@ -87,7 +87,32 @@ class View_cl(object):
       return json.dumps(datas_am)
 
 #-----------------------------------------------------------------------------------
-# AUSWERTUNG ZERTIFIKAT FUNKTIONEN
+# AUSWERTUNG FUNKTIONEN - Weiterbildung 
+#-----------------------------------------------------------------------------------
+
+   #-------------------------------------------------------
+   def createList_auswertung_weiterbildung(self, data_w):
+   #-------------------------------------------------------
+      return json.dumps(data_w)
+
+   #-------------------------------------------------------
+   def createDetail_auswertung_weiterbildung(self, data_m, data_w, data_t, id_spl):
+   #-------------------------------------------------------
+      status = "erfolgreich"        # Status nach dem wir die Mitarbeiter sortieren
+      datas_w = []                  # Hier schreiben wir alle Daten rein, die wir dann im Template benutzen
+      
+      id_w = id_spl                 # Weiterbildungs ID auslesen         
+      datas_w.append(data_w)        # Weiterbildungsdaten in die Liste eintragen
+
+      for item in data_t:  # Durch alle Teilnahmen iterieren
+         if status == data_t[item]['status'] and id_w == data_t[item]['id_w']:   # Kontrolle ob Status "Erfolgreich" ist und ob Zertifikat ID in data_t (ohne das zeigt er die Mitarbeiter bei jedem Zertifikat an, obwohl man nicht in Teilnahme steht)
+            id_m = data_t[item]['id_m']   # Mitarbeiter ID auslesen         
+            datas_w.append(data_m[id_m])  # Mitarbeiterdaten anhand ID auslesen und zu einer Liste zusammenfügen
+
+      return json.dumps(datas_w)
+
+#-----------------------------------------------------------------------------------
+# AUSWERTUNG FUNKTIONEN - ZERTIFIKAT 
 #-----------------------------------------------------------------------------------
 
    #-------------------------------------------------------
@@ -98,7 +123,7 @@ class View_cl(object):
    #-------------------------------------------------------
    def createDetail_z(self, data_m, data_w, data_z, data_t, id_spl):
    #-------------------------------------------------------
-      status = "erfolgreich"        # Status nach dem wir die Mitarbeiter sortieren, sollte wenn Teilnahme Weiterbildung fertig ist "Erfolgreich" sein
+      status = "erfolgreich"        # Status nach dem wir die Mitarbeiter sortieren
       datas_z = []                  # Hier schreiben wir alle Daten rein, die wir dann im Template benutzen
       id_w = data_z[id_spl]['id_w']
 

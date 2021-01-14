@@ -16,7 +16,7 @@
 	  @entry_a = context[loop_i];@
 	  	<!-- Weiterbildungen "rausfiltern"-->
 		@if entry_a['von_w'] != null@
-      	<tr id="#entry_a['id']#">
+      	<tr id="#entry_a['id_w']#">
 			<td>#entry_a['bezeichnung_w']#</td>
       	   	<td>#entry_a['von_w']#</td>
       	   	<td>#entry_a['bis_w']#</td>

@@ -70,6 +70,13 @@ def main():
       {'/': {'request.dispatch': cherrypy.dispatch.MethodDispatcher()}}
    ) 
 
+   # 2. Eintrag: Method-Dispatcher für "Auswertung Weiterbildung"
+   cherrypy.tree.mount(
+      application.App_auswertung_weiterbildung_cl(),
+      '/app/auswertungWeiterbildung/',
+      {'/': {'request.dispatch': cherrypy.dispatch.MethodDispatcher()}}
+   ) 
+
    # 2. Eintrag: Method-Dispatcher für "Auswertung Zertifikate"
    cherrypy.tree.mount(
       application.App_auswertung_zertifikat_cl(),

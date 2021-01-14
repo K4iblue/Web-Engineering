@@ -562,12 +562,16 @@ class SideBar_cl {
    }
 }
 
+
 class Application_cl {
    // Konstruktor für alle Templates
    constructor () {
       APPUTIL.es_o.subscribe_px(this, "templates.loaded");
       APPUTIL.es_o.subscribe_px(this, "templates.failed");
       APPUTIL.es_o.subscribe_px(this, "app.cmd");
+
+      // Startseite
+      this.AnzeigenView_startseite_o = new AnzeigenView_cl("main", "startseite.tpl", "startseite");
 
       // Sidebar
       this.sideBar_o = new SideBar_cl("aside", "sidebar.tpl");
@@ -630,6 +634,9 @@ class Application_cl {
                ["auswertung_zertifikat", "Auswertung: Zertifikat"]
             ];
             self.sideBar_o.render_px(nav_a);
+            self.startseite_o.render_px(data_opl[1]);
+            
+            // Startseite laden, beim ersten Seitenaufruf
             markup_s = APPUTIL.tm_o.execute_px("startseite.tpl", null);
             el_o = document.querySelector("main");
                if (el_o != null) {
@@ -639,14 +646,11 @@ class Application_cl {
 
          case "app.cmd":
             switch (data_opl[0]) {
+               // Startseite
                case "home":
-                  let markup_s = APPUTIL.tm_o.execute_px("startseite.tpl", null);
-                  let el_o = document.querySelector("main");
-                     if (el_o != null) {
-                        el_o.innerHTML = markup_s;
-                     }
+                  this.AnzeigenView_startseite_o.render_px(data_opl[1]);
                break;
-
+               
                // Datenpflege: Mitarbeiter
                case "mitarbeiter":
                   this.listView_mitarbeiter_o.render_px(data_opl[1]);
@@ -694,41 +698,40 @@ class Application_cl {
                   this.AnzeigenView_teilnahme_weiterbildung_o.render_px(data_opl[1]);
                break;
 
-               // Add Teilnahme
+               // Teilnahme hinzufügen
                case "addteilnahme":
                   var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2];   // 1. Weiterbildung, 2. Mitarbeiter
                   fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'} })
       				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme_mitarbeiter", null]);
                break;
 
-               // Delete Teilnahme
+               // Teilnahme löschen
                case "deleteteilnahme":
                   var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2];   // 1. Weiterbildung, 2. Mitarbeiter
                   fetch(url, {method: 'DELETE', headers: {'Content-Type': 'application/json'} })
       				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme_mitarbeiter", null]);
                break;
 
-               //Status Erfolg
+               // Status setzen: Erfolg
                case "erfolgTeilnahme":
                   var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2] + "/" + data_opl[3];   // 1. Mitarbeiter, 2. Weiterbildung, 3. Status
                   fetch(url, {method: 'PUT', headers: {'Content-Type': 'application/json'} })
       				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme_weiterbildung", null]);
                break;
 
-               //Status NichtErfolg
+               // Status setzen: NichtErfolg
                case "nichterfolgTeilnahme":
                   var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2] + "/" + data_opl[3];   // 1. Mitarbeiter, 2. Weiterbildung, 3. Status
                   fetch(url, {method: 'PUT', headers: {'Content-Type': 'application/json'} })
       				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme_weiterbildung", null]);
                break;
 
-               //Status Abbruch
+               // Status setzen: Abbruch
                case "abbruchTeilnahme":
                   var url = "/app/" + "teilnahme" + "/" + data_opl[1] + "/" + data_opl[2] + "/" + data_opl[3];   // 1. Mitarbeiter, 2. Weiterbildung, 3. Status
                   fetch(url, {method: 'PUT', headers: {'Content-Type': 'application/json'} })
       				APPUTIL.es_o.publish_px("app.cmd", ["teilnahme_weiterbildung", null]);
                break;
-
 
                // Auswertung: Mitarbeiter
                case "auswertung_mitarbeiter":
@@ -757,7 +760,7 @@ class Application_cl {
                   this.AnzeigenView_auswertung_zertifikat_o.render_px(data_opl[1]);
                break;
 
-               // Sonstige
+               // Zurück Buttons
                case "idBack":
       			   var input_action = document.getElementById("action");
       			   console.log("action = " + input_action.value);
@@ -794,6 +797,7 @@ class Application_cl {
                   APPUTIL.es_o.publish_px("app.cmd", ["auswertung_zertifikat", null]);
                break;
 
+               // Mitarbeiter oder Weiterbildung löschen
       		   case "idDelete":
       			   if(confirm("Entfernen?")){
       				   var input_action = document.getElementById("action");

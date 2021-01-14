@@ -1,5 +1,6 @@
 # coding: utf-8
 from .database import Database_cl
+from datetime import date
 import json
 
 #----------------------------------------------------------
@@ -10,6 +11,50 @@ class View_cl(object):
    def __init__(self):
    #-------------------------------------------------------
       self.database = Database_cl
+
+#-----------------------------------------------------------------------------------
+# STARTSEITE FUNKTIONEN
+#-----------------------------------------------------------------------------------
+
+   #-------------------------------------------------------
+   def createStartseite(self, data_m, data_w, data_t):
+   #-------------------------------------------------------
+      data_startseite = []       # Hier schreiben wir alle Daten rein, die wir dann im Template benutzen 
+      test_startseite = {"mitarbeiter": "0","teilnahmen": "0","geplant": "0","laufend": "0", "abgeschlossen": "0"}
+
+      # Anzahl Mitarbeiter
+      anzahlMitarbeiter = {}                             # Dict für Mitarbeiter Anzahl
+      anzahlMitarbeiter['mitarbeiter'] = len(data_m)     # Mitarbeiter zählen
+      data_startseite.append(anzahlMitarbeiter)          # Anzahl Mitarbeiter in die Liste eintragen
+      test_startseite.update(mitarbeiter = len(data_m))
+
+      # Anzahl Teilnahmen
+      anzahlTeilnahmen = {}                              # Dict für Teilnahme Anzahl
+      anzahlTeilnahmen['teilnahmen'] = len(data_t)       # Teilnahme zählen
+      data_startseite.append(anzahlTeilnahmen)           # Anzahl Teilnahmen in die Liste eintragen
+      test_startseite.update(teilnahmen = len(data_t))
+
+      # Anzahl Weiterbildungen (Geplant, Laufend, Abgeschlossen)
+      anzahlWeiterbildungen = {"geplant": "0","laufend": "0", "abgeschlossen": "0"}    # Dict für Weiterbildungs Anzahl
+      today = date.today()                                                             # Aktuelles Datum, damit wir die Weiterbildungen entsprechend sortieren können
+      currentDate = today.strftime("%Y-%M-%D")                                         # Datum zum String umwandeln
+      w_Geplant = 0                                # Variable für Geplante Weiterbildungen
+      w_Laufend = 0                                # Variable für Laufende Weiterbildungen
+      w_Abgeschlossen = 0                          # Variable für Abgeschlossene Weiterbildungen
+      
+      for item in data_w:                             # Durch alle Weiterbildungen iterieren
+         if (currentDate < data_w[item]['von_w']):       # Geplante Weitebildungen finden
+            w_Geplant = w_Geplant + 1                    # Variabele inkrementieren
+         if (currentDate > data_w[item]['von_w'] and currentDate < data_w[item]['bis_w']):   # Laufende Weitebildungen finden
+            w_Laufend = w_Laufend + 1                                                        # Variabele inkrementieren
+         if (currentDate > data_w[item]['bis_w']):    # Abgschlossende Weiterbildungen finden
+	         w_Abgeschlossen = w_Abgeschlossen + 1     # Variabele inkrementieren
+      
+      anzahlWeiterbildungen.update(geplant = w_Geplant, laufend = w_Laufend, abgeschlossen = w_Abgeschlossen)  # Weiterbildungen zusammenführen
+      test_startseite.update(geplant = w_Geplant, laufend = w_Laufend, abgeschlossen = w_Abgeschlossen)
+      data_startseite.append(anzahlWeiterbildungen)   # Anzahl Weiterbildungen in die Liste eintragen
+
+      return json.dumps(test_startseite)
 
 #-----------------------------------------------------------------------------------
 # MITARBEITER FUNKTIONEN

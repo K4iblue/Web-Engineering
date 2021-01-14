@@ -5,6 +5,37 @@ from .database import Database_cl
 from .view import View_cl
 from collections import OrderedDict
 
+#----------------------------------------------------------
+class App_startseite_cl(object): # Startseite
+#----------------------------------------------------------
+
+   exposed = True # gilt für alle Methoden
+
+   #-------------------------------------------------------
+   def __init__(self):
+   #-------------------------------------------------------
+      self.database = Database_cl()
+      self.view_o = View_cl()
+
+   #-------------------------------------------------------
+   def GET(self, id=None, startseite=None):
+   #-------------------------------------------------------
+      #retVal_s = ''
+      retVal_s = self.getAllData()
+
+      return retVal_s
+
+   #-------------------------------------------------------
+   def getAllData(self):
+   #-------------------------------------------------------
+      self.database.readData_mitarbeiter()
+      self.database.readData_weiterbildung()
+      self.database.readData_teilnahme()
+      data_m = self.database.read_mitarbeiter()
+      data_w = self.database.read_weiterbildung()
+      data_t = self.database.read_teilnahme()
+
+      return self.view_o.createStartseite(data_m, data_w, data_t)
 
 #----------------------------------------------------------
 class App_mitarbeiter_cl(object): # MITARBEITER

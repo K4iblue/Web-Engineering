@@ -10,14 +10,14 @@
 			<th>Anzahl Weiterbildungen abgeschlossen</th>
 			<th>Anzahl Teilnahmen</th>
 		</tr>
-
 		<tr>
-			<td>TODO</td>
-			<td>status_geplant</td>
-			<td>status_laufend</td>
-			<td>status_abgeschlossen</td>
-			<td>TODO</td>
+			<td>#context['mitarbeiter']#</td>
+			<td>#context['geplant']#</td>
+			<td>#context['laufend']#</td>
+			<td>#context['abgeschlossen']#</td>
+			<td>#context['teilnahmen']#</td>
 		</tr>
+
 	</table>
 </div>
 

@@ -93,6 +93,44 @@ class App_mitarbeiter_cl(object): # MITARBEITER
 
 
 #----------------------------------------------------------
+class App_mitarbeiter_anzeigen_cl(object): # MITARBEITER ANZEIGEN
+#----------------------------------------------------------
+
+   exposed = True # gilt für alle Methoden
+
+   #-------------------------------------------------------
+   def __init__(self):
+   #-------------------------------------------------------
+      self.database = Database_cl()
+      self.view_o = View_cl()
+
+   #-------------------------------------------------------
+   def GET(self, id=None, mitarbeiterAnzeigen=None):
+   #-------------------------------------------------------
+      retVal_s = ''
+      retVal_s = self.get_mitarbeiter_anzeigen(id)
+
+      return retVal_s
+   
+   #-------------------------------------------------------
+   def get_mitarbeiter_anzeigen(self, id_spl):
+   #-------------------------------------------------------
+      # Daten auslesen und in die jeweilige "data_" packen
+      self.database.readData_mitarbeiter()
+      self.database.readData_weiterbildung()
+      self.database.readData_qualifikation()
+      self.database.readData_zertifikat()
+      self.database.readData_teilnahme()
+      data_m = self.database.read_mitarbeiter(id_spl)
+      data_w = self.database.read_weiterbildung()
+      data_q = self.database.read_qualifikation()
+      data_z = self.database.read_zertifikat()
+      data_t = self.database.read_teilnahme()
+
+      return self.view_o.mitarbeiter_anzeigen(data_m, data_w, data_q, data_z, data_t, id_spl)
+
+
+#----------------------------------------------------------
 class App_weiterbildung_cl(object): # WEITERBILDUNG
 #----------------------------------------------------------
 
@@ -205,7 +243,6 @@ class App_weiterbildung_cl(object): # WEITERBILDUNG
       data_z = self.database.read_zertifikat(id_spl, data_w)
 
       return self.view_o.createDetail_w(data_w, data_q, data_z)
-
 
 
 #----------------------------------------------------------

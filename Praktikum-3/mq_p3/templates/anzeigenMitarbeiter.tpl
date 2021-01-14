@@ -8,13 +8,21 @@
         <th>Vorname</th>
         <th>akademische Grade</th>
         <th>Tätigkeit</th>
-    </tr>
-    <tr>
-        <td>#context['name']#</td>
-        <td>#context['vorname']#</td>
-		<td>#context['akagrad']#</td>
-		<td>#context['taetigkeit']#</td>
-    </tr>
+	</tr>
+	@var entry_a;@
+	@var loop_i;@
+	@for loop_i in context@
+		@entry_a = context[loop_i];@
+		<!-- Mitarbeiter "rausfiltern"-->
+		@if entry_a['id_m'] != null@
+    		<tr>
+    		    <td>#entry_a['name']#</td>
+    		    <td>#entry_a['vorname']#</td>
+				<td>#entry_a['akagrad']#</td>
+				<td>#entry_a['taetigkeit']#</td>
+			</tr>
+		@endif@
+	@endfor@
 </table>
 <p><br>
 <div class="headline">abgeschlossene/geplante Weiterbildungen</div>
@@ -27,7 +35,7 @@
 	@var loop_i;@
 	@for loop_i in context@
 		@entry_a=context [loop_i];@
-		@if entry_a['id_w'] != null@
+		@if entry_a['bezeichnung_w'] != null@
 			<tr>
 				<td>#entry_a['bezeichnung_w']#</td>
 				<td>#entry_a['von_w']#</td>
@@ -50,7 +58,7 @@
 	@var loop_i;@
 	@for loop_i in context@
 		@entry_a=context [loop_i];@
-		@if entry_a['id_w'] != null@
+		@if entry_a['bezeichnung_q'] != null@
 			<tr>
 				<td>#entry_a['bezeichnung_q']#</td>
 				<td>#entry_a['beschreibung_q']#</td>
@@ -69,7 +77,7 @@
 	@var loop_i;@
 	@for loop_i in context@
 		@entry_a=context [loop_i];@
-		@if entry_a['id_w'] != null@
+		@if entry_a['bezeichnung_z'] != null@
 			<tr>
 				<td>#entry_a['bezeichnung_z']#</td>
 				<td>#entry_a['beschreibung_z']#</td>

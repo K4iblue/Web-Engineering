@@ -18,16 +18,36 @@ class View_cl(object):
    #-------------------------------------------------------
    def createList_m(self, data_m):
    #-------------------------------------------------------
-      
       return json.dumps(data_m)
 
    #-------------------------------------------------------
    def createDetail_m(self, data_m, data_w, data_q, data_z, data_t):
    #-------------------------------------------------------
-
       datas_m = {**data_m, **data_w, **data_q, **data_z, **data_t}
 
       return json.dumps(datas_m)
+
+   #-------------------------------------------------------
+   def mitarbeiter_anzeigen(self, data_m, data_w, data_q, data_z, data_t, id_spl):
+   #-------------------------------------------------------
+      status = "erfolgreich"           # Status nach dem wir die Teilnahmen sortieren
+      datas_m_anzeigen = []            # Hier schreiben wir alle Daten rein, die wir dann im Template benutzen
+      datas_m_anzeigen.append(data_m)  # Mitarbeiter in die Liste eintragen
+      id_m = id_spl                    # Mitarbeiter ID
+
+      # Weiterbildungen, Qualifikation, Zertifikate herausfiltern
+      for item in data_t:                          # Durch alle Teilnahmen iterieren
+         if id_m == data_t[item]['id_m']:             # Wenn Mitarbeiter ID in Teilnahme gefunden wird
+            id_w = data_t[item]['id_w']                  # Weiterbildungs ID aus der gefundenen Teilnahme auslesen
+            datas_m_anzeigen.append(data_w[id_w])        # Weiterbildung in die Liste eintragen
+
+            if status == data_t[item]['status']:      # Bei Erfolgreicher Teilnahme, Qualifikation und Zertifikate auch eintragen
+               id_q = data_w[id_w]['id_q']               # Qualifikations ID aus der gefundenen Teilnahme auslesen
+               id_z = data_w[id_w]['id_z']               # Zertifikats ID aus der gefundenen Teilnahme auslesen            
+               datas_m_anzeigen.append(data_q[id_q])     # Qualifikation in die Liste eintragen
+               datas_m_anzeigen.append(data_z[id_z])     # Zertifikat in die Liste eintragen
+
+      return json.dumps(datas_m_anzeigen)
 
 #-----------------------------------------------------------------------------------
 # WEITERBILDUNG FUNKTIONEN
@@ -53,7 +73,7 @@ class View_cl(object):
       datas_w_anzeigen = []            # Hier schreiben wir alle Daten rein, die wir dann im Template benutzen
       datas_w_anzeigen.append(data_w)  # Weiterbildung in die Liste eintragen
 
-      id_w = data_w ['id_w']           # "id_w" aus Weiterbildungsdaten auslesen 
+      id_w = data_w['id_w']            # "id_w" aus Weiterbildungsdaten auslesen 
       id_q = data_w['id_q']            # "id_q" aus Weiterbildungsdaten auslesen
       id_z = data_w['id_z']            # "id_z" aus Weiterbildungsdaten auslesen
       datas_w_anzeigen.append(data_q[id_q])  # Qualifikation in die Liste eintragen
@@ -95,10 +115,10 @@ class View_cl(object):
       datas_am = []                       # Hier schreiben wir alle Daten rein, die wir dann im Template benutzen
       datas_am.append(data_m[id_spl])     # Mitarbeiterdaten in die Liste eintragen
 
-      for item in data_t:  # Durch alle Teilnahmen iterieren
-         if id_m == data_t[item]['id_m']:    # Wenn Mitarbeiter ID in Teilnahme gefunden wird
-            id_w = data_t[item]['id_w']      # Weiterbildungs ID auslesen aus der gefundenen Teilnahme
-            datas_am.append(data_w[id_w])    # Weiterbildungsdaten in die Liste eintragen
+      for item in data_t:                    # Durch alle Teilnahmen iterieren
+         if id_m == data_t[item]['id_m']:       # Wenn Mitarbeiter ID in Teilnahme gefunden wird
+            id_w = data_t[item]['id_w']            # Weiterbildungs ID aus der gefundenen Teilnahme auslesen
+            datas_am.append(data_w[id_w])          # Weiterbildungsdaten in die Liste eintragen
 
       return json.dumps(datas_am)
 
@@ -119,10 +139,10 @@ class View_cl(object):
       id_w = id_spl                 # Weiterbildungs ID auslesen         
       datas_aw.append(data_w)       # Weiterbildungsdaten in die Liste eintragen
 
-      for item in data_t:  # Durch alle Teilnahmen iterieren
+      for item in data_t:                                                     # Durch alle Teilnahmen iterieren
          if status == data_t[item]['status'] and id_w == data_t[item]['id_w']:   # Kontrolle ob Status "Erfolgreich" ist und ob Zertifikat ID in data_t ist
-            id_m = data_t[item]['id_m']                                          # Mitarbeiter ID auslesen         
-            datas_aw.append(data_m[id_m])                                        # Mitarbeiterdaten anhand ID auslesen und zu einer Liste zusammenfügen
+            id_m = data_t[item]['id_m']                                             # Mitarbeiter ID aus der gefundenen Teilnahme auslesen         
+            datas_aw.append(data_m[id_m])                                           # Mitarbeiterdaten anhand ID auslesen und zu einer Liste zusammenfügen
 
       return json.dumps(datas_aw)
 
@@ -142,10 +162,10 @@ class View_cl(object):
       datas_az = []                    # Hier schreiben wir alle Daten rein, die wir dann im Template benutzen
       id_w = data_z[id_spl]['id_w']    # Weiterbildungs ID aus data_z auslesen
 
-      for item in data_t:  # Durch alle Teilnahmen iterieren
+      for item in data_t:                                                       # Durch alle Teilnahmen iterieren
          if status == data_t[item]['status'] and id_w == data_t[item]['id_w']:   # Kontrolle ob Status "Erfolgreich" ist und ob Zertifikat ID in data_t ist
-            id_m = data_t[item]['id_m']                                          # Mitarbeiter ID auslesen         
-            datas_az.append(data_m[id_m])                                        # Mitarbeiterdaten anhand ID auslesen und zu einer Liste zusammenfügen
+            id_m = data_t[item]['id_m']                                             # Mitarbeiter ID aus der gefundenen Teilnahme auslesen         
+            datas_az.append(data_m[id_m])                                           # Mitarbeiterdaten anhand ID auslesen und zu einer Liste zusammenfügen
 
       return json.dumps(datas_az)
 

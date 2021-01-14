@@ -42,10 +42,17 @@ def main():
    )
    """
 
-   # 2. Eintrag: Method-Dispatcher für die "Applikation Mitarbeiter" "app/mitarbeiter/" vereinbaren
+   # 2. Eintrag: Method-Dispatcher für die "Mitarbeiter" vereinbaren
    cherrypy.tree.mount(
       application.App_mitarbeiter_cl(),
       '/app/mitarbeiter/',
+      {'/': {'request.dispatch': cherrypy.dispatch.MethodDispatcher()}}
+   )
+
+   # 2. Eintrag: Method-Dispatcher für "Mitarbeiter Anzeigen"
+   cherrypy.tree.mount(
+      application.App_mitarbeiter_anzeigen_cl(),
+      '/app/mitarbeiterAnzeigen/',
       {'/': {'request.dispatch': cherrypy.dispatch.MethodDispatcher()}}
    )
 

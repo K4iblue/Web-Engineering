@@ -575,7 +575,7 @@ class Application_cl {
       // Datenpflege: Mitarbeiter
       this.listView_mitarbeiter_o = new ListView_cl("main", "pflegeMitarbeiter.tpl", "mitarbeiter");
       this.FormView_mitarbeiter_o = new FormView_cl("main", "formularMitarbeiter.tpl", "mitarbeiter");
-      this.AnzeigenView_mitarbeiter_o = new AnzeigenView_cl("main", "anzeigenMitarbeiter.tpl", "mitarbeiter");
+      this.AnzeigenView_mitarbeiter_o = new AnzeigenView_cl("main", "anzeigenMitarbeiter.tpl", "mitarbeiterAnzeigen");
 
       // Datenpflege: Weiterbildung
       this.listView_weiterbildung_o = new ListView_cl("main", "pflegeWeiterbildung.tpl", "weiterbildung");

@@ -20,7 +20,6 @@ class App_startseite_cl(object): # Startseite
    #-------------------------------------------------------
    def GET(self, id=None, startseite=None):
    #-------------------------------------------------------
-      #retVal_s = ''
       retVal_s = self.getAllData()
 
       return retVal_s
@@ -314,7 +313,6 @@ class App_weiterbildung_anzeigen_cl(object): # WEITERBILDUNG ANZEIGEN
       return self.view_o.weiterbildung_anzeigen(data_m, data_w, data_q, data_z, data_t, id_spl)
 
 
-
 #----------------------------------------------------------
 class App_teilnahme_cl(object): # TEILNAHME
 #----------------------------------------------------------
@@ -376,7 +374,7 @@ class App_teilnahme_cl(object): # TEILNAHME
       data_t = self.database.read_teilnahme()
       data_tIDs = self.database.read_teilnahmeIDs()
 
-      self.database.update_teilnahme(data_t, data_tIDs, id_m, id_w, status)
+      id = self.database.update_teilnahme(data_t, data_tIDs, id_m, id_w, status)
       
       return id
    

@@ -41,6 +41,7 @@ def main():
       {'/': {'request.dispatch': cherrypy.dispatch.MethodDispatcher()}}
    )
    """
+   
    # 2. Eintrag: Method-Dispatcher für die "Startseite" vereinbaren
    cherrypy.tree.mount(
       application.App_startseite_cl(),

@@ -27,7 +27,7 @@
    "637c8e73-ce27-4a51-a7d8-9dc6732881c7": {
       "id_w": "3d2b3ebb-76db-4c03-af3c-7560e2f66027",
       "id_m": "1b0c97cd-78ee-4d4d-a667-377d6061f89c",
-      "status": "angemeldet"
+      "status": "abgebrochen"
    },
    "5c28e4a6-caaf-4ac9-a4c2-6b11f525d1fb": {
       "id_w": "ce1e45f8-dbb2-4a41-a1b7-68a2d3164081",
@@ -36,6 +36,16 @@
    },
    "a7b4b516-53aa-404f-8587-896ae5b04adc": {
       "id_w": "9839b9c8-c278-4848-b43f-642c2b3373c4",
+      "id_m": "1b0c97cd-78ee-4d4d-a667-377d6061f89c",
+      "status": "angemeldet"
+   },
+   "c90735ae-26a6-476d-a3aa-129e86a0b873": {
+      "id_w": "90c42a4b-47e2-453b-97f8-6816e8e6a75b",
+      "id_m": "2af92da1-36ce-4d66-957b-f900f2934305",
+      "status": "angemeldet"
+   },
+   "90ce34d9-4041-4c94-a08d-964585cb2a4e": {
+      "id_w": "90c42a4b-47e2-453b-97f8-6816e8e6a75b",
       "id_m": "1b0c97cd-78ee-4d4d-a667-377d6061f89c",
       "status": "angemeldet"
    }

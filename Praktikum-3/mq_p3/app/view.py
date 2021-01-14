@@ -67,7 +67,7 @@ class View_cl(object):
    #-------------------------------------------------------
    def mitarbeiter_anzeigen(self, data_m, data_w, data_q, data_z, data_t, id_spl):
    #-------------------------------------------------------
-      status = "erfolgreich"                             # Status nach dem wir die Teilnahmen sortieren
+      status_erfolg = "erfolgreich"                             # Status nach dem wir die Teilnahmen sortieren
       datas_m_anzeigen = []                              # Hier schreiben wir alle Daten rein, die wir dann im Template benutzen
       datas_m_anzeigen.append(data_m)                    # Mitarbeiter in die Liste eintragen
       id_m = id_spl                                      # Mitarbeiter ID
@@ -76,9 +76,10 @@ class View_cl(object):
       for item in data_t:                                # Durch alle Teilnahmen iterieren
          if id_m == data_t[item]['id_m']:                # Wenn Mitarbeiter ID in Teilnahme gefunden wird
             id_w = data_t[item]['id_w']                  # Weiterbildungs ID aus der gefundenen Teilnahme auslesen
+            data_w[id_w]['status'] =  data_t[item]['status']
             datas_m_anzeigen.append(data_w[id_w])        # Weiterbildung in die Liste eintragen
 
-            if status == data_t[item]['status']:         # Bei Erfolgreicher Teilnahme, Qualifikation und Zertifikate auch eintragen
+            if status_erfolg == data_t[item]['status']:         # Bei Erfolgreicher Teilnahme, Qualifikation und Zertifikate auch eintragen
                id_q = data_w[id_w]['id_q']               # Qualifikations ID aus der gefundenen Teilnahme auslesen
                id_z = data_w[id_w]['id_z']               # Zertifikats ID aus der gefundenen Teilnahme auslesen            
                datas_m_anzeigen.append(data_q[id_q])     # Qualifikation in die Liste eintragen

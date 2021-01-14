@@ -1,7 +1,7 @@
 # Auswertung Mitarbeiter anzeigen, working
-GET http://localhost:8080/app/auswertungMitarbeiter/1b0c97cd-78ee-4d4d-a667-377d6061f89c/undefined HTTP/1.1
+GET http://localhost:8080/app/auswertungMitarbeiter/faae36dd-3625-4cc5-a1a8-e2d88ed4bac7/undefined HTTP/1.1
 Content-Type: application/json
 
 {
-	"id_w": "1b0c97cd-78ee-4d4d-a667-377d6061f89c"
+	"id_w": "faae36dd-3625-4cc5-a1a8-e2d88ed4bac7"
 }

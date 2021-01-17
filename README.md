@@ -2,7 +2,7 @@
 Programme die im Rahmen des Moduls "Web-Engineering" erstellt wurden
 
 # Praktikum 1 - "Webteams":
-Anwendung zum Verwalten von Team:
+Anwendung zum Verwalten von Teams:
 * 2 Studenten je Team
 * Name, Matrikelnummer, Semesteranzahl werden erfasst
 
